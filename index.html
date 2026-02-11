@@ -1045,7 +1045,13 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
         <button onclick="nextScreen(6)">Да 💖</button>
         <button onclick="nextScreen(6)">Конечно да 💘</button>
       </div>
-      <button class="no-btn" id="noBtn">Нет 🙈</button>
+
+      <!-- КНОПКА УЖЕ ВНУТРИ КОНТЕЙНЕРА С ПРАВИЛЬНОЙ СТРУКТУРОЙ -->
+      <div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; border-radius: 15px; overflow: visible;">
+        <button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; transition: all 0.3s ease; z-index: 10;">
+          Нет 🙈
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -1782,13 +1788,6 @@ function nextScreen(n){
     showChecklist();
   }
 
-  // Инициализируем кнопку "Нет" при переходе на экран 5
-  if (n === 5 && window.noBtn && !window.noBtnInitialized) {
-    setTimeout(() => {
-      initNoButtonPosition();
-    }, 100);
-  }
-
   // Запускаем неоновую анимацию на экране 6
   if (n === 6) {
     setTimeout(() => {
@@ -2009,7 +2008,7 @@ function showChecklist(){
 
 /* ===== УБЕГАЮЩАЯ КНОПКА "НЕТ" ===== */
 const noBtn = document.getElementById('noBtn');
-let noBtnInitialized = false;
+let noBtnInitialized = true; // Сразу true, чтобы не вызывалась старая инициализация
 
 function initNoButtonPosition() {
   if (noBtnInitialized) return;
@@ -2073,8 +2072,11 @@ function getRandomPosition(btnRect, areaRect) {
   return { x: newX, y: newY };
 }
 
+// Функция движения кнопки (без пересоздания контейнера)
 function moveNoButton() {
   const noBtnArea = document.querySelector('#screen5 .no-btn-area');
+  if (!noBtnArea) return;
+
   const btnRect = noBtn.getBoundingClientRect();
   const areaRect = noBtnArea.getBoundingClientRect();
 
@@ -2083,23 +2085,33 @@ function moveNoButton() {
   noBtn.style.transition = 'all 0.15s ease';
   noBtn.style.left = newPos.x + 'px';
   noBtn.style.top = newPos.y + 'px';
+  noBtn.style.transform = 'none'; // Убираем translateX
 
   setTimeout(() => {
     noBtn.style.transition = 'all 0.3s ease';
   }, 150);
 }
 
-noBtn.addEventListener('mouseenter', moveNoButton);
-noBtn.addEventListener('touchstart', function(e) {
-  e.preventDefault();
-  moveNoButton();
-});
+// Навешиваем обработчики
+if (noBtn) {
+  // Убираем старые обработчики, если были
+  noBtn.removeEventListener('mouseenter', moveNoButton);
+  noBtn.removeEventListener('touchstart', moveNoButton);
+  noBtn.removeEventListener('click', moveNoButton);
 
-noBtn.addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  moveNoButton();
-});
+  // Добавляем новые
+  noBtn.addEventListener('mouseenter', moveNoButton);
+  noBtn.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  noBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    moveNoButton();
+  });
+}
 
 /* ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК ===== */
 // Улучшенная анимация — только оригинальные emoji
