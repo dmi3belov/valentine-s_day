@@ -170,7 +170,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   border-radius: 0; /* Прямые углы */
   overflow: hidden;
   background: #000000; /* Чёрная окантовка */
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 0px solid rgba(255,255,255,0.07);
   width: 340px !important;
   height: 340px !important;
   padding: 5px; /* Окантовка 5px со всех сторон */
@@ -352,7 +352,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   border: 2px solid var(--neon-pink);
   border-radius: 6px;
   color: var(--neon-pink);
-  font-size: 18px;
+  font-size: 23px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -892,6 +892,26 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   100% { opacity: 0; transform: translateX(-50%) translateY(8px); }
 }
 
+/* ===== ПРОСТОЙ БЛОК С ВЫРАВНИВАНИЕМ ПО ПРАВОМУ КРАЮ ===== */
+.promise-block-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* ВСЁ выравнивание по ПРАВОМУ краю */
+  width: fit-content;
+  margin: 20px auto; /* Центрирование всего блока */
+  font-size: 18px;
+  line-height: 1.6;
+  /* ИЗМЕНЯЙТЕ ТОЛЬКО ЭТО ЗНАЧЕНИЕ */
+  padding-right: 30px; /* ← ВОТ ЕДИНСТВЕННОЕ МЕСТО ДЛЯ НАСТРОЙКИ */
+  /* Увеличивайте (40px, 50px) → блок сдвигается влево */
+  /* Уменьшайте (20px, 10px, 0px) → блок сдвигается вправо */
+}
+
+.promise-line-right {
+  white-space: nowrap;
+  text-align: right; /* Текст прижат к правому краю */
+}
+
 </style>
 </head>
 <body>
@@ -1038,25 +1058,28 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
       Ты официально мой самый <span class="flicker">любимый</span> человек 💖
     </div>
 
-    <div class="promises-text">
-      <div class="promise-line">
+    <!-- ПРОСТОЙ БЛОК - всё выровнено по правому краю -->
+    <div class="promise-block-right">
+      <div class="promise-line-right">
         <span class="promise-word">Обещаю</span>
-        <span class="promise-word">&nbsp;</span>
+        <span>&nbsp;</span>
         <span class="hug-word">обнимать</span>
-        <span class="promise-emoji">🤗</span>
-        <span class="promise-word">,</span>
+        <span>🤗,</span>
       </div>
-      <div class="promise-line">
+
+      <div class="promise-line-right">
         <span class="kiss-word">целовать</span>
-        <span class="promise-emoji">😘</span>
+        <span>😘</span>
       </div>
-      <div class="promise-line">
+
+      <div class="promise-line-right">
         <span class="promise-word">и</span>
-        <span class="promise-word">&nbsp;</span>
+        <span>&nbsp;</span>
         <span class="funny-word">смешить</span>
-        <span class="promise-emoji">🤪</span>
+        <span>🤪</span>
       </div>
     </div>
+
 
     <button id="hugBtn">Обнять разработчика</button>
     <div class="footer">
@@ -1686,7 +1709,8 @@ function completeMazeGame() {
   const nextMazeBtn = document.getElementById('nextMazeBtn');
 
   // Проверяем, собраны ли ВСЕ 5 частичек
-  if (collected >= REQUIRED_COLLECTIBLES) {
+  const totalCollectibles = collectibles.length; // 12
+  if (collected >= totalCollectibles) {
     // Все собраны — ИДЕАЛЬНО!
     mazeCompletionMessage.innerHTML = `
       <h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">
@@ -2081,61 +2105,39 @@ noBtn.addEventListener('click', function(e) {
 });
 
 /* ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК ===== */
-const hugBtn = document.getElementById('hugBtn');
-hugBtn.addEventListener('click', function(event) {
-  createHeartExplosion(event);
-});
-
-function createHeartExplosion(event){
-  // Добавляем сердечко 🥰 в массив сердечек
-  const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🥰'];
+// Улучшенная анимация — только оригинальные emoji
+function createHeartExplosion(event) {
+  // Оригинальный массив сердечек (🥰 только одна будет)
+  const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜'];
 
   // Вибрация
-  navigator.vibrate?.([100,50,100,50,100]);
+  navigator.vibrate?.([100, 50, 100, 50, 100]);
 
-  // Определяем координаты клика
+  // Координаты клика
   let clickX, clickY;
-
   if (event.type === 'touchstart') {
-    // Для сенсорных устройств
     clickX = event.touches[0].clientX;
     clickY = event.touches[0].clientY;
+    event.preventDefault();
   } else {
-    // Для мыши
     clickX = event.clientX;
     clickY = event.clientY;
   }
 
-  // Создаем 25 сердечек (больше для более эффектного взрыва)
-  for(let i = 0; i < 25; i++){
+  // 30 обычных сердечек
+  for (let i = 0; i < 30; i++) {
     const heart = document.createElement('div');
     heart.className = 'heart-particle';
 
-    // Случайно выбираем сердечко, для одного из них используем 🥰
-    let heartEmoji;
-    if (i === 12) { // 12-е сердечко будет 🥰 (примерно в середине)
-      heartEmoji = '🥰';
-    } else {
-      heartEmoji = hearts[Math.floor(Math.random() * hearts.length)];
-      // Если выпало 🥰, но это не 12-е сердечко, то берем другое
-      while (heartEmoji === '🥰' && i !== 12) {
-        heartEmoji = hearts[Math.floor(Math.random() * hearts.length)];
-      }
-    }
-
-    heart.innerText = heartEmoji;
-
-    // Начальная позиция от места клика
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = clickX + 'px';
     heart.style.top = clickY + 'px';
 
-    // Случайное направление разлета с большей скоростью и дальностью
     const angle = Math.random() * Math.PI * 2;
-    const velocity = 150 + Math.random() * 200; // Быстрее
+    const velocity = 120 + Math.random() * 180;
     const tx = Math.cos(angle) * velocity;
     const ty = Math.sin(angle) * velocity;
 
-    // Добавляем вращение для более интересной анимации
     const rotate1 = Math.random() * 360 + 'deg';
     const rotate2 = Math.random() * 720 + 'deg';
     const rotate3 = Math.random() * 1080 + 'deg';
@@ -2146,39 +2148,60 @@ function createHeartExplosion(event){
     heart.style.setProperty('--rotate2', rotate2);
     heart.style.setProperty('--rotate3', rotate3);
 
-    // Случайный размер сердечек
-    const size = 20 + Math.random() * 20;
-    heart.style.fontSize = size + 'px';
-
-    // Случайная задержка для более естественного взрыва
-    heart.style.animationDelay = (Math.random() * 0.3) + 's';
+    heart.style.fontSize = (18 + Math.random() * 20) + 'px';
+    heart.style.animationDelay = (Math.random() * 0.2) + 's';
 
     document.body.appendChild(heart);
 
-    // Удаляем сердечко после более длинной анимации
     setTimeout(() => {
-      if (heart.parentNode) {
-        heart.remove();
-      }
-    }, 3000); // 3 секунды вместо 1.5
+      if (heart.parentNode) heart.remove();
+    }, 3000);
   }
+
+  // ОДНА 🥰 — крупнее и медленнее, НО НЕ ЯРЧЕ
+  const specialHeart = document.createElement('div');
+  specialHeart.className = 'heart-particle';
+  specialHeart.innerText = '🥰';
+  specialHeart.style.left = clickX + 'px';
+  specialHeart.style.top = clickY + 'px';
+  specialHeart.style.fontSize = '35px'; // Только крупнее
+  specialHeart.style.zIndex = '1001';
+
+  // Случайное направление — КАК У ВСЕХ!
+  const angle = Math.random() * Math.PI * 2;
+  const velocity = 60 + Math.random() * 80; // МЕДЛЕННЕЕ
+  const tx = Math.cos(angle) * velocity;
+  const ty = Math.sin(angle) * velocity;
+
+  const rotate1 = Math.random() * 360 + 'deg';
+  const rotate2 = Math.random() * 720 + 'deg';
+  const rotate3 = Math.random() * 1080 + 'deg';
+
+  specialHeart.style.setProperty('--tx', tx + 'px');
+  specialHeart.style.setProperty('--ty', ty + 'px');
+  specialHeart.style.setProperty('--rotate', rotate1);
+  specialHeart.style.setProperty('--rotate2', rotate2);
+  specialHeart.style.setProperty('--rotate3', rotate3);
+
+  // БЕЗ дополнительного свечения! Использует стандартный filter из CSS
+  specialHeart.style.animation = 'heartExplode 4s ease-out forwards';
+  specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
+
+  document.body.appendChild(specialHeart);
+
+  setTimeout(() => {
+    if (specialHeart.parentNode) specialHeart.remove();
+  }, 4000);
 }
 
-// Добавляем стили для анимаций
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes explode {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
-  }
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-    15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  }
-`;
-document.head.appendChild(style);
+// Обновляем обработчик
+const hugBtn = document.getElementById('hugBtn');
+hugBtn.removeEventListener('click', createHeartExplosion);
+hugBtn.addEventListener('click', createHeartExplosion);
+hugBtn.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  createHeartExplosion(e);
+});
 </script>
 
 </body>
