@@ -1479,21 +1479,37 @@ function drawGameElements() {
   });
 }
 
-// Настройка сенсорного управления
+// ==================== ИСПРАВЛЕННАЯ ФУНКЦИЯ СЕНСОРНОГО УПРАВЛЕНИЯ ====================
+// Настройка сенсорного управления с удалением старых обработчиков
 function setupTouchControls() {
+  // Получаем canvas, если его нет
+  if (!canvas) {
+    canvas = document.getElementById('mazeCanvas');
+    if (!canvas) return;
+  }
+  
+  // Удаляем старые обработчики, если они есть
+  if (canvas._touchStartHandler) {
+    canvas.removeEventListener('touchstart', canvas._touchStartHandler);
+  }
+  if (canvas._touchEndHandler) {
+    canvas.removeEventListener('touchend', canvas._touchEndHandler);
+  }
+
   let touchStartX = 0;
   let touchStartY = 0;
 
-  canvas.addEventListener('touchstart', (e) => {
+  // Создаем именованные обработчики
+  const touchStartHandler = (e) => {
     if (!gameActive) return;
     e.preventDefault();
 
     const touch = e.touches[0];
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
-  }, { passive: false });
+  };
 
-  canvas.addEventListener('touchend', (e) => {
+  const touchEndHandler = (e) => {
     if (!gameActive) return;
     e.preventDefault();
 
@@ -1511,14 +1527,12 @@ function setupTouchControls() {
       if (deltaY < -25) dy = -1;
     }
 
-    // ПРОВЕРЯЕМ, МОЖНО ЛИ ТУДА ПОЙТИ
     if (dx !== 0 || dy !== 0) {
       const newX = player.x + dx;
       const newY = player.y + dy;
 
       // Проверка границ
       if (newX < 0 || newX >= MAZE_COLS || newY < 0 || newY >= MAZE_ROWS) {
-        // За границей лабиринта - вибрация и ничего не делаем
         if (navigator.vibrate) navigator.vibrate(80);
         return;
       }
@@ -1527,15 +1541,21 @@ function setupTouchControls() {
       const cell = maze[player.y][player.x];
       if ((dx === 1 && cell.right) || (dx === -1 && cell.left) ||
           (dy === 1 && cell.bottom) || (dy === -1 && cell.top)) {
-        // Стена - вибрация
         if (navigator.vibrate) navigator.vibrate(80);
         return;
       }
 
-      // ВСЕ ПРОВЕРКИ ПРОЙДЕНЫ - ДВИГАЕМСЯ
       movePlayer(dx, dy);
     }
-  }, { passive: false });
+  };
+
+  // Сохраняем обработчики в canvas для будущего удаления
+  canvas._touchStartHandler = touchStartHandler;
+  canvas._touchEndHandler = touchEndHandler;
+
+  // Добавляем новые обработчики
+  canvas.addEventListener('touchstart', touchStartHandler, { passive: false });
+  canvas.addEventListener('touchend', touchEndHandler, { passive: false });
 }
 
 // Движение игрока
