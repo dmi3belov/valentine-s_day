@@ -141,8 +141,8 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   transition: width 0.2s linear;
 }
 
-#loadText { margin-top: 10px; font-weight: 600; letter-spacing: 1px; text-shadow: 0 0 8px var(--neon-blue); }
-#errorText { margin-top: 6px; color: var(--neon-pink); font-size: 14px; opacity: 0; text-shadow: 0 0 10px var(--neon-pink); min-height:38px; transition: opacity 0.3s ease; }
+#loadText { margin-top: 10px; font-weight: 600; letter-spacing: 1.5px; text-shadow: 0 0 8px var(--neon-blue); }
+#errorText { margin-top: 6px; color: var(--neon-pink); font-size: 15px; opacity: 0; text-shadow: 0 0 10px var(--neon-pink); min-height:38px; transition: opacity 0.3s ease; }
 
 .glitch { animation: glitch 0.2s linear infinite; }
 
@@ -524,13 +524,40 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   font-weight: 500;
 }
 
-#checklist li .check {
-  opacity: 0;
+/*#checklist li .check {*/
+/*  opacity: 0;*/
+/*  margin-right: 15px;*/
+/*  transition: opacity 0.3s ease;*/
+/*  color: var(--neon-green);*/
+/*  text-shadow: 0 0 4px var(--neon-green), 0 0 10px var(--neon-green);*/
+/*  font-size: 16px;*/
+/*}*/
+
+/* ===== НЕОНОВАЯ ГАЛОЧКА ===== */
+#checklist li .check-glow {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
   margin-right: 15px;
+  opacity: 0;
   transition: opacity 0.3s ease;
-  color: var(--neon-green);
-  text-shadow: 0 0 4px var(--neon-green), 0 0 10px var(--neon-green);
-  font-size: 16px;
+
+  /* ✅ СВЕЧЕНИЕ НА РОДИТЕЛЕ — РАБОТАЕТ ВЕЗДЕ */
+  filter: drop-shadow(0 0 4px var(--neon-green))
+          drop-shadow(0 0 10px var(--neon-green));
+}
+
+#checklist li .check {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--neon-green);
+
+  /* Маска — сама галочка */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") no-repeat center / contain;
+
+  font-size: 0; /* текст внутри не нужен */
 }
 
 #checklist li span.neon {
@@ -1381,7 +1408,7 @@ function setupTouchControls() {
     canvas = document.getElementById('mazeCanvas');
     if (!canvas) return;
   }
-  
+
   if (canvas._touchStartHandler) {
     canvas.removeEventListener('touchstart', canvas._touchStartHandler);
   }
@@ -1829,11 +1856,27 @@ function showChecklist(){
 
   items.forEach((li)=>{
     const span = li.querySelector('span');
+
+    // ❌ Удаляем старый .check если был
+    const oldCheck = li.querySelector('.check');
+    if (oldCheck) oldCheck.remove();
+    const oldGlow = li.querySelector('.check-glow');
+    if (oldGlow) oldGlow.remove();
+
+    // ✅ СОЗДАЁМ НОВУЮ СТРУКТУРУ: обёртка + галочка
+    const glowWrapper = document.createElement('span');
+    glowWrapper.className = 'check-glow';
+
     const check = document.createElement('span');
     check.className = 'check';
-    check.innerText = '✔️';
-    li.insertBefore(check, span);
 
+    // Вкладываем галочку в обёртку
+    glowWrapper.appendChild(check);
+
+    // Вставляем перед текстом
+    li.insertBefore(glowWrapper, span);
+
+    // Анимация появления
     span.style.opacity = '0';
     li.style.opacity = 1;
     li.style.transform = 'translateX(0)';
@@ -1843,7 +1886,9 @@ function showChecklist(){
       span.style.color = 'var(--text)';
 
       setTimeout(()=>{
-        check.style.opacity = 1;
+        // 🔥 ПОКАЗЫВАЕМ ГАЛОЧКУ (opacity: 1)
+        glowWrapper.style.opacity = 1;
+
         setTimeout(()=>{
           span.classList.add('neon');
           span.style.color = '#ffffff';
@@ -1854,6 +1899,7 @@ function showChecklist(){
     delay += itemDelay;
   });
 
+  // Показываем "100% совместимость" после всех пунктов
   setTimeout(()=>{
     const neonSound = document.getElementById('neonOnSound');
     if (neonSound) {
@@ -2070,4 +2116,3 @@ hugBtn.addEventListener('touchstart', function(e) {
 
 </body>
 </html>
-
