@@ -24,19 +24,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow: hidden; /* Скрываем основной скролл */
+  overflow: hidden;
 }
 
-/* Контейнер для всех экранов */
 .screens-container {
   width: 100%;
   height: 100vh;
-  overflow-y: auto; /* Скролл только внутри контейнера */
+  overflow-y: auto;
   position: relative;
   scroll-behavior: smooth;
 }
 
-/* Изменяем отображение экранов */
 .screen {
   display: none;
   width: 100%;
@@ -45,9 +43,9 @@ body {
   text-align: center;
   animation: fadeIn 0.6s ease;
   margin: 0 auto;
-  min-height: 100vh; /* Каждый экран занимает всю высоту */
+  min-height: 100vh;
   flex-direction: column;
-  justify-content: center; /* По умолчанию центрируем по вертикали */
+  justify-content: center;
   align-items: center;
 }
 
@@ -56,8 +54,8 @@ body {
 }
 
 #screen4 {
-  justify-content: flex-start; /* Прижимаем к верху */
-  padding-top: 10px; /* Меньший отступ сверху */
+  justify-content: flex-start;
+  padding-top: 10px;
 }
 
 h1, h2 { text-shadow: 0 0 10px var(--neon-pink); }
@@ -76,9 +74,9 @@ p { line-height: 1.5; opacity: 0.95; }
 
 #screen4 .card {
   padding-top: 12px;
-  min-height: auto; /* Убираем фиксированную высоту */
+  min-height: auto;
   max-height: calc(100vh - 40px);
-  overflow-y: auto; /* Разрешаем скролл внутри карточки */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +104,6 @@ li .check { opacity: 0; margin-right: 10px; transition: opacity 0.3s ease; color
 li span { color: var(--text); opacity: 1; transition: color 0.3s ease; }
 li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 
-/* Текст совместимости */
 #compatibility {
   opacity: 0;
   margin-top: 20px;
@@ -114,7 +111,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 }
 #compatibility .main {
   font-size: 18px;
-  color: var(--neon-pink);/*--text*/
+  color: var(--neon-pink);
   text-shadow: 0 0 10px var(--neon-pink);
   font-weight: 750;
   animation: neonFlicker 4s infinite alternate;
@@ -124,11 +121,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   color: #ffffff;
   display: block;
   margin-top: 4px;
-}
-
-@keyframes neonGlow {
-  0% { text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); }
-  100% { text-shadow: 0 0 12px var(--neon-pink), 0 0 25px var(--neon-pink); }
 }
 
 .progress {
@@ -167,20 +159,20 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 .game-container {
   position: relative;
   margin: 6px auto 8px auto;
-  border-radius: 0; /* Прямые углы */
+  border-radius: 0;
   overflow: hidden;
-  background: #000000; /* Чёрная окантовка */
+  background: #000000;
   border: 0px solid rgba(255,255,255,0.07);
   width: 340px !important;
   height: 340px !important;
-  padding: 5px; /* Окантовка 5px со всех сторон */
+  padding: 5px;
   box-sizing: border-box;
   flex-shrink: 0;
 }
 
 #mazeCanvas {
   display: block;
-  width: 330px; /* Лабиринт 330×330 */
+  width: 330px;
   height: 330px;
   background: #0a0a12;
   margin: 0 auto;
@@ -188,10 +180,9 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 
 .player {
   position: absolute;
-  width: 31px; /* Фиксированное значение */
+  width: 31px;
   height: 31px;
-  /* Убрать calc формулы полностью */
-  top: 0; /* JavaScript перезапишет это */
+  top: 0;
   left: 0;
   border-radius: 50%;
   background: #4d8cff;
@@ -207,10 +198,9 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 
 .target {
   position: absolute;
-  width: 28px; /* Фиксированное значение */
+  width: 28px;
   height: 28px;
-  /* Убрать calc формулы полностью */
-  top: 0; /* JavaScript перезапишет это */
+  top: 0;
   left: 0;
   border-radius: 50%;
   background: transparent;
@@ -237,26 +227,16 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   z-index: 3;
   animation: float 3s ease-in-out infinite;
   pointer-events: none;
-  transform: translateY(0); /* Начинаем с 0 */
+  transform: translateY(0);
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(2px);
-  }
-  75% {
-    transform: translateY(-2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  25% { transform: translateY(2px); }
+  75% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
 }
 
-/* Стили для управления лабиринтом */
-/* Обновленный отступ для статистики */
 .maze-stats {
   display: flex;
   justify-content: space-around;
@@ -285,9 +265,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   margin-top: 2px;
 }
 
-
-
-/* Обновленный отступ для секции управления */
 .maze-controls-section {
   margin: 2px 0 4px 0;
   position: relative;
@@ -387,7 +364,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   box-shadow: 0 0 8px #4d8cff;
 }
 
-/* Обновленный стиль для кнопок лабиринта */
 .maze-action-buttons {
   display: flex;
   gap: 6px;
@@ -424,37 +400,13 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   cursor: not-allowed;
 }
 
-/* Чтобы кнопки занимали больше места в контейнере */
 .maze-action-buttons {
   display: flex;
-  gap: 15px; /* Увеличиваем расстояние между кнопками */
+  gap: 15px;
   justify-content: center;
   margin-top: 5px;
 }
 
-/* Стили для мобильного управления жестами */
-/*.mobile-hint {*/
-/*  position: absolute;*/
-/*  bottom: 15px;*/
-/*  left: 50%;*/
-/*  transform: translateX(-50%);*/
-/*  background: rgba(0,0,0,0.8);*/
-/*  color: white;*/
-/*  padding: 10px 20px;*/
-/*  border-radius: 30px;*/
-/*  border: 2px solid var(--neon-blue);*/
-/*  font-size: 14px;*/
-/*  text-align: center;*/
-/*  z-index: 100;*/
-/*  animation: fadeInOutMobile 3s ease-in-out;*/
-/*  max-width: 90%;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  gap: 8px;*/
-/*  backdrop-filter: blur(5px);*/
-/*  box-shadow: 0 0 20px rgba(77, 240, 255, 0.3);*/
-/*}*/
-/* Стили для мобильного управления жестами */
 .mobile-hint {
   position: absolute;
   bottom: 15px;
@@ -468,7 +420,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   font-size: 13px;
   text-align: center;
   z-index: 100;
-  animation: fadeInOutMobile 3s ease-in-out forwards; /* forwards - сохраняет конечное состояние */
+  animation: fadeInOutMobile 3s ease-in-out forwards;
   max-width: 90%;
   display: flex;
   flex-direction: column;
@@ -479,7 +431,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   white-space: normal;
   backdrop-filter: blur(2px);
   box-shadow: 0 0 12px rgba(77, 240, 255, 0.3);
-  opacity: 0; /* Начальное состояние для плавного появления */
+  opacity: 0;
 }
 
 .mobile-hint .hint-row {
@@ -504,7 +456,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   100% { transform: translateX(-3px); }
 }
 
-/* Анимация появления и исчезновения - ОДИНАКОВО плавная */
 @keyframes fadeInOutMobile {
   0% {
     opacity: 0;
@@ -557,38 +508,38 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
 #screen2 ul { padding-left: 60px; }
 
 #checklist li {
-  margin-bottom: 12px; /* Увеличим расстояние между пунктами */
+  margin-bottom: 12px;
   opacity: 0;
   transform: translateX(-20px);
   display: flex;
   align-items: center;
-  font-size: 18px; /* Увеличим размер текста */
+  font-size: 18px;
 }
 
 #checklist li span {
   color: var(--text);
   opacity: 1;
   transition: color 0.3s ease;
-  font-size: 18px; /* Увеличим размер текста */
-  font-weight: 500; /* Сделаем текст немного жирнее */
+  font-size: 18px;
+  font-weight: 500;
 }
 
 #checklist li .check {
   opacity: 0;
-  margin-right: 15px; /* Увеличим отступ от галочки */
+  margin-right: 15px;
   transition: opacity 0.3s ease;
   color: var(--neon-green);
   text-shadow: 0 0 4px var(--neon-green), 0 0 10px var(--neon-green);
-  font-size: 16px; /* Размер галочки */
+  font-size: 16px;
 }
 
 #checklist li span.neon {
   color: #ffffff;
   text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff;
-  font-size: 18px; /* Сохраняем увеличенный размер */
+  font-size: 18px;
 }
 
-/* SCREEN 3 стили */
+/* ============ ИСПРАВЛЕННЫЙ SCREEN 3 СТИЛИ ============ */
 #screen3 .attention {
   text-shadow: 0 0 10px var(--neon-pink);
   font-size: 24px;
@@ -618,6 +569,60 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   margin: 25px 0 15px 0;
 }
 
+/* АНИМАЦИЯ МЕРЦАНИЯ ДЛЯ "О ТЕБЕ" (как у 100% совместимость) */
+#screen3 .about-you {
+  color: var(--neon-pink);
+  text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink);
+  animation: neonFlicker 2s infinite alternate;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* Копируем ту же анимацию, что у 100% совместимости */
+@keyframes neonFlicker {
+  0%, 18%, 20%, 53%, 55%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 7px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 21px var(--neon-pink),
+      0 0 42px var(--neon-pink),
+      0 0 92px var(--neon-pink),
+      0 0 102px var(--neon-pink);
+  }
+  19%, 54% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 4px var(--neon-pink),
+      0 0 7px var(--neon-pink),
+      0 0 14px var(--neon-pink),
+      0 0 28px var(--neon-pink),
+      0 0 60px var(--neon-pink),
+      0 0 70px var(--neon-pink);
+    color: #ff80ff;
+  }
+  2%, 8%, 14%, 30%, 36%, 42%, 58%, 64%, 70%, 86%, 92% {
+    opacity: 0.9;
+    text-shadow:
+      0 0 6px var(--neon-pink),
+      0 0 9px var(--neon-pink),
+      0 0 18px var(--neon-pink),
+      0 0 36px var(--neon-pink),
+      0 0 76px var(--neon-pink),
+      0 0 86px var(--neon-pink);
+  }
+  4%, 10%, 16%, 32%, 38%, 44%, 60%, 66%, 72%, 88%, 94% {
+    opacity: 0.95;
+    text-shadow:
+      0 0 7px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 20px var(--neon-pink),
+      0 0 40px var(--neon-pink),
+      0 0 84px var(--neon-pink),
+      0 0 94px var(--neon-pink);
+  }
+}
+
 #screen3 .message {
   font-size: 16px;
   line-height: 1.5;
@@ -633,7 +638,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   justify-content: center;
 }
 
-/* SCREEN 5 стили - переработаны с убегающей кнопкой */
+/* SCREEN 5 стили */
 #screen5 {
   position: relative;
 }
@@ -685,54 +690,9 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   animation-fill-mode: forwards;
 }
 
-/* Класс для ручного запуска анимации */
 .flicker-start {
   opacity: 1;
   animation-delay: 0s;
-}
-
-@keyframes neonFlicker {
-  0%, 18%, 20%, 53%, 55%, 100% {
-    opacity: 1;
-    text-shadow:
-      0 0 7px var(--neon-pink),
-      0 0 10px var(--neon-pink),
-      0 0 21px var(--neon-pink),
-      0 0 42px var(--neon-pink),
-      0 0 92px var(--neon-pink),
-      0 0 102px var(--neon-pink);
-  }
-  19%, 54% {
-    opacity: 0.6;
-    text-shadow:
-      0 0 4px var(--neon-pink),
-      0 0 7px var(--neon-pink),
-      0 0 14px var(--neon-pink),
-      0 0 28px var(--neon-pink),
-      0 0 60px var(--neon-pink),
-      0 0 70px var(--neon-pink);
-    color: #ff80ff; /* Слегка измененный цвет при мерцании */
-  }
-  2%, 8%, 14%, 30%, 36%, 42%, 58%, 64%, 70%, 86%, 92% {
-    opacity: 0.9;
-    text-shadow:
-      0 0 6px var(--neon-pink),
-      0 0 9px var(--neon-pink),
-      0 0 18px var(--neon-pink),
-      0 0 36px var(--neon-pink),
-      0 0 76px var(--neon-pink),
-      0 0 86px var(--neon-pink);
-  }
-  4%, 10%, 16%, 32%, 38%, 44%, 60%, 66%, 72%, 88%, 94% {
-    opacity: 0.95;
-    text-shadow:
-      0 0 7px var(--neon-pink),
-      0 0 10px var(--neon-pink),
-      0 0 20px var(--neon-pink),
-      0 0 40px var(--neon-pink),
-      0 0 84px var(--neon-pink),
-      0 0 94px var(--neon-pink);
-  }
 }
 
 /* Анимация разлетающихся сердечек */
@@ -779,23 +739,20 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   transform: scale(0.95);
 }
 
-/* Стили для текста с обещаниями */
-.promises-text {
-  font-size: 18px;
-  margin: 20px 0;
-  text-align: center;
-}
-
-.promise-line {
+.promise-block-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5px;
+  flex-direction: column;
+  align-items: flex-end;
+  width: fit-content;
+  margin: 20px auto;
+  font-size: 18px;
+  line-height: 1.6;
+  padding-right: 30px;
 }
 
-.promise-word {
-  color: #ffffff;
-  text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff;
+.promise-line-right {
+  white-space: nowrap;
+  text-align: right;
 }
 
 .hug-word {
@@ -837,9 +794,9 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   100% { color: #ffd8a8; text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8; }
 }
 
-.promise-emoji {
-  margin-left: 8px;
-  font-size: 20px;
+.promise-word {
+  color: #ffffff;
+  text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff;
 }
 
 /* Стили для экрана 4 */
@@ -853,7 +810,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   margin-bottom: 10px;
 }
 
-/* Плавный скролл для 4-го экрана */
 #screen4 .card::-webkit-scrollbar {
   width: 6px;
 }
@@ -873,43 +829,16 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   background: var(--neon-blue);
 }
 
-/* Для Firefox */
 #screen4 .card {
   scrollbar-width: thin;
   scrollbar-color: var(--neon-pink) rgba(255, 255, 255, 0.05);
 }
+
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
   15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-}
-
-@keyframes fadeInOutMobile {
-  0% { opacity: 0; transform: translateX(-50%) translateY(8px); }
-  20% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(8px); }
-}
-
-/* ===== ПРОСТОЙ БЛОК С ВЫРАВНИВАНИЕМ ПО ПРАВОМУ КРАЮ ===== */
-.promise-block-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* ВСЁ выравнивание по ПРАВОМУ краю */
-  width: fit-content;
-  margin: 20px auto; /* Центрирование всего блока */
-  font-size: 18px;
-  line-height: 1.6;
-  /* ИЗМЕНЯЙТЕ ТОЛЬКО ЭТО ЗНАЧЕНИЕ */
-  padding-right: 30px; /* ← ВОТ ЕДИНСТВЕННОЕ МЕСТО ДЛЯ НАСТРОЙКИ */
-  /* Увеличивайте (40px, 50px) → блок сдвигается влево */
-  /* Уменьшайте (20px, 10px, 0px) → блок сдвигается вправо */
-}
-
-.promise-line-right {
-  white-space: nowrap;
-  text-align: right; /* Текст прижат к правому краю */
 }
 
 </style>
@@ -967,12 +896,15 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   </div>
 </div>
 
-<!-- SCREEN 3 -->
+<!-- ============ ИСПРАВЛЕННЫЙ SCREEN 3 ============ -->
 <div class="screen" id="screen3">
   <div class="card">
     <div class="attention">Внимание!</div>
     <div class="problem">Обнаружена проблема</div>
-    <div class="think-text">Я слишком часто думаю о тебе</div>
+    <div class="think-text">
+      Я слишком часто думаю<br>
+      <span class="about-you">о тебе</span>
+    </div>
     <p class="message">
       Исправлять не собираюсь 😌
     </p>
@@ -1034,7 +966,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
   </div>
 </div>
 
-<!-- SCREEN 5 - ВОПРОС ЖИЗНИ И СЕРДЦА С УБЕГАЮЩЕЙ КНОПКОЙ -->
+<!-- SCREEN 5 -->
 <div class="screen" id="screen5">
   <div class="card">
     <h2>Вопрос жизни и сердца 💘</h2>
@@ -1046,7 +978,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
         <button onclick="nextScreen(6)">Конечно да 💘</button>
       </div>
 
-      <!-- КНОПКА УЖЕ ВНУТРИ КОНТЕЙНЕРА С ПРАВИЛЬНОЙ СТРУКТУРОЙ -->
       <div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; border-radius: 15px; overflow: visible;">
         <button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; transition: all 0.3s ease; z-index: 10;">
           Нет 🙈
@@ -1064,7 +995,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
       Ты официально мой самый <span class="flicker">любимый</span> человек 💖
     </div>
 
-    <!-- ПРОСТОЙ БЛОК - всё выровнено по правому краю -->
     <div class="promise-block-right">
       <div class="promise-line-right">
         <span class="promise-word">Обещаю</span>
@@ -1082,7 +1012,6 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff; }
         <span>🤪</span>
       </div>
     </div>
-
 
     <button id="hugBtn">Обнять разработчика</button>
     <div class="footer">
@@ -1118,7 +1047,6 @@ let flickerInterval;
 function initNeonSounds() {
   if (neonSoundInitialized) return;
 
-  // Предзагрузка звуков
   const sounds = ['neonOnSound', 'neonFlickerSound', 'neonHumSound'];
   sounds.forEach(soundId => {
     const audio = document.getElementById(soundId);
@@ -1137,8 +1065,6 @@ function playNeonOnSound() {
     sound.currentTime = 0;
     sound.volume = 0.4;
     sound.play().catch(e => console.log("Audio play failed:", e));
-
-    // Запускаем фоновый гул через 200ms после включения
     setTimeout(startNeonHum, 200);
   }
 }
@@ -1177,25 +1103,18 @@ function startNeonAnimation() {
   const flickerElement = document.querySelector('.flicker');
   if (!flickerElement) return;
 
-  // 1. Проигрываем звук включения
   playNeonOnSound();
 
-  // 2. Ждем немного и запускаем анимацию
   setTimeout(() => {
     flickerElement.classList.add('flicker-start');
-
-    // 3. Запускаем интервал для звуков мерцания
     startFlickerSoundInterval();
   }, 300);
 }
 
 function startFlickerSoundInterval() {
-  // Останавливаем предыдущий интервал, если есть
   if (flickerInterval) clearInterval(flickerInterval);
 
-  // Проигрываем звук мерцания каждые 2 секунды (подстраиваем под анимацию)
   flickerInterval = setInterval(() => {
-    // Случайная задержка для естественности
     const randomDelay = Math.random() * 500;
     setTimeout(playNeonFlickerSound, randomDelay);
   }, 2000);
@@ -1215,23 +1134,19 @@ function stopNeonAnimation() {
   stopNeonHum();
 }
 
-// Инициализируем звуки при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initNeonSounds, 1000);
 });
 
 // ==================== ФУНКЦИИ ЛАБИРИНТА ====================
-// Инициализация игры-лабиринта
 function initMazeGame() {
   canvas = document.getElementById('mazeCanvas');
   ctx = canvas.getContext('2d');
 
-  // Устанавливаем фиксированный размер canvas 330×330
   canvas.width = 330;
   canvas.height = 330;
-  cellSize = canvas.width / MAZE_COLS; // 33
+  cellSize = canvas.width / MAZE_COLS;
 
-  // Принудительно устанавливаем размер контейнера
   const container = document.getElementById('gameContainer');
   container.style.width = '340px';
   container.style.height = '340px';
@@ -1240,29 +1155,24 @@ function initMazeGame() {
 
   setupTouchControls();
 
-  // Сбрасываем состояние игры
   gameActive = false;
   steps = 0;
   collected = 0;
   timeElapsed = 0;
   hasWon = false;
 
-  // Обновляем отображение статистики
   document.getElementById('steps').textContent = '0';
   document.getElementById('collected').textContent = '0/' + REQUIRED_COLLECTIBLES;
   document.getElementById('time').textContent = '0';
 
-  // Сбрасываем UI
   document.getElementById('mazeControlsContainer').style.opacity = '1';
   document.getElementById('mazeCompletionMessage').classList.remove('show');
   document.getElementById('nextMazeBtn').disabled = true;
 
-  // Генерируем и отрисовываем лабиринт
   generateMaze();
   drawMaze();
   drawGameElements();
 
-  // Запускаем таймер
   if (gameInterval) clearInterval(gameInterval);
   gameInterval = setInterval(updateTimer, 1000);
   gameActive = true;
@@ -1272,7 +1182,6 @@ function initMazeGame() {
   }
 }
 
-// Создание лабиринта
 function generateMaze() {
   const rows = MAZE_ROWS;
   const cols = MAZE_COLS;
@@ -1338,7 +1247,6 @@ function generateMaze() {
     }
   }
 
-  // Добавляем дополнительные проходы
   for (let i = 0; i < 5; i++) {
     const x = Math.floor(Math.random() * (cols - 1));
     const y = Math.floor(Math.random() * (rows - 1));
@@ -1376,7 +1284,6 @@ function generateMaze() {
   }
 }
 
-// Рисование лабиринта
 function drawMaze() {
   const rows = MAZE_ROWS;
   const cols = MAZE_COLS;
@@ -1435,42 +1342,32 @@ function drawMaze() {
   }
 }
 
-// Рисование игровых элементов
 function drawGameElements() {
   const gameElements = document.getElementById('gameElements');
   gameElements.innerHTML = '';
 
-  // Смещение для окантовки (padding контейнера)
-  const offset = 5; // padding: 5px
+  const offset = 5;
 
-  // Создаем элемент игрока
   const playerElement = document.createElement('div');
   playerElement.className = 'player';
   playerElement.textContent = '💖';
-  // cellSize = 33, cellSize/2 = 16.5
-  // Игрок 31px, смещение -15.5 = центр ячейки
-  // + offset = сдвиг на padding контейнера
   playerElement.style.left = (offset + player.x * cellSize + 16.5 - 15.5) + 'px';
   playerElement.style.top = (offset + player.y * cellSize + 16.5 - 15.5) + 'px';
   gameElements.appendChild(playerElement);
 
-  // Создаем цель
   const targetElement = document.createElement('div');
   targetElement.className = 'target';
   targetElement.textContent = '🎯';
-  // Цель 28px, смещение -14 = центр ячейки
   targetElement.style.left = (offset + target.x * cellSize + 16.5 - 14) + 'px';
   targetElement.style.top = (offset + target.y * cellSize + 16.5 - 14) + 'px';
   gameElements.appendChild(targetElement);
 
-  // Создаем собираемые предметы
   collectibles.forEach((item, index) => {
     if (!item.collected) {
       const collectible = document.createElement('div');
       collectible.className = 'collectible';
       collectible.setAttribute('data-id', item.id);
       collectible.textContent = item.emoji;
-      // Коллектабль 27px, смещение -13.5 = центр ячейки
       collectible.style.left = (offset + item.x * cellSize + 16.5 - 13.5) + 'px';
       collectible.style.top = (offset + item.y * cellSize + 16.5 - 13.5) + 'px';
       collectible.style.animationDelay = (index * 0.2) + 's';
@@ -1479,16 +1376,12 @@ function drawGameElements() {
   });
 }
 
-// ==================== ИСПРАВЛЕННАЯ ФУНКЦИЯ СЕНСОРНОГО УПРАВЛЕНИЯ ====================
-// Настройка сенсорного управления с удалением старых обработчиков
 function setupTouchControls() {
-  // Получаем canvas, если его нет
   if (!canvas) {
     canvas = document.getElementById('mazeCanvas');
     if (!canvas) return;
   }
   
-  // Удаляем старые обработчики, если они есть
   if (canvas._touchStartHandler) {
     canvas.removeEventListener('touchstart', canvas._touchStartHandler);
   }
@@ -1499,7 +1392,6 @@ function setupTouchControls() {
   let touchStartX = 0;
   let touchStartY = 0;
 
-  // Создаем именованные обработчики
   const touchStartHandler = (e) => {
     if (!gameActive) return;
     e.preventDefault();
@@ -1517,7 +1409,6 @@ function setupTouchControls() {
     const deltaX = touch.clientX - touchStartX;
     const deltaY = touch.clientY - touchStartY;
 
-    // Определяем направление
     let dx = 0, dy = 0;
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       if (deltaX > 25) dx = 1;
@@ -1531,13 +1422,11 @@ function setupTouchControls() {
       const newX = player.x + dx;
       const newY = player.y + dy;
 
-      // Проверка границ
       if (newX < 0 || newX >= MAZE_COLS || newY < 0 || newY >= MAZE_ROWS) {
         if (navigator.vibrate) navigator.vibrate(80);
         return;
       }
 
-      // Проверка стены
       const cell = maze[player.y][player.x];
       if ((dx === 1 && cell.right) || (dx === -1 && cell.left) ||
           (dy === 1 && cell.bottom) || (dy === -1 && cell.top)) {
@@ -1549,32 +1438,26 @@ function setupTouchControls() {
     }
   };
 
-  // Сохраняем обработчики в canvas для будущего удаления
   canvas._touchStartHandler = touchStartHandler;
   canvas._touchEndHandler = touchEndHandler;
 
-  // Добавляем новые обработчики
   canvas.addEventListener('touchstart', touchStartHandler, { passive: false });
   canvas.addEventListener('touchend', touchEndHandler, { passive: false });
 }
 
-// Движение игрока
 function movePlayer(dx, dy) {
   if (!gameActive) return;
 
   const newX = player.x + dx;
   const newY = player.y + dy;
 
-  // Сохраняем СТАРУЮ позицию ДО движения
   const oldX = player.x;
   const oldY = player.y;
 
-  // Проверяем границы
   if (newX < 0 || newX >= MAZE_COLS || newY < 0 || newY >= MAZE_ROWS) {
     return;
   }
 
-  // Проверяем стены
   const cell = maze[player.y][player.x];
   if ((dx === 1 && cell.right) || (dx === -1 && cell.left) ||
       (dy === 1 && cell.bottom) || (dy === -1 && cell.top)) {
@@ -1582,19 +1465,15 @@ function movePlayer(dx, dy) {
     return;
   }
 
-  // СОЗДАЁМ СЛЕД НА СТАРОЙ ПОЗИЦИИ (где только что был игрок)
   createTrail(oldX, oldY);
 
-  // Обновляем позицию игрока
   player.x = newX;
   player.y = newY;
   steps++;
   document.getElementById('steps').textContent = steps;
 
-  // Вибрация шага
   if (navigator.vibrate) navigator.vibrate(20);
 
-  // Проверяем сбор коллектаблей
   collectibles.forEach(item => {
     if (!item.collected && item.x === player.x && item.y === player.y) {
       item.collected = true;
@@ -1607,7 +1486,6 @@ function movePlayer(dx, dy) {
     }
   });
 
-  // Проверяем достижение цели
   if (player.x === target.x && player.y === target.y) {
     if (collected >= REQUIRED_COLLECTIBLES) {
       completeMazeGame();
@@ -1616,23 +1494,19 @@ function movePlayer(dx, dy) {
     }
   }
 
-  // Обновляем визуальную позицию игрока (плавно через CSS transition)
   updatePlayerPosition();
 }
 
-// Обновление позиции игрока
 function updatePlayerPosition() {
   const playerElement = document.querySelector('.player');
   if (playerElement) {
-    const offset = 5; // padding контейнера
+    const offset = 5;
     playerElement.style.left = (offset + player.x * cellSize + 16.5 - 15.5) + 'px';
     playerElement.style.top = (offset + player.y * cellSize + 16.5 - 15.5) + 'px';
   }
 }
 
-// Показываем сообщение о недостатке коллектаблей
 function showNeedMoreCollectibles() {
-  // Вибрация ошибки
   if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
 
   const message = document.createElement('div');
@@ -1664,11 +1538,10 @@ function showNeedMoreCollectibles() {
   }, 1500);
 }
 
-// Создание следа - теперь принимает координаты
 function createTrail(x, y) {
   const trail = document.createElement('div');
   trail.className = 'trail';
-  const offset = 5; // padding контейнера
+  const offset = 5;
   trail.style.left = (offset + x * cellSize + 16.5 - 3) + 'px';
   trail.style.top = (offset + y * cellSize + 16.5 - 3) + 'px';
 
@@ -1679,7 +1552,6 @@ function createTrail(x, y) {
   }, 1500);
 }
 
-// Обновление таймера
 function updateTimer() {
   if (!gameActive) return;
 
@@ -1687,18 +1559,14 @@ function updateTimer() {
   document.getElementById('time').textContent = timeElapsed;
 }
 
-// Начало игры-лабиринта
 function startMazeGame() {
-  // Сначала переходим на экран 4
   nextScreen(4);
 
-  // Даем время на отрисовку экрана, затем инициализируем игру
   setTimeout(() => {
     initMazeGame();
   }, 50);
 }
 
-// Показать подсказку для мобильных
 function showMobileHint() {
   const hint = document.createElement('div');
   hint.className = 'mobile-hint';
@@ -1713,13 +1581,11 @@ function showMobileHint() {
 
   document.querySelector('.game-container').appendChild(hint);
 
-  // Удаляем через 3 секунды (ровно когда заканчивается анимация)
   setTimeout(() => {
     if (hint.parentNode) hint.remove();
   }, 3000);
 }
 
-// Завершение игры (победа)
 function completeMazeGame() {
   gameActive = false;
   hasWon = true;
@@ -1731,10 +1597,8 @@ function completeMazeGame() {
   const mazeCompletionMessage = document.getElementById('mazeCompletionMessage');
   const nextMazeBtn = document.getElementById('nextMazeBtn');
 
-  // Проверяем, собраны ли ВСЕ 5 частичек
-  const totalCollectibles = collectibles.length; // 12
+  const totalCollectibles = collectibles.length;
   if (collected >= totalCollectibles) {
-    // Все собраны — ИДЕАЛЬНО!
     mazeCompletionMessage.innerHTML = `
       <h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">
         💖 ИДЕАЛЬНО! 💖
@@ -1744,7 +1608,6 @@ function completeMazeGame() {
       </p>
     `;
   } else {
-    // Не все собраны — обычное сообщение
     mazeCompletionMessage.innerHTML = `
       <h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">
         Лабиринт пройден! 🏆
@@ -1762,10 +1625,9 @@ function completeMazeGame() {
   createFireworks();
 }
 
-// Создание фейерверка
 function createFireworks() {
   const container = document.querySelector('.game-container');
-  const offset = 5; // padding контейнера
+  const offset = 5;
 
   for (let i = 0; i < 15; i++) {
     setTimeout(() => {
@@ -1795,7 +1657,7 @@ function createFireworks() {
   }
 }
 
-// ==================== ОРИГИНАЛЬНЫЙ КОД ВАЛЕНТИНКИ ====================
+// ==================== ОСНОВНАЯ НАВИГАЦИЯ ====================
 let current = 4;
 
 function nextScreen(n){
@@ -1803,44 +1665,35 @@ function nextScreen(n){
   current = n;
   document.getElementById(`screen${n}`).classList.add('active');
 
-  // Вызываем showChecklist на экране 2
   if (n === 2) {
     showChecklist();
   }
 
-  // Запускаем неоновую анимацию на экране 6
   if (n === 6) {
     setTimeout(() => {
       startNeonAnimation();
-    }, 500); // Даем время на отрисовку экрана
+    }, 500);
   } else {
-    // Останавливаем анимацию, если уходим с экрана 6
     stopNeonAnimation();
   }
 }
 
-// ==================== УПРАВЛЕНИЕ СКРОЛЛОМ ====================
 function setupScrollBehavior() {
   const screensContainer = document.getElementById('screensContainer');
 
-  // Сохраняем оригинальную функцию
   const originalNextScreen = window.nextScreen;
 
-  // Создаем новую функцию с обновлением скролла
   window.nextScreen = function(n) {
     originalNextScreen(n);
 
-    // Даем время на отрисовку, затем обновляем скролл
     setTimeout(() => {
       if (current === 4) {
-        // На 4-м экране разрешаем скролл
         screensContainer.style.overflowY = 'auto';
         screensContainer.scrollTo({
           top: document.getElementById('screen4').offsetTop,
           behavior: 'instant'
         });
       } else {
-        // На остальных экранах блокируем скролл
         screensContainer.style.overflowY = 'hidden';
         screensContainer.scrollTo({
           top: document.getElementById(`screen${current}`).offsetTop,
@@ -1850,13 +1703,11 @@ function setupScrollBehavior() {
     }, 10);
   };
 
-  // Инициализация при загрузке
   setTimeout(() => {
     screensContainer.style.overflowY = 'hidden';
   }, 100);
 }
 
-// Инициализируем поведение скролла после загрузки страницы
 document.addEventListener('DOMContentLoaded', setupScrollBehavior);
 
 /* ===== LOADER ===== */
@@ -2004,7 +1855,6 @@ function showChecklist(){
   });
 
   setTimeout(()=>{
-    // 1. ПРОИГРЫВАЕМ ЗВУК
     const neonSound = document.getElementById('neonOnSound');
     if (neonSound) {
       neonSound.currentTime = 0;
@@ -2012,11 +1862,9 @@ function showChecklist(){
       neonSound.play().catch(e => console.log("Sound play failed:", e));
     }
 
-    // 2. ПРОСТО ПОКАЗЫВАЕМ ТЕКСТ (анимация уже в CSS)
     compText.style.opacity = 1;
     compText.style.transition = 'opacity 1s ease';
 
-    // 3. ПОКАЗЫВАЕМ КНОПКУ
     nextBtn.style.opacity = '1';
     nextBtn.style.transition = 'opacity 0.5s ease';
 
@@ -2028,7 +1876,7 @@ function showChecklist(){
 
 /* ===== УБЕГАЮЩАЯ КНОПКА "НЕТ" ===== */
 const noBtn = document.getElementById('noBtn');
-let noBtnInitialized = true; // Сразу true, чтобы не вызывалась старая инициализация
+let noBtnInitialized = true;
 
 function initNoButtonPosition() {
   if (noBtnInitialized) return;
@@ -2092,7 +1940,6 @@ function getRandomPosition(btnRect, areaRect) {
   return { x: newX, y: newY };
 }
 
-// Функция движения кнопки (без пересоздания контейнера)
 function moveNoButton() {
   const noBtnArea = document.querySelector('#screen5 .no-btn-area');
   if (!noBtnArea) return;
@@ -2105,21 +1952,18 @@ function moveNoButton() {
   noBtn.style.transition = 'all 0.15s ease';
   noBtn.style.left = newPos.x + 'px';
   noBtn.style.top = newPos.y + 'px';
-  noBtn.style.transform = 'none'; // Убираем translateX
+  noBtn.style.transform = 'none';
 
   setTimeout(() => {
     noBtn.style.transition = 'all 0.3s ease';
   }, 150);
 }
 
-// Навешиваем обработчики
 if (noBtn) {
-  // Убираем старые обработчики, если были
   noBtn.removeEventListener('mouseenter', moveNoButton);
   noBtn.removeEventListener('touchstart', moveNoButton);
   noBtn.removeEventListener('click', moveNoButton);
 
-  // Добавляем новые
   noBtn.addEventListener('mouseenter', moveNoButton);
   noBtn.addEventListener('touchstart', function(e) {
     e.preventDefault();
@@ -2134,15 +1978,11 @@ if (noBtn) {
 }
 
 /* ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК ===== */
-// Улучшенная анимация — только оригинальные emoji
 function createHeartExplosion(event) {
-  // Оригинальный массив сердечек (🥰 только одна будет)
   const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜'];
 
-  // Вибрация
   navigator.vibrate?.([100, 50, 100, 50, 100]);
 
-  // Координаты клика
   let clickX, clickY;
   if (event.type === 'touchstart') {
     clickX = event.touches[0].clientX;
@@ -2153,7 +1993,6 @@ function createHeartExplosion(event) {
     clickY = event.clientY;
   }
 
-  // 30 обычных сердечек
   for (let i = 0; i < 30; i++) {
     const heart = document.createElement('div');
     heart.className = 'heart-particle';
@@ -2187,18 +2026,16 @@ function createHeartExplosion(event) {
     }, 3000);
   }
 
-  // ОДНА 🥰 — крупнее и медленнее, НО НЕ ЯРЧЕ
   const specialHeart = document.createElement('div');
   specialHeart.className = 'heart-particle';
   specialHeart.innerText = '🥰';
   specialHeart.style.left = clickX + 'px';
   specialHeart.style.top = clickY + 'px';
-  specialHeart.style.fontSize = '35px'; // Только крупнее
+  specialHeart.style.fontSize = '35px';
   specialHeart.style.zIndex = '1001';
 
-  // Случайное направление — КАК У ВСЕХ!
   const angle = Math.random() * Math.PI * 2;
-  const velocity = 60 + Math.random() * 80; // МЕДЛЕННЕЕ
+  const velocity = 60 + Math.random() * 80;
   const tx = Math.cos(angle) * velocity;
   const ty = Math.sin(angle) * velocity;
 
@@ -2212,7 +2049,6 @@ function createHeartExplosion(event) {
   specialHeart.style.setProperty('--rotate2', rotate2);
   specialHeart.style.setProperty('--rotate3', rotate3);
 
-  // БЕЗ дополнительного свечения! Использует стандартный filter из CSS
   specialHeart.style.animation = 'heartExplode 4s ease-out forwards';
   specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
 
@@ -2223,7 +2059,6 @@ function createHeartExplosion(event) {
   }, 4000);
 }
 
-// Обновляем обработчик
 const hugBtn = document.getElementById('hugBtn');
 hugBtn.removeEventListener('click', createHeartExplosion);
 hugBtn.addEventListener('click', createHeartExplosion);
