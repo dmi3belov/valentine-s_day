@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>8-bit Валентинка для Анюты 💾❤️</title>
+<title>Валентинка для Анюты 💾❤️</title>
 <style>
 :root {
   --bg: #0c0c1a;
@@ -228,13 +228,14 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
   image-rendering: pixelated;
 }
 
+/* КРУГЛЫЕ ЭЛЕМЕНТЫ В ИГРЕ */
 .player {
   position: absolute;
   width: 31px;
   height: 31px;
   top: 0;
   left: 0;
-  border-radius: 0%;
+  border-radius: 50%;
   background: #5eff7a;
   box-shadow: 0 0 0 3px #fcee4a, 0 0 0 6px #ff3fb0;
   transition: all 0.1s steps(5);
@@ -253,7 +254,7 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
   height: 28px;
   top: 0;
   left: 0;
-  border-radius: 0%;
+  border-radius: 50%;
   background: transparent;
   display: flex;
   align-items: center;
@@ -268,7 +269,7 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
   position: absolute;
   width: 27px;
   height: 27px;
-  border-radius: 0%;
+  border-radius: 50%;
   background: #fcee4a;
   box-shadow: 0 0 0 3px #ff3fb0, 0 0 0 6px #b86aff;
   display: flex;
@@ -279,6 +280,19 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
   animation: pixelFloat 0.5s steps(2) infinite;
   pointer-events: none;
   border: 2px solid white;
+}
+
+.trail {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fcee4a;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+  animation: fadeTrail 1s steps(5) forwards;
+  box-shadow: 0 0 0 2px #ff3fb0;
 }
 
 @keyframes pixelFloat {
@@ -405,19 +419,6 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
 .dpad-btn.center { grid-column: 2; grid-row: 2; opacity: 0; }
 .dpad-btn.right { grid-column: 3; grid-row: 2; }
 .dpad-btn.down { grid-column: 2; grid-row: 3; }
-
-.trail {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 0%;
-  background: #fcee4a;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 1;
-  animation: fadeTrail 1s steps(5) forwards;
-  box-shadow: 0 0 0 2px #ff3fb0;
-}
 
 .maze-action-buttons {
   display: flex;
@@ -715,23 +716,23 @@ li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff
 <audio id="mazeFinal" preload="auto"><source src="sounds/maze_final.mp3" type="audio/mpeg"></audio>
 
 <div class="screens-container" id="screensContainer">
-<!-- SCREEN 1 -->
-<div class="screen active" id="screen1"><div class="card"><h2>ИНИЦИАЛИЗАЦИЯ</h2><p>Подключение к серверу 💕</p><div class="progress"><div class="progress-bar" id="loader"></div></div><p id="loadText">0%</p><p id="errorText">Обнаружен избыток чувств<br>Повторная попытка...</p><button id="continueBtn" disabled>➡️ ПРОДОЛЖИТЬ</button></div></div>
+<!-- SCREEN 1 - оригинальный текст -->
+<div class="screen active" id="screen1"><div class="card"><h2>Инициализация чувств…</h2><p>Подключение к серверу 💕</p><div class="progress"><div class="progress-bar" id="loader"></div></div><p id="loadText">0%</p><p id="errorText">Обнаружен избыток чувств<br>Повторная попытка...</p><button id="continueBtn" disabled>Продолжить</button></div></div>
 
-<!-- SCREEN 2 -->
-<div class="screen" id="screen2"><div class="card"><h2>ПРОВЕРКА СОВМЕСТИМОСТИ</h2><ul id="checklist"><li><span>УМНАЯ</span></li><li><span>КРАСИВАЯ</span></li><li><span>МИЛАЯ</span></li><li><span>СМЕШНАЯ</span></li><li><span>ВСЁ ЕЩЁ ЧИТАЕШЬ</span></li></ul><p id="compatibility"><span class="main">100% СОВМЕСТИМОСТЬ</span><br><span class="sub">(Да, я тоже удивлён 😏)</span></p><button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity:0;">❓ ЧТО ДАЛЬШЕ</button></div></div>
+<!-- SCREEN 2 - оригинальный текст -->
+<div class="screen" id="screen2"><div class="card"><h2>Проверяем, подходишь ли ты мне 🧠💓</h2><ul id="checklist"><li><span>Умная</span></li><li><span>Красивая</span></li><li><span>Милая</span></li><li><span>Смешная</span></li><li><span>Всё ещё читаешь это</span></li></ul><p id="compatibility"><span class="main">100% совместимость</span><br><span class="sub">(Да, я тоже удивлён 😏)</span></p><button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity:0;">Что дальше?</button></div></div>
 
-<!-- SCREEN 3 -->
-<div class="screen" id="screen3"><div class="card"><div class="attention">⚠️ ВНИМАНИЕ ⚠️</div><div class="problem">ОБНАРУЖЕНА ПРОБЛЕМА</div><div class="think-text">Я СЛИШКОМ ЧАСТО ДУМАЮ<br><span class="about-you">О ТЕБЕ</span></div><p class="message">Исправлять не собираюсь 😌</p><button onclick="startMazeGame()">💘 ПРОВЕРИТЬ ЛЮБОВЬ</button></div></div>
+<!-- SCREEN 3 - оригинальный текст -->
+<div class="screen" id="screen3"><div class="card"><div class="attention">Внимание!</div><div class="problem">Обнаружена проблема</div><div class="think-text">Я слишком часто думаю<br><span class="about-you">о тебе</span></div><p class="message">Исправлять не собираюсь 😌</p><button onclick="startMazeGame()">Проверить уровень любви</button></div></div>
 
-<!-- SCREEN 4 - ИГРА -->
-<div class="screen" id="screen4"><div class="card"><h2>ЛАБИРИНТ ЧУВСТВ 🌀</h2><p>Проведи сердечко 💖 к цели, собери все частицы любви</p><div class="maze-stats"><div class="maze-stat"><div class="maze-stat-value" id="steps">0</div><div class="maze-stat-label">ШАГИ</div></div><div class="maze-stat"><div class="maze-stat-value" id="collected">0/5</div><div class="maze-stat-label">ЧАСТИЦЫ</div></div><div class="maze-stat"><div class="maze-stat-value" id="time">0</div><div class="maze-stat-label">СЕК</div></div></div><div class="game-container" id="gameContainer"><canvas id="mazeCanvas"></canvas><div id="gameElements"></div></div><div class="maze-controls-section"><div id="mazeControlsContainer" class="maze-controls-container"><div class="dpad"><div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div><div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div><div class="dpad-btn center"></div><div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div><div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div></div></div><div class="maze-completion-message" id="mazeCompletionMessage"><h3>ЛАБИРИНТ ПРОЙДЕН! 🏆</h3><p>Ты нашла путь к моему сердцу! 💖</p></div></div><div class="maze-action-buttons"><button id="restartBtn" onclick="restartMazeGame()">🔄 ЗАНОВО</button><button id="nextMazeBtn" onclick="nextScreen(5)" disabled>✨ ДАЛЕЕ</button></div></div></div>
+<!-- SCREEN 4 - ИГРА (оригинальный текст) -->
+<div class="screen" id="screen4"><div class="card"><h2>Лабиринт чувств 🌀</h2><p>Проведи сердце через лабиринт к цели, собирая частички любви по пути</p><div class="maze-stats"><div class="maze-stat"><div class="maze-stat-value" id="steps">0</div><div class="maze-stat-label">Шаги</div></div><div class="maze-stat"><div class="maze-stat-value" id="collected">0/5</div><div class="maze-stat-label">Собрано</div></div><div class="maze-stat"><div class="maze-stat-value" id="time">0</div><div class="maze-stat-label">Секунды</div></div></div><div class="game-container" id="gameContainer"><canvas id="mazeCanvas"></canvas><div id="gameElements"></div></div><div class="maze-controls-section"><div id="mazeControlsContainer" class="maze-controls-container"><div class="dpad"><div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div><div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div><div class="dpad-btn center"></div><div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div><div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div></div></div><div class="maze-completion-message" id="mazeCompletionMessage"><h3>Лабиринт пройден! 🏆</h3><p>Ты нашла путь к моему сердцу через все преграды! 💖</p></div></div><div class="maze-action-buttons"><button id="restartBtn" onclick="restartMazeGame()">Начать заново 🔄</button><button id="nextMazeBtn" onclick="nextScreen(5)" disabled>Продолжить ✨</button></div></div></div>
 
-<!-- SCREEN 5 -->
-<div class="screen" id="screen5"><div class="card"><h2>ВОПРОС ЖИЗНИ 💘</h2><p>Ты согласна быть моей валентинкой?</p><div class="buttons-container"><div class="yes-buttons"><button onclick="nextScreen(6)">ДА 💖</button><button onclick="nextScreen(6)">КОНЕЧНО ДА 💘</button></div><div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; overflow: visible;"><button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; z-index:10;">НЕТ 🙈</button></div></div></div></div>
+<!-- SCREEN 5 - оригинальный текст -->
+<div class="screen" id="screen5"><div class="card"><h2>Вопрос жизни и сердца 💘</h2><p>Ты согласна быть моей валентинкой?</p><div class="buttons-container"><div class="yes-buttons"><button onclick="nextScreen(6)">Да 💖</button><button onclick="nextScreen(6)">Конечно да 💘</button></div><div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; overflow: visible;"><button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; z-index:10;">Нет 🙈</button></div></div></div></div>
 
-<!-- SCREEN 6 -->
-<div class="screen" id="screen6"><div class="card"><h1>💖 УРА! 💖</h1><div class="loved-text">Ты официально мой самый <span class="flicker">ЛЮБИМЫЙ</span> человек 💖</div><div class="promise-block-right"><div class="promise-line-right"><span class="promise-word">ОБЕЩАЮ</span> <span class="hug-word">ОБНИМАТЬ</span> <span>🤗</span></div><div class="promise-line-right"><span class="kiss-word">ЦЕЛОВАТЬ</span> <span>😘</span></div><div class="promise-line-right"><span class="funny-word">СМЕШИТЬ</span> <span>🤪</span></div></div><button id="hugBtn">🤗 ОБНЯТЬ</button><div class="footer">8-bit ЛЮБОВЬ 💾 Ⓒ АНЮТА</div></div></div>
+<!-- SCREEN 6 - оригинальный текст -->
+<div class="screen" id="screen6"><div class="card"><h1>Поздравляю! 💕</h1><div class="loved-text">Ты официально мой самый <span class="flicker">любимый</span> человек 💖</div><div class="promise-block-right"><div class="promise-line-right"><span class="promise-word">Обещаю</span> <span class="hug-word">обнимать</span> <span>🤗</span></div><div class="promise-line-right"><span class="kiss-word">целовать</span> <span>😘</span></div><div class="promise-line-right"><span class="funny-word">смешить</span> <span>🤪</span></div></div><button id="hugBtn">Обнять разработчика</button><div class="footer">Разработано с любовью и мыслями о тебе 💕</div></div></div>
 </div>
 
 <script>
@@ -998,7 +999,7 @@ function completeMazeGame() {
   if (navigator.vibrate) navigator.vibrate([80,40,80,40,150]);
   const mazeControlsContainer = document.getElementById('mazeControlsContainer'); const mazeCompletionMessage = document.getElementById('mazeCompletionMessage'); const nextMazeBtn = document.getElementById('nextMazeBtn');
   const totalCollectibles = collectibles.length; const isPerfect = collected >= totalCollectibles;
-  mazeCompletionMessage.innerHTML = isPerfect ? `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">💖 ИДЕАЛЬНО! 💖</h3><p style="color: #3fc0ff; text-shadow: 3px 3px 0 #ff3fb0; font-size: 1.1em;">Ты собрала ВСЕ частички любви!</p>` : `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">ЛАБИРИНТ ПРОЙДЕН! 🏆</h3><p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>`;
+  mazeCompletionMessage.innerHTML = isPerfect ? `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">💖 ИДЕАЛЬНО! 💖</h3><p style="color: #3fc0ff; text-shadow: 3px 3px 0 #ff3fb0; font-size: 1.1em;">Ты собрала ВСЕ частички любви!</p>` : `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">Лабиринт пройден! 🏆</h3><p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>`;
   mazeControlsContainer.style.opacity = '0'; setTimeout(() => mazeCompletionMessage.classList.add('show'), 300);
   nextMazeBtn.disabled = false; createFireworks();
 }
@@ -1009,7 +1010,7 @@ function createFireworks() {
     setTimeout(() => {
       const firework = document.createElement('div');
       const xPos = offset + Math.random()*(canvas.width-30)+15; const yPos = offset + Math.random()*(canvas.height-30)+15;
-      firework.style.cssText = `position: absolute; width: 10px; height: 10px; background: ${Math.random()>0.5?'#ff3fb0':'#3fc0ff'}; left: ${xPos}px; top: ${yPos}px; animation: explode 0.8s steps(5) forwards; pointer-events: none; z-index: 1000; border: 2px solid white;`;
+      firework.style.cssText = `position: absolute; width: 10px; height: 10px; border-radius: 50%; background: ${Math.random()>0.5?'#ff3fb0':'#3fc0ff'}; left: ${xPos}px; top: ${yPos}px; animation: explode 0.8s steps(5) forwards; pointer-events: none; z-index: 1000; border: 2px solid white;`;
       container.appendChild(firework); setTimeout(() => firework.remove(), 800);
     }, i*80);
   }
@@ -1151,7 +1152,7 @@ if (noBtn) {
 
 // ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК (8-bit) =====
 function createHeartExplosion(event) {
-  const hearts = ['❤️','🧡','💛','💚','💙','💜','💖','💕'];
+  const hearts = ['❤️','🧡','💛','💚','🩵','💙','💜','🩷'];
   navigator.vibrate?.([100,50,100,50,100]);
   let clickX, clickY;
   if (event.type === 'touchstart') { clickX = event.touches[0].clientX; clickY = event.touches[0].clientY; event.preventDefault(); } else { clickX = event.clientX; clickY = event.clientY; }
@@ -1175,6 +1176,17 @@ function createHeartExplosion(event) {
 }
 const hugBtn = document.getElementById('hugBtn');
 if (hugBtn) { hugBtn.removeEventListener('click', createHeartExplosion); hugBtn.addEventListener('click', createHeartExplosion); hugBtn.addEventListener('touchstart', function(e) { e.preventDefault(); createHeartExplosion(e); }); }
+
+// Добавляем анимацию fadeInOut для сообщений
+const style = document.createElement('style');
+style.textContent = `
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}`;
+document.head.appendChild(style);
 </script>
 </body>
 </html>
