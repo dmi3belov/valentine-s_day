@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>8-bit Валентинка для Анюты 💖</title>
+<title>8-bit Валентинка для Анюты 💾❤️</title>
 <style>
 :root {
-  --bg: #0b0b14;
-  --neon-pink: #ff4fd8;
-  --neon-blue: #4df0ff;
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.06);
-  --neon-green: #39ff14;
-  /* 8-bit палитра */
-  --pixel-pink: #ff6fcf;
-  --pixel-blue: #3fd0ff;
-  --pixel-purple: #b46fff;
+  --bg: #0c0c1a;
+  --neon-pink: #ff3fb0;
+  --neon-blue: #3fc0ff;
+  --text: #e0f0ff;
+  --card: #1a1a2e;
+  --neon-green: #5eff7a;
+  --pixel-purple: #b86aff;
+  --pixel-yellow: #fcee4a;
 }
 
-* { box-sizing: border-box; font-family: 'Courier New', Courier, monospace; image-rendering: pixelated; image-rendering: crisp-edges; }
+* { box-sizing: border-box; font-family: 'Courier New', 'VT323', 'Press Start 2P', monospace; image-rendering: pixelated; image-rendering: crisp-edges; letter-spacing: 0.5px; }
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #1a0033, var(--bg));
+  background: #0c0c1a;
+  background-image: linear-gradient(45deg, #1a1035 25%, #0f0f23 25%, #0f0f23 50%, #1a1035 50%, #1a1035 75%, #0f0f23 75%, #0f0f23 100%);
+  background-size: 20px 20px;
   color: var(--text);
   min-height: 100vh;
   display: flex;
@@ -43,9 +43,9 @@ body {
   display: none;
   width: 100%;
   max-width: 420px;
-  padding: 24px;
+  padding: 24px 16px;
   text-align: center;
-  animation: fadeIn 0.6s ease;
+  animation: fadeIn 0.3s steps(3);
   margin: 0 auto;
   min-height: 100vh;
   flex-direction: column;
@@ -63,19 +63,24 @@ body {
   max-width: 420px;
 }
 
-h1, h2 { text-shadow: 0 0 10px var(--neon-pink); font-family: 'Courier New', monospace; letter-spacing: 1px; }
-p { line-height: 1.5; opacity: 0.95; }
+h1, h2 { 
+  text-shadow: 4px 4px 0 #ff3fb0, 6px 6px 0 #3fc0ff; 
+  font-family: 'Courier New', monospace; 
+  letter-spacing: 2px; 
+  font-weight: bold;
+  color: #ffffaa;
+  text-transform: uppercase;
+}
+p { line-height: 1.5; opacity: 0.95; font-size: 14px; }
 
 .card {
-  background: var(--card);
-  border-radius: 0px; /* 8-bit острые углы */
-  padding: 24px;
-  box-shadow:
-    0 0 20px rgba(255,79,216,0.2),
-    inset 0 0 20px rgba(255,255,255,0.03);
+  background: #1a1a2e;
+  border-radius: 0px;
+  padding: 24px 16px;
+  box-shadow: 8px 8px 0 #000000, 12px 12px 0 #ff3fb0;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
-  border: 2px solid #ff4fd8; /* пиксельная рамка */
+  border: 4px solid #ffffff;
   image-rendering: pixelated;
 }
 
@@ -85,56 +90,66 @@ p { line-height: 1.5; opacity: 0.95; }
   height: 340px !important;
   margin-left: auto;
   margin-right: auto;
-  border: 3px solid #ff4fd8; /* пиксельная рамка */
-  box-shadow: 0 0 16px #ff4fd8;
+  border: 4px solid #fcee4a;
+  box-shadow: 6px 6px 0 #ff3fb0, 8px 8px 0 #3fc0ff;
 }
 
 button {
   margin-top: 20px;
   padding: 14px 22px;
-  border-radius: 0px; /* квадратные кнопки */
-  border: 3px solid #ffffff;
-  background: #111122; /* тёмная база */
-  color: #fff;
+  border-radius: 0px;
+  border: 4px solid #ffffff;
+  background: #2a1a4a;
+  color: #ffffaa;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 0 2px #ff4fd8, 0 0 0 4px #4df0ff; /* пиксельная обводка */
-  transition: transform 0.2s ease;
+  box-shadow: 4px 4px 0 #ff3fb0, 6px 6px 0 #3fc0ff;
+  transition: all 0.1s ease;
   text-transform: uppercase;
   font-family: 'Courier New', monospace;
   image-rendering: pixelated;
+  letter-spacing: 1px;
 }
 
-button:active { transform: scale(0.95); background: #ff4fd8; color: #000; }
-button:disabled { opacity: .4; filter: grayscale(1); box-shadow: none; cursor: not-allowed; }
+button:active { 
+  transform: translate(4px, 4px); 
+  box-shadow: 2px 2px 0 #ff3fb0, 3px 3px 0 #3fc0ff;
+  background: #ff3fb0;
+  color: #0c0c1a;
+}
+button:disabled { 
+  opacity: .5; 
+  filter: grayscale(1); 
+  box-shadow: 2px 2px 0 #666; 
+  border-color: #888;
+  transform: none;
+  pointer-events: none;
+}
 
 ul { list-style: none; padding: 0; text-align: left; margin-top: 20px; }
-li { margin-bottom: 10px; opacity: 0; transform: translateX(-20px); display: flex; align-items: center; }
-li span { color: var(--text); opacity: 1; transition: color 0.3s ease; }
-li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #ffffff; font-size: 18px; }
+li { margin-bottom: 15px; opacity: 0; transform: translateX(-20px); display: flex; align-items: center; }
+li span { color: #ffffaa; opacity: 1; transition: all 0.3s steps(3); font-size: 16px; font-weight: bold; text-shadow: 2px 2px 0 #3fc0ff; }
+li span.neon { color: #ffffff; text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff; font-size: 18px; }
 
 /* ===== ПИКСЕЛЬНАЯ ГАЛОЧКА ===== */
 #checklist li .check-glow {
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   margin-right: 15px;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  filter: drop-shadow(0 0 2px var(--neon-green))
-          drop-shadow(0 0 2px var(--neon-green))
-          drop-shadow(0 0 5px var(--neon-green));
+  transition: opacity 0.2s steps(3);
+  filter: drop-shadow(0 0 2px #5eff7a) drop-shadow(0 0 5px #5eff7a);
 }
 
 #checklist li .check {
   display: inline-block;
   width: 100%;
   height: 100%;
-  background-color: var(--neon-green);
+  background-color: #5eff7a;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") no-repeat center / contain;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E") no-repeat center / contain;
-  font-size: 0;
 }
 
 #compatibility {
@@ -144,58 +159,58 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 }
 #compatibility .main {
   font-size: 18px;
-  color: var(--neon-pink);
-  text-shadow: 0 0 10px var(--neon-pink);
+  color: #ffffaa;
+  text-shadow: 3px 3px 0 #ff3fb0, 5px 5px 0 #3fc0ff;
   font-weight: 750;
-  animation: pixelFlicker 1s infinite steps(2); /* 8-bit мерцание */
+  animation: neonFlicker 5s infinite alternate;
 }
 #compatibility .sub {
   font-size: 14px;
-  color: #ffffff;
+  color: #aaffaa;
   display: block;
   margin-top: 4px;
+  text-shadow: 2px 2px 0 #3f3f9f;
 }
 
 .progress {
   margin: 20px 0;
-  height: 14px;
+  height: 20px;
   border-radius: 0px;
   overflow: visible;
-  background: rgba(255,255,255,0.1);
+  background: #2a1a3a;
   position: relative;
-  border: 2px solid #ff4fd8;
+  border: 4px solid #ffffaa;
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: repeating-linear-gradient(45deg, #ff4fd8, #ff4fd8 8px, #ff80ff 8px, #ff80ff 16px); /* полосатый 8-bit */
-  box-shadow: 0 0 10px var(--neon-pink);
+  background: repeating-linear-gradient(45deg, #ff3fb0, #ff3fb0 8px, #fcee4a 8px, #fcee4a 16px);
+  box-shadow: 0 0 0 2px #3fc0ff;
   border-radius: 0px;
-  transition: width 0.2s linear;
+  transition: width 0.2s steps(10);
 }
 
-#loadText { margin-top: 10px; font-weight: 600; letter-spacing: 1.5px; text-shadow: 0 0 8px var(--neon-blue); }
-#errorText { margin-top: 6px; color: var(--neon-pink); font-size: 15px; opacity: 0; text-shadow: 0 0 10px var(--neon-pink); min-height:38px; transition: opacity 0.3s ease; }
+#loadText { margin-top: 10px; font-weight: bold; letter-spacing: 2px; text-shadow: 3px 3px 0 #ff3fb0; color: #ffffaa; }
+#errorText { margin-top: 6px; color: #ffb0ff; font-size: 15px; opacity: 0; text-shadow: 2px 2px 0 #b86aff; min-height:38px; transition: opacity 0.2s steps(3); }
 
-.glitch { animation: glitch 0.2s linear infinite; }
+.glitch { animation: glitch 0.1s steps(2) infinite; }
 
 @keyframes glitch {
   0%   { transform: translate(0); }
-  20%  { transform: translate(-2px, 2px); }
-  40%  { transform: translate(2px, -2px); }
-  60%  { transform: translate(-2px, -1px); }
-  80%  { transform: translate(1px, 2px); }
+  25%  { transform: translate(-4px, 4px); }
+  50%  { transform: translate(4px, -4px); }
+  75%  { transform: translate(-2px, -2px); }
   100% { transform: translate(0); }
 }
 
-/* Стили для лабиринта - оставлены без изменений (пиксельные акценты) */
+/* Стили для лабиринта */
 .game-container {
   position: relative;
   margin: 6px auto 8px auto;
   border-radius: 0;
   overflow: hidden;
-  background: #000000;
+  background: #0a0a1a;
   border: 0px solid rgba(255,255,255,0.07);
   width: 340px !important;
   height: 340px !important;
@@ -208,8 +223,9 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   display: block;
   width: 330px;
   height: 330px;
-  background: #0a0a12;
+  background: #0f0f23;
   margin: 0 auto;
+  image-rendering: pixelated;
 }
 
 .player {
@@ -218,17 +234,17 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   height: 31px;
   top: 0;
   left: 0;
-  border-radius: 0%; /* квадратный игрок */
-  background: #4d8cff;
-  box-shadow: 0 0 20px #4d8cff;
-  transition: all 0.2s ease;
+  border-radius: 0%;
+  background: #5eff7a;
+  box-shadow: 0 0 0 3px #fcee4a, 0 0 0 6px #ff3fb0;
+  transition: all 0.1s steps(5);
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 17px;
+  font-size: 20px;
   pointer-events: none;
-  border: 2px solid #ffffff; /* пиксельный контур */
+  border: 3px solid #ffffff;
 }
 
 .target {
@@ -242,33 +258,32 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 32px;
   z-index: 5;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(77, 240, 255, 0.9));
+  filter: drop-shadow(4px 4px 0 #3fc0ff) drop-shadow(8px 8px 0 #ff3fb0);
 }
 
 .collectible {
   position: absolute;
   width: 27px;
   height: 27px;
-  border-radius: 0%; /* квадратные сердечки-пиксели */
-  background: linear-gradient(135deg, var(--neon-pink), #ff6bff);
-  box-shadow: 0 0 15px var(--neon-pink);
+  border-radius: 0%;
+  background: #fcee4a;
+  box-shadow: 0 0 0 3px #ff3fb0, 0 0 0 6px #b86aff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 16px;
   z-index: 3;
-  animation: pixelFloat 1s steps(2) infinite; /* пиксельная анимация */
+  animation: pixelFloat 0.5s steps(2) infinite;
   pointer-events: none;
-  transform: translateY(0);
   border: 2px solid white;
 }
 
 @keyframes pixelFloat {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
+  50% { transform: translateY(-6px); }
   100% { transform: translateY(0px); }
 }
 
@@ -276,9 +291,10 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   display: flex;
   justify-content: space-around;
   padding: 8px 5px;
-  background: rgba(255,255,255,0.05);
+  background: #1f1f3a;
   border-radius: 0px;
-  border: 2px dashed #ff4fd8;
+  border: 4px solid #fcee4a;
+  margin-bottom: 8px;
 }
 
 .maze-stat {
@@ -289,16 +305,18 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 }
 
 .maze-stat-value {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  text-shadow: 0 0 8px var(--neon-blue);
+  text-shadow: 3px 3px 0 #ff3fb0;
   line-height: 1;
+  color: #ffffaa;
 }
 
 .maze-stat-label {
   font-size: 10px;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-top: 2px;
+  color: #aaccff;
 }
 
 .maze-controls-section {
@@ -318,13 +336,13 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   align-items: center;
   gap: 6px;
   width: 100%;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s steps(5);
 }
 
 .maze-completion-message {
   opacity: 0;
   transform: translateY(15px);
-  transition: all 0.5s ease;
+  transition: all 0.5s steps(5);
   position: absolute;
   top: 0;
   left: 0;
@@ -347,38 +365,39 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 .maze-completion-message h3 {
   font-size: 1.1em;
   margin-bottom: 6px;
-  color: var(--neon-pink);
-  text-shadow: 0 0 12px var(--neon-pink);
+  color: #ffffaa;
+  text-shadow: 4px 4px 0 #ff3fb0;
 }
 
 .dpad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 3px;
-  width: 110px;
-  height: 110px;
+  gap: 5px;
+  width: 120px;
+  height: 120px;
 }
 
 .dpad-btn {
-  background: rgba(255,255,255,0.1);
-  border: 3px solid var(--neon-pink);
+  background: #2a2a4a;
+  border: 4px solid #ffffaa;
   border-radius: 0px;
-  color: var(--neon-pink);
-  font-size: 23px;
+  color: #ffffaa;
+  font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.1s steps(2);
   user-select: none;
-  box-shadow: 0 0 8px rgba(255, 79, 216, 0.7);
+  box-shadow: 3px 3px 0 #ff3fb0;
 }
 
 .dpad-btn:active {
-  background: var(--neon-pink);
-  color: #000;
-  transform: scale(0.95);
+  background: #ff3fb0;
+  color: #0c0c1a;
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 #ffffaa;
 }
 
 .dpad-btn.up { grid-column: 2; grid-row: 1; }
@@ -389,20 +408,20 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 
 .trail {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 0%;
-  background: #4d8cff;
-  opacity: 0.6;
+  background: #fcee4a;
+  opacity: 0.8;
   pointer-events: none;
   z-index: 1;
-  animation: fadeTrail 2s ease-out forwards;
-  box-shadow: 0 0 8px #4d8cff;
+  animation: fadeTrail 1s steps(5) forwards;
+  box-shadow: 0 0 0 2px #ff3fb0;
 }
 
 .maze-action-buttons {
   display: flex;
-  gap: 6px;
+  gap: 10px;
   justify-content: center;
   margin-top: 10px;
   flex-shrink: 0;
@@ -412,36 +431,30 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   min-width: 140px;
   max-width: 180px;
   font-size: 14px;
-  padding: 12px 20px;
+  padding: 12px 15px;
   margin-top: 0;
-  background: #111122;
-  color: #fff;
+  background: #2a1a4a;
+  color: #ffffaa;
   font-weight: 700;
-  border: 3px solid #fff;
+  border: 4px solid #ffffaa;
   border-radius: 0px;
   cursor: pointer;
-  box-shadow: 0 0 0 2px #ff4fd8, 0 0 0 4px #4df0ff;
-  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 #ff3fb0, 6px 6px 0 #3fc0ff;
+  transition: all 0.1s ease;
   white-space: nowrap;
 }
 
 .maze-action-buttons button:active {
-  transform: scale(0.95);
-  background: #ff4fd8;
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 #ff3fb0, 3px 3px 0 #3fc0ff;
+  background: #ff3fb0;
 }
 
 .maze-action-buttons button:disabled {
   opacity: 0.4;
   filter: grayscale(1);
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-.maze-action-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 5px;
+  box-shadow: 2px 2px 0 #666;
+  transform: none;
 }
 
 .mobile-hint {
@@ -449,15 +462,15 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.7);
-  color: var(--neon-blue);
-  padding: 8px 16px;
+  background: #1f1f3a;
+  color: #ffffaa;
+  padding: 10px 20px;
   border-radius: 0px;
-  border: 3px solid var(--neon-blue);
-  font-size: 13px;
+  border: 4px solid #3fc0ff;
+  font-size: 14px;
   text-align: center;
   z-index: 100;
-  animation: fadeInOutMobile 3s ease-in-out forwards;
+  animation: fadeInOutMobile 3s steps(10) forwards;
   max-width: 90%;
   display: flex;
   flex-direction: column;
@@ -467,7 +480,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   line-height: 1.4;
   white-space: normal;
   backdrop-filter: blur(2px);
-  box-shadow: 0 0 12px rgba(77, 240, 255, 0.3);
+  box-shadow: 6px 6px 0 #ff3fb0;
   opacity: 0;
 }
 
@@ -480,63 +493,142 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 }
 
 .mobile-hint .hint-icon {
-  animation: swipeHint 1.2s ease-in-out infinite;
+  animation: swipeHint 1s steps(3) infinite;
   display: inline-block;
   transform-origin: center;
-  filter: drop-shadow(0 0 3px var(--neon-blue));
-  font-size: 16px;
+  filter: drop-shadow(2px 2px 0 #ff3fb0);
+  font-size: 18px;
 }
 
 @keyframes swipeHint {
-  0% { transform: translateX(-3px); }
-  50% { transform: translateX(5px); }
-  100% { transform: translateX(-3px); }
+  0% { transform: translateX(-5px); }
+  50% { transform: translateX(8px); }
+  100% { transform: translateX(-5px); }
 }
 
 @keyframes fadeInOutMobile {
-  0% { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
   15% { opacity: 1; transform: translateX(-50%) translateY(0); }
   85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
 }
 
 @keyframes fadeTrail {
-  0% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px #4d8cff; }
-  30% { opacity: 1; transform: scale(0.9); box-shadow: 0 0 4px #4d8cff; }
-  100% { opacity: 0; transform: scale(0.7); box-shadow: 0 0 0px #4d8cff; }
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(0.5); }
 }
 
-.footer { margin-top: 30px; font-size: 12px; opacity: 0.4; }
+.footer { margin-top: 30px; font-size: 12px; opacity: 0.6; color: #aaccff; }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* SCREEN 3 СТИЛИ */
-#screen3 .attention { text-shadow: 0 0 10px var(--neon-pink); font-size: 24px; margin-bottom: 24px; }
-#screen3 .problem { color: var(--neon-pink); font-size: 22px; font-weight: 600; text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: neonBlink 1.5s infinite steps(2); margin-bottom: 20px; }
-@keyframes neonBlink { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
-#screen3 .think-text { font-size: 22px; line-height: 1.6; color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue), 0 0 15px var(--neon-blue); margin: 25px 0 15px 0; }
-#screen3 .about-you { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: pixelFlicker 2s infinite steps(2); display: inline-block; font-weight: 700; }
-
-/* пиксельное мерцание */
-@keyframes pixelFlicker {
-  0%, 100% { opacity: 1; text-shadow: 0 0 7px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 21px var(--neon-pink); }
-  50% { opacity: 0.7; text-shadow: 0 0 4px var(--neon-pink), 0 0 7px var(--neon-pink); }
+/* SCREEN 3 - ПОЛНОСТЬЮ ВОССТАНОВЛЕННЫЙ НЕОН */
+#screen3 .attention { 
+  text-shadow: 0 0 10px #ff3fb0;
+  font-size: 24px; 
+  margin-bottom: 24px; 
+  color: #ffffaa;
+}
+#screen3 .problem { 
+  color: #ff3fb0; 
+  font-size: 22px; 
+  font-weight: 600; 
+  text-shadow: 0 0 8px #ff3fb0, 0 0 15px #ff3fb0;
+  animation: neonBlink 1.5s infinite alternate;
+  margin-bottom: 20px; 
+}
+@keyframes neonBlink {
+  0% { opacity: 0.8; text-shadow: 0 0 5px #ff3fb0, 0 0 10px #ff3fb0; }
+  50% { opacity: 1; text-shadow: 0 0 10px #ff3fb0, 0 0 20px #ff3fb0, 0 0 30px #ff3fb0; }
+  100% { opacity: 0.8; text-shadow: 0 0 5px #ff3fb0, 0 0 10px #ff3fb0; }
 }
 
-#screen3 .message { font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, 0.7); margin: 10px 0 30px 0; }
+#screen3 .think-text { 
+  font-size: 22px; 
+  line-height: 1.6; 
+  color: #3fc0ff; 
+  text-shadow: 0 0 8px #3fc0ff, 0 0 15px #3fc0ff; 
+  margin: 25px 0 15px 0; 
+}
+
+#screen3 .about-you { 
+  color: #ff3fb0; 
+  text-shadow: 0 0 8px #ff3fb0, 0 0 15px #ff3fb0; 
+  animation: neonFlicker 5s infinite alternate;
+  display: inline-block; 
+  font-weight: 700; 
+}
+
+/* ПОЛНОСТЬЮ ВОССТАНОВЛЕННАЯ АНИМАЦИЯ НЕОНОВОГО МЕРЦАНИЯ */
+@keyframes neonFlicker {
+  0%, 18%, 20%, 53%, 55%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 7px #ff3fb0,
+      0 0 10px #ff3fb0,
+      0 0 21px #ff3fb0,
+      0 0 42px #ff3fb0,
+      0 0 92px #ff3fb0,
+      0 0 102px #ff3fb0;
+  }
+  19%, 54% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 4px #ff3fb0,
+      0 0 7px #ff3fb0,
+      0 0 14px #ff3fb0,
+      0 0 28px #ff3fb0,
+      0 0 60px #ff3fb0,
+      0 0 70px #ff3fb0;
+    color: #ffb0ff;
+  }
+  2%, 8%, 14%, 30%, 36%, 42%, 58%, 64%, 70%, 86%, 92% {
+    opacity: 0.9;
+    text-shadow:
+      0 0 6px #ff3fb0,
+      0 0 9px #ff3fb0,
+      0 0 18px #ff3fb0,
+      0 0 36px #ff3fb0,
+      0 0 76px #ff3fb0,
+      0 0 86px #ff3fb0;
+  }
+  4%, 10%, 16%, 32%, 38%, 44%, 60%, 66%, 72%, 88%, 94% {
+    opacity: 0.95;
+    text-shadow:
+      0 0 7px #ff3fb0,
+      0 0 10px #ff3fb0,
+      0 0 20px #ff3fb0,
+      0 0 40px #ff3fb0,
+      0 0 84px #ff3fb0,
+      0 0 94px #ff3fb0;
+  }
+}
+
+#screen3 .message { 
+  font-size: 16px; 
+  line-height: 1.5; 
+  color: #aaccff; 
+  margin: 10px 0 30px 0; 
+  text-shadow: 2px 2px 0 #1a1a3a;
+}
 
 /* SCREEN 5 */
 #screen5 .card { min-height: 320px; }
 #screen5 .buttons-container { display: flex; flex-direction: column; align-items: center; margin-top: 0; gap: 10px; }
 #screen5 .yes-buttons { display: flex; gap: 15px; justify-content: center; width: 100%; }
-#screen5 .no-btn { position: absolute; left: 0; top: 0; margin: 0; background: #111122; transition: all 0.3s ease; z-index: 10; }
+#screen5 .no-btn { position: absolute; left: 0; top: 0; margin: 0; background: #2a1a4a; transition: all 0.2s steps(5); z-index: 10; }
 
 /* SCREEN 6 */
-#screen6 .loved-text { font-size: 20px; margin: 20px 0; }
-#screen6 .loved-text .flicker { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: pixelFlicker 2s infinite steps(2); }
+#screen6 .loved-text { font-size: 20px; margin: 20px 0; color: #ffffaa; }
+#screen6 .loved-text .flicker { 
+  color: #ffb0ff; 
+  text-shadow: 0 0 8px #ff3fb0, 0 0 15px #ff3fb0; 
+  animation: neonFlicker 5s infinite alternate;
+}
 .flicker-start { opacity: 1; }
 
 /* Анимация разлетающихся сердечек (8-bit) */
@@ -545,48 +637,75 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   font-size: 24px;
   pointer-events: none;
   z-index: 1000;
-  animation: pixelExplode 2.5s steps(5) forwards; /* ступенчатая 8-bit анимация */
+  animation: pixelExplode 2s steps(8) forwards;
   will-change: transform, opacity;
   image-rendering: pixelated;
 }
 
 @keyframes pixelExplode {
   0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  25% { transform: translate(var(--tx), var(--ty)) scale(1.2); opacity: 0.9; }
-  50% { transform: translate(calc(var(--tx)*1.5), calc(var(--ty)*1.5)) scale(1); opacity: 0.7; }
-  75% { transform: translate(calc(var(--tx)*2), calc(var(--ty)*2)) scale(0.8); opacity: 0.4; }
-  100% { transform: translate(calc(var(--tx)*2.5), calc(var(--ty)*2.5)) scale(0.5); opacity: 0; }
+  20% { transform: translate(calc(var(--tx)*0.5), calc(var(--ty)*0.5)) scale(1.2); opacity: 0.9; }
+  50% { transform: translate(calc(var(--tx)*1.2), calc(var(--ty)*1.2)) scale(1); opacity: 0.7; }
+  80% { transform: translate(calc(var(--tx)*2), calc(var(--ty)*2)) scale(0.7); opacity: 0.3; }
+  100% { transform: translate(calc(var(--tx)*2.8), calc(var(--ty)*2.8)) scale(0.3); opacity: 0; }
 }
 
-.promise-block-right { display: flex; flex-direction: column; align-items: flex-end; width: fit-content; margin: 20px auto; font-size: 18px; line-height: 1.6; padding-right: 30px; }
+.promise-block-right { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-end; 
+  width: fit-content; 
+  margin: 20px auto; 
+  font-size: 20px; 
+  line-height: 1.8; 
+  padding-right: 30px; 
+  background: #1f1f3a;
+  padding: 15px 25px;
+  border: 4px solid #fcee4a;
+  box-shadow: 6px 6px 0 #ff3fb0;
+}
 .promise-line-right { white-space: nowrap; text-align: right; }
-.hug-word { color: #ffa8ff; text-shadow: 0 0 4px #ffa8ff, 0 0 10px #ffa8ff; animation: colorChangeHug 4s infinite steps(3); }
-.kiss-word { color: #a8fffa; text-shadow: 0 0 4px #a8fffa, 0 0 10px #a8fffa; animation: colorChangeKiss 4s infinite steps(3); }
-.funny-word { color: #ffd8a8; text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8; animation: colorChangeFunny 4s infinite steps(3); }
+.hug-word { color: #ffb0ff; text-shadow: 3px 3px 0 #3fc0ff; animation: colorChangeHug 3s infinite steps(3); }
+.kiss-word { color: #aaffaa; text-shadow: 3px 3px 0 #ff3fb0; animation: colorChangeKiss 3s infinite steps(3); }
+.funny-word { color: #ffffaa; text-shadow: 3px 3px 0 #b86aff; animation: colorChangeFunny 3s infinite steps(3); }
 
-@keyframes colorChangeHug { 0% { color: #ffa8ff; } 33% { color: #ffc8ff; } 66% { color: #ffe8ff; } 100% { color: #ffa8ff; } }
-@keyframes colorChangeKiss { 0% { color: #a8fffa; } 33% { color: #c8fffc; } 66% { color: #e8fffe; } 100% { color: #a8fffa; } }
-@keyframes colorChangeFunny { 0% { color: #ffd8a8; } 33% { color: #ffe0c8; } 66% { color: #ffe8e0; } 100% { color: #ffd8a8; } }
+@keyframes colorChangeHug { 
+  0% { color: #ffb0ff; } 
+  33% { color: #ffd0ff; } 
+  66% { color: #fff0ff; } 
+  100% { color: #ffb0ff; } 
+}
+@keyframes colorChangeKiss { 
+  0% { color: #aaffaa; } 
+  33% { color: #ccffcc; } 
+  66% { color: #eeffee; } 
+  100% { color: #aaffaa; } 
+}
+@keyframes colorChangeFunny { 
+  0% { color: #ffffaa; } 
+  33% { color: #ffffcc; } 
+  66% { color: #ffffdd; } 
+  100% { color: #ffffaa; } 
+}
 
-/* остальные стили без изменений (ширины, кнопки) */
 #screen4 h2 { margin-top: 0; margin-bottom: 8px; }
 #screen4 > .card > p { margin-top: 0; margin-bottom: 10px; }
-#screen4 .card::-webkit-scrollbar { width: 6px; }
-#screen4 .card::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
-#screen4 .card::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 0; box-shadow: 0 0 10px var(--neon-pink); }
+#screen4 .card::-webkit-scrollbar { width: 8px; }
+#screen4 .card::-webkit-scrollbar-track { background: #2a1a3a; }
+#screen4 .card::-webkit-scrollbar-thumb { background: #fcee4a; border: 2px solid #ff3fb0; }
 #screen4 .card { padding-top: 12px; min-height: auto; max-height: calc(100vh - 40px); overflow-y: auto; }
 .screen:not(#screen4) .card { width: 100%; max-width: 380px; margin-left: auto; margin-right: auto; }
 #screen3 button { width: auto; min-width: 200px; max-width: 240px; padding: 12px 20px; font-size: 15px; margin-left: auto; margin-right: auto; white-space: nowrap; }
 .no-btn-messages { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none; width: 90%; max-width: 320px; }
-.no-btn-messages div { margin-bottom: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 20px var(--neon-pink); border: 2px solid white; border-radius: 0; }
+.no-btn-messages div { margin-bottom: 12px; transition: all 0.3s steps(5); box-shadow: 6px 6px 0 #000; border: 4px solid #ffffaa; border-radius: 0; background: #ff3fb0; color: #0c0c1a; font-weight: bold; }
 #screen1 .progress { width: 95%; margin-left: auto; margin-right: auto; }
 #screen1 button { width: 80%; min-width: 220px; max-width: 300px; padding: 14px 0; margin-left: auto; margin-right: auto; display: block; }
 #screen2 ul { padding-left: 0; display: flex; flex-direction: column; align-items: center; }
-#checklist li { width: 240px; margin-left: 0; margin-right: 0; padding-left: 20px; justify-content: flex-start; }
+#checklist li { width: 260px; margin-left: 0; margin-right: 0; padding-left: 10px; justify-content: flex-start; }
 </style>
 </head>
 <body>
-<!-- аудио без изменений (id сохранены) -->
+<!-- аудио элементы -->
 <audio id="neonOnSound" preload="auto"><source src="sounds/neon-on.mp3" type="audio/mpeg"></audio>
 <audio id="neonFlickerSound" preload="auto"><source src="sounds/neon-flicker.mp3" type="audio/mpeg"></audio>
 <audio id="neonHumSound" preload="auto" loop><source src="sounds/neon-hum.mp3" type="audio/mpeg"></audio>
@@ -596,27 +715,27 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 <audio id="mazeFinal" preload="auto"><source src="sounds/maze_final.mp3" type="audio/mpeg"></audio>
 
 <div class="screens-container" id="screensContainer">
-<!-- SCREEN 1 (без изменений) -->
-<div class="screen active" id="screen1"><div class="card"><h2>Инициализация чувств…</h2><p>Подключение к серверу 💕</p><div class="progress"><div class="progress-bar" id="loader"></div></div><p id="loadText">0%</p><p id="errorText">Обнаружен избыток чувств<br>Повторная попытка...</p><button id="continueBtn" disabled>Продолжить</button></div></div>
+<!-- SCREEN 1 -->
+<div class="screen active" id="screen1"><div class="card"><h2>ИНИЦИАЛИЗАЦИЯ</h2><p>Подключение к серверу 💕</p><div class="progress"><div class="progress-bar" id="loader"></div></div><p id="loadText">0%</p><p id="errorText">Обнаружен избыток чувств<br>Повторная попытка...</p><button id="continueBtn" disabled>➡️ ПРОДОЛЖИТЬ</button></div></div>
 
 <!-- SCREEN 2 -->
-<div class="screen" id="screen2"><div class="card"><h2>Проверяем, подходишь ли ты мне 🧠💓</h2><ul id="checklist"><li><span>Умная</span></li><li><span>Красивая</span></li><li><span>Милая</span></li><li><span>Смешная</span></li><li><span>Всё ещё читаешь это</span></li></ul><p id="compatibility"><span class="main">100% совместимость</span><br><span class="sub">(Да, я тоже удивлён 😏)</span></p><button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity:0;">Что дальше?</button></div></div>
+<div class="screen" id="screen2"><div class="card"><h2>ПРОВЕРКА СОВМЕСТИМОСТИ</h2><ul id="checklist"><li><span>УМНАЯ</span></li><li><span>КРАСИВАЯ</span></li><li><span>МИЛАЯ</span></li><li><span>СМЕШНАЯ</span></li><li><span>ВСЁ ЕЩЁ ЧИТАЕШЬ</span></li></ul><p id="compatibility"><span class="main">100% СОВМЕСТИМОСТЬ</span><br><span class="sub">(Да, я тоже удивлён 😏)</span></p><button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity:0;">❓ ЧТО ДАЛЬШЕ</button></div></div>
 
 <!-- SCREEN 3 -->
-<div class="screen" id="screen3"><div class="card"><div class="attention">Внимание!</div><div class="problem">Обнаружена проблема</div><div class="think-text">Я слишком часто думаю<br><span class="about-you">о тебе</span></div><p class="message">Исправлять не собираюсь 😌</p><button onclick="startMazeGame()">Проверить уровень любви</button></div></div>
+<div class="screen" id="screen3"><div class="card"><div class="attention">⚠️ ВНИМАНИЕ ⚠️</div><div class="problem">ОБНАРУЖЕНА ПРОБЛЕМА</div><div class="think-text">Я СЛИШКОМ ЧАСТО ДУМАЮ<br><span class="about-you">О ТЕБЕ</span></div><p class="message">Исправлять не собираюсь 😌</p><button onclick="startMazeGame()">💘 ПРОВЕРИТЬ ЛЮБОВЬ</button></div></div>
 
 <!-- SCREEN 4 - ИГРА -->
-<div class="screen" id="screen4"><div class="card"><h2>Лабиринт чувств 🌀</h2><p>Проведи сердце через лабиринт к цели, собирая частички любви по пути</p><div class="maze-stats"><div class="maze-stat"><div class="maze-stat-value" id="steps">0</div><div class="maze-stat-label">Шаги</div></div><div class="maze-stat"><div class="maze-stat-value" id="collected">0/5</div><div class="maze-stat-label">Собрано</div></div><div class="maze-stat"><div class="maze-stat-value" id="time">0</div><div class="maze-stat-label">Секунды</div></div></div><div class="game-container" id="gameContainer"><canvas id="mazeCanvas"></canvas><div id="gameElements"></div></div><div class="maze-controls-section"><div id="mazeControlsContainer" class="maze-controls-container"><div class="dpad"><div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div><div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div><div class="dpad-btn center"></div><div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div><div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div></div></div><div class="maze-completion-message" id="mazeCompletionMessage"><h3>Лабиринт пройден! 🏆</h3><p>Ты нашла путь к моему сердцу через все преграды! 💖</p></div></div><div class="maze-action-buttons"><button id="restartBtn" onclick="restartMazeGame()">Начать заново 🔄</button><button id="nextMazeBtn" onclick="nextScreen(5)" disabled>Продолжить ✨</button></div></div></div>
+<div class="screen" id="screen4"><div class="card"><h2>ЛАБИРИНТ ЧУВСТВ 🌀</h2><p>Проведи сердечко 💖 к цели, собери все частицы любви</p><div class="maze-stats"><div class="maze-stat"><div class="maze-stat-value" id="steps">0</div><div class="maze-stat-label">ШАГИ</div></div><div class="maze-stat"><div class="maze-stat-value" id="collected">0/5</div><div class="maze-stat-label">ЧАСТИЦЫ</div></div><div class="maze-stat"><div class="maze-stat-value" id="time">0</div><div class="maze-stat-label">СЕК</div></div></div><div class="game-container" id="gameContainer"><canvas id="mazeCanvas"></canvas><div id="gameElements"></div></div><div class="maze-controls-section"><div id="mazeControlsContainer" class="maze-controls-container"><div class="dpad"><div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div><div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div><div class="dpad-btn center"></div><div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div><div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div></div></div><div class="maze-completion-message" id="mazeCompletionMessage"><h3>ЛАБИРИНТ ПРОЙДЕН! 🏆</h3><p>Ты нашла путь к моему сердцу! 💖</p></div></div><div class="maze-action-buttons"><button id="restartBtn" onclick="restartMazeGame()">🔄 ЗАНОВО</button><button id="nextMazeBtn" onclick="nextScreen(5)" disabled>✨ ДАЛЕЕ</button></div></div></div>
 
 <!-- SCREEN 5 -->
-<div class="screen" id="screen5"><div class="card"><h2>Вопрос жизни и сердца 💘</h2><p>Ты согласна быть моей валентинкой?</p><div class="buttons-container"><div class="yes-buttons"><button onclick="nextScreen(6)">Да 💖</button><button onclick="nextScreen(6)">Конечно да 💘</button></div><div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; overflow: visible;"><button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; z-index:10;">Нет 🙈</button></div></div></div></div>
+<div class="screen" id="screen5"><div class="card"><h2>ВОПРОС ЖИЗНИ 💘</h2><p>Ты согласна быть моей валентинкой?</p><div class="buttons-container"><div class="yes-buttons"><button onclick="nextScreen(6)">ДА 💖</button><button onclick="nextScreen(6)">КОНЕЧНО ДА 💘</button></div><div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; overflow: visible;"><button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; z-index:10;">НЕТ 🙈</button></div></div></div></div>
 
 <!-- SCREEN 6 -->
-<div class="screen" id="screen6"><div class="card"><h1>Поздравляю! 💕</h1><div class="loved-text">Ты официально мой самый <span class="flicker">любимый</span> человек 💖</div><div class="promise-block-right"><div class="promise-line-right"><span class="promise-word">Обещаю</span> <span class="hug-word">обнимать</span> <span>🤗</span></div><div class="promise-line-right"><span class="kiss-word">целовать</span> <span>😘</span></div><div class="promise-line-right"><span class="funny-word">смешить</span> <span>🤪</span></div></div><button id="hugBtn">Обнять разработчика</button><div class="footer">Разработано с любовью и мыслями о тебе 💕</div></div></div>
+<div class="screen" id="screen6"><div class="card"><h1>💖 УРА! 💖</h1><div class="loved-text">Ты официально мой самый <span class="flicker">ЛЮБИМЫЙ</span> человек 💖</div><div class="promise-block-right"><div class="promise-line-right"><span class="promise-word">ОБЕЩАЮ</span> <span class="hug-word">ОБНИМАТЬ</span> <span>🤗</span></div><div class="promise-line-right"><span class="kiss-word">ЦЕЛОВАТЬ</span> <span>😘</span></div><div class="promise-line-right"><span class="funny-word">СМЕШИТЬ</span> <span>🤪</span></div></div><button id="hugBtn">🤗 ОБНЯТЬ</button><div class="footer">8-bit ЛЮБОВЬ 💾 Ⓒ АНЮТА</div></div></div>
 </div>
 
 <script>
-// ==================== ВЕСЬ JS ОСТАВЛЕН БЕЗ ИЗМЕНЕНИЙ (кроме анимаций) ====================
+// ==================== ПОЛНОСТЬЮ СОХРАНЁННЫЙ JAVASCRIPT (С ВОССТАНОВЛЕННОЙ АНИМАЦИЕЙ НЕОНА) ====================
 let soundInitialized = false;
 let currentMazeFone = null;
 let currentWhatIsLove = null;
@@ -768,17 +887,15 @@ function generateMaze() {
 
 function drawMaze() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = '#0a0a12'; ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 2;
+  ctx.fillStyle = '#0f0f23'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = '#5a5ab0'; ctx.lineWidth = 3;
   for (let y=0; y<MAZE_ROWS; y++) for (let x=0; x<MAZE_COLS; x++) {
     const cell = maze[y][x]; const px = x*cellSize; const py = y*cellSize;
-    if (cell.top) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px+cellSize,py); ctx.stroke(); }
-    if (cell.right) { ctx.beginPath(); ctx.moveTo(px+cellSize,py); ctx.lineTo(px+cellSize,py+cellSize); ctx.stroke(); }
-    if (cell.bottom) { ctx.beginPath(); ctx.moveTo(px,py+cellSize); ctx.lineTo(px+cellSize,py+cellSize); ctx.stroke(); }
-    if (cell.left) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px,py+cellSize); ctx.stroke(); }
+    if (cell.top) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px+cellSize,py); ctx.strokeStyle = '#b86aff'; ctx.stroke(); }
+    if (cell.right) { ctx.beginPath(); ctx.moveTo(px+cellSize,py); ctx.lineTo(px+cellSize,py+cellSize); ctx.strokeStyle = '#3fc0ff'; ctx.stroke(); }
+    if (cell.bottom) { ctx.beginPath(); ctx.moveTo(px,py+cellSize); ctx.lineTo(px+cellSize,py+cellSize); ctx.strokeStyle = '#fcee4a'; ctx.stroke(); }
+    if (cell.left) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px,py+cellSize); ctx.strokeStyle = '#ff3fb0'; ctx.stroke(); }
   }
-  ctx.fillStyle = 'rgba(255, 79, 216, 0.03)';
-  for (let y=0; y<MAZE_ROWS; y++) for (let x=0; x<MAZE_COLS; x++) ctx.fillRect(x*cellSize+1, y*cellSize+1, cellSize-2, cellSize-2);
 }
 
 function createElement(tag, className, text, left, top) {
@@ -853,7 +970,7 @@ function updatePlayerPosition() {
 function showNeedMoreCollectibles() {
   if (navigator.vibrate) navigator.vibrate([100,50,100]);
   const message = document.createElement('div');
-  message.style.cssText = `position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.85); color:var(--neon-pink); padding:12px 20px; border:2px solid var(--neon-pink); font-weight:bold; text-align:center; z-index:1000; animation:fadeInOut 1.5s ease forwards; pointer-events:none; box-shadow:0 0 20px rgba(255,79,216,0.5);`;
+  message.style.cssText = `position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.85); color:#ff3fb0; padding:12px 20px; border:4px solid #ffffaa; font-weight:bold; text-align:center; z-index:1000; animation:fadeInOut 1.5s steps(5) forwards; pointer-events:none; box-shadow:6px 6px 0 #3fc0ff;`;
   const needed = REQUIRED_COLLECTIBLES - collected; message.innerHTML = `Нужно собрать еще ${needed} частичек любви! 💖`;
   document.getElementById('gameContainer').appendChild(message);
   setTimeout(() => { if (message.parentNode) message.remove(); }, 1500);
@@ -861,9 +978,9 @@ function showNeedMoreCollectibles() {
 
 function createTrail(x, y) {
   const trail = document.createElement('div'); trail.className = 'trail'; const offset = 5;
-  trail.style.left = (offset + x*cellSize + 16.5 -3)+'px'; trail.style.top = (offset + y*cellSize + 16.5 -3)+'px';
+  trail.style.left = (offset + x*cellSize + 16.5 -4)+'px'; trail.style.top = (offset + y*cellSize + 16.5 -4)+'px';
   document.getElementById('gameElements').appendChild(trail);
-  setTimeout(() => { if (trail.parentNode) trail.remove(); }, 1500);
+  setTimeout(() => { if (trail.parentNode) trail.remove(); }, 1000);
 }
 
 function updateTimer() { if (!gameActive) return; timeElapsed++; document.getElementById('time').textContent = timeElapsed; }
@@ -881,7 +998,7 @@ function completeMazeGame() {
   if (navigator.vibrate) navigator.vibrate([80,40,80,40,150]);
   const mazeControlsContainer = document.getElementById('mazeControlsContainer'); const mazeCompletionMessage = document.getElementById('mazeCompletionMessage'); const nextMazeBtn = document.getElementById('nextMazeBtn');
   const totalCollectibles = collectibles.length; const isPerfect = collected >= totalCollectibles;
-  mazeCompletionMessage.innerHTML = isPerfect ? `<h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">💖 ИДЕАЛЬНО! 💖</h3><p style="color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); font-size: 1.1em;">Ты собрала ВСЕ частички любви!</p>` : `<h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">Лабиринт пройден! 🏆</h3><p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>`;
+  mazeCompletionMessage.innerHTML = isPerfect ? `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">💖 ИДЕАЛЬНО! 💖</h3><p style="color: #3fc0ff; text-shadow: 3px 3px 0 #ff3fb0; font-size: 1.1em;">Ты собрала ВСЕ частички любви!</p>` : `<h3 style="color: #ffffaa; text-shadow: 4px 4px 0 #ff3fb0;">ЛАБИРИНТ ПРОЙДЕН! 🏆</h3><p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>`;
   mazeControlsContainer.style.opacity = '0'; setTimeout(() => mazeCompletionMessage.classList.add('show'), 300);
   nextMazeBtn.disabled = false; createFireworks();
 }
@@ -892,7 +1009,7 @@ function createFireworks() {
     setTimeout(() => {
       const firework = document.createElement('div');
       const xPos = offset + Math.random()*(canvas.width-30)+15; const yPos = offset + Math.random()*(canvas.height-30)+15;
-      firework.style.cssText = `position: absolute; width: 8px; height: 8px; border-radius: 0%; background: ${Math.random()>0.5?'var(--neon-pink)':'var(--neon-blue)'}; left: ${xPos}px; top: ${yPos}px; animation: explode 0.8s ease-out forwards; pointer-events: none; z-index: 1000;`;
+      firework.style.cssText = `position: absolute; width: 10px; height: 10px; background: ${Math.random()>0.5?'#ff3fb0':'#3fc0ff'}; left: ${xPos}px; top: ${yPos}px; animation: explode 0.8s steps(5) forwards; pointer-events: none; z-index: 1000; border: 2px solid white;`;
       container.appendChild(firework); setTimeout(() => firework.remove(), 800);
     }, i*80);
   }
@@ -937,14 +1054,14 @@ function animateProgress(to, callback){
     if(progress < to){
       progress += 0.5; if(progress > to) progress = to; loader.style.width = progress+'%'; let percent = Math.floor(progress); loadText.innerText = percent + '%';
       if(progress > 100){ loader.style.background = 'linear-gradient(90deg, #ff1a75, #ff4fd8)'; loader.style.boxShadow = '0 0 15px #ff1a75,0 0 30px #ff4fd8'; loadText.style.color = '#ff1a75'; loadText.style.textShadow = '0 0 8px #ff1a75'; }
-      else { loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))'; loader.style.boxShadow = '0 0 10px var(--neon-pink)'; loadText.style.color = 'var(--text)'; loadText.style.textShadow = '0 0 8px var(--neon-blue)'; }
+      else { loader.style.background = 'repeating-linear-gradient(45deg, #ff3fb0, #ff3fb0 8px, #fcee4a 8px, #fcee4a 16px)'; loader.style.boxShadow = '0 0 0 2px #3fc0ff'; loadText.style.color = '#ffffaa'; loadText.style.textShadow = '3px 3px 0 #ff3fb0'; }
       if(pausePoints.includes(Math.floor(progress)) && progress<=100){ setTimeout(()=>requestAnimationFrame(step),400); } else { requestAnimationFrame(step); }
     } else if(callback) callback();
   }; requestAnimationFrame(step);
 }
 function animateRollback(to, callback){
   const step = ()=>{
-    if(progress > to){ progress -= 1; if(progress < to) progress = to; loader.style.width = progress+'%'; loadText.innerText = Math.floor(progress)+'%'; if(progress <=100){ loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))'; loader.style.boxShadow = '0 0 10px var(--neon-pink)'; loadText.style.color = 'var(--text)'; loadText.style.textShadow = '0 0 8px var(--neon-blue)'; } requestAnimationFrame(step); }
+    if(progress > to){ progress -= 1; if(progress < to) progress = to; loader.style.width = progress+'%'; loadText.innerText = Math.floor(progress)+'%'; if(progress <=100){ loader.style.background = 'repeating-linear-gradient(45deg, #ff3fb0, #ff3fb0 8px, #fcee4a 8px, #fcee4a 16px)'; loader.style.boxShadow = '0 0 0 2px #3fc0ff'; loadText.style.color = '#ffffaa'; loadText.style.textShadow = '3px 3px 0 #ff3fb0'; } requestAnimationFrame(step); }
     else if(callback) callback();
   }; requestAnimationFrame(step);
 }
@@ -978,7 +1095,7 @@ function showChecklist(){
     glowWrapper.appendChild(check); li.insertBefore(glowWrapper, span);
     span.style.opacity = '0'; li.style.opacity = 1; li.style.transform = 'translateX(0)';
     setTimeout(()=>{
-      span.style.opacity = '1'; span.style.color = 'var(--text)';
+      span.style.opacity = '1'; span.style.color = '#ffffaa';
       setTimeout(()=>{ glowWrapper.style.opacity = 1; setTimeout(()=>{ span.classList.add('neon'); span.style.color = '#ffffff'; }, 200); }, 200);
     }, delay); delay += itemDelay;
   });
@@ -998,23 +1115,23 @@ function createMessageContainer() {
 }
 function showFunnyMessage() {
   if (noBtnHidden) return; const container = createMessageContainer();
-  if (container.children.length >= 3) { const oldestMessage = container.firstChild; if (oldestMessage) { oldestMessage.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; oldestMessage.style.opacity = '0'; oldestMessage.style.transform = 'translateY(-30px)'; oldestMessage.style.marginBottom = '0'; setTimeout(() => { if (oldestMessage.parentNode) { oldestMessage.remove(); addNewMessage(container); } }, 380); } }
+  if (container.children.length >= 3) { const oldestMessage = container.firstChild; if (oldestMessage) { oldestMessage.style.transition = 'all 0.4s steps(5)'; oldestMessage.style.opacity = '0'; oldestMessage.style.transform = 'translateY(-30px)'; oldestMessage.style.marginBottom = '0'; setTimeout(() => { if (oldestMessage.parentNode) { oldestMessage.remove(); addNewMessage(container); } }, 380); } }
   else addNewMessage(container);
 }
 function addNewMessage(container) {
   const message = document.createElement('div'); const randomIndex = Math.floor(Math.random() * funnyMessages.length); message.textContent = funnyMessages[randomIndex];
-  message.style.cssText = `background: rgba(255, 79, 216, 0.95); color: #000; padding: 12px 20px; border: 3px solid #ffffff; font-weight: bold; font-size: 16px; box-shadow: 0 0 20px var(--neon-pink); text-align: center; width: 100%; letter-spacing: 0.5px; opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); margin-bottom: 12px; border-radius: 0;`;
+  message.style.cssText = `background: #ff3fb0; color: #0c0c1a; padding: 12px 20px; border: 4px solid #ffffaa; font-weight: bold; font-size: 16px; box-shadow: 6px 6px 0 #3fc0ff; text-align: center; width: 100%; letter-spacing: 0.5px; opacity: 0; transform: translateY(20px); transition: all 0.5s steps(5); margin-bottom: 12px;`;
   container.appendChild(message);
   requestAnimationFrame(() => { message.style.opacity = '1'; message.style.transform = 'translateY(0)'; });
-  setTimeout(() => { message.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; message.style.opacity = '0'; message.style.transform = 'translateY(-30px)'; message.style.marginBottom = '0'; setTimeout(() => { if (message.parentNode) message.remove(); }, 380); }, 2800);
+  setTimeout(() => { message.style.transition = 'all 0.4s steps(5)'; message.style.opacity = '0'; message.style.transform = 'translateY(-30px)'; message.style.marginBottom = '0'; setTimeout(() => { if (message.parentNode) message.remove(); }, 380); }, 2800);
 }
 function hideNoButton() {
   if (noBtnHidden) return; noBtnHidden = true; const container = createMessageContainer(); container.innerHTML = '';
   const finalMessage = document.createElement('div');
-  finalMessage.style.cssText = `background: linear-gradient(135deg, #ff4fd8, #ff1a75); color: white; padding: 20px 24px; border: 4px solid white; font-weight: bold; font-size: 22px; box-shadow: 0 0 40px var(--neon-pink); text-align: center; opacity: 0; transform: scale(0.7); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); border-radius: 0;`;
+  finalMessage.style.cssText = `background: linear-gradient(135deg, #ff3fb0, #b86aff); color: white; padding: 20px 24px; border: 6px solid #ffffaa; font-weight: bold; font-size: 22px; box-shadow: 8px 8px 0 #3fc0ff; text-align: center; opacity: 0; transform: scale(0.7); transition: all 0.5s steps(5); text-shadow: 3px 3px 0 #000;`;
   finalMessage.textContent = 'Нет так нет 🙃'; container.appendChild(finalMessage);
   requestAnimationFrame(() => { finalMessage.style.opacity = '1'; finalMessage.style.transform = 'scale(1)'; });
-  noBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'; noBtn.style.opacity = '0'; noBtn.style.transform = 'scale(0) rotate(180deg)';
+  noBtn.style.transition = 'all 0.5s steps(5)'; noBtn.style.opacity = '0'; noBtn.style.transform = 'scale(0) rotate(180deg)';
   setTimeout(() => { noBtn.style.display = 'none'; }, 500);
   if (navigator.vibrate) navigator.vibrate([100,50,100,50,200]);
   setTimeout(() => { finalMessage.style.opacity = '0'; finalMessage.style.transform = 'scale(0.7)'; setTimeout(() => { container.innerHTML = ''; }, 500); }, 3000);
@@ -1022,8 +1139,8 @@ function hideNoButton() {
 function getRandomPosition(btnRect, areaRect) { const buttonDiagonal = Math.hypot(btnRect.width, btnRect.height); const minDistance = buttonDiagonal + 30; const minX = 10, maxX = areaRect.width - btnRect.width - 10, minY = 10, maxY = areaRect.height - btnRect.height - 10; let newX, newY; let attempts = 0; const lastX = parseFloat(noBtn.style.left) || areaRect.width/2; const lastY = parseFloat(noBtn.style.top) || areaRect.height/2; do { newX = minX + Math.random()*(maxX-minX); newY = minY + Math.random()*(maxY-minY); attempts++; if (attempts > 10) break; } while (Math.hypot(newX - lastX, newY - lastY) < minDistance && attempts < 50); return { x: newX, y: newY }; }
 function moveNoButton() {
   if (noBtnHidden || !noBtn || noBtn.style.display === 'none') return; const noBtnArea = document.querySelector('#screen5 .no-btn-area'); if (!noBtnArea) return; const btnRect = noBtn.getBoundingClientRect(); const areaRect = noBtnArea.getBoundingClientRect(); const newPos = getRandomPosition(btnRect, areaRect);
-  noBtn.style.transition = 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)'; noBtn.style.left = newPos.x + 'px'; noBtn.style.top = newPos.y + 'px'; noBtn.style.transform = 'scale(0.9)';
-  setTimeout(() => { noBtn.style.transform = 'scale(1)'; noBtn.style.transition = 'all 0.3s ease'; }, 250);
+  noBtn.style.transition = 'all 0.25s steps(5)'; noBtn.style.left = newPos.x + 'px'; noBtn.style.top = newPos.y + 'px'; noBtn.style.transform = 'scale(0.9)';
+  setTimeout(() => { noBtn.style.transform = 'scale(1)'; noBtn.style.transition = 'all 0.3s steps(3)'; }, 250);
   noClickCount++; showFunnyMessage(); if (noClickCount >= 20) hideNoButton();
 }
 if (noBtn) {
@@ -1034,7 +1151,7 @@ if (noBtn) {
 
 // ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК (8-bit) =====
 function createHeartExplosion(event) {
-  const hearts = ['❤️','🧡','💛','💚','💙','💜'];
+  const hearts = ['❤️','🧡','💛','💚','💙','💜','💖','💕'];
   navigator.vibrate?.([100,50,100,50,100]);
   let clickX, clickY;
   if (event.type === 'touchstart') { clickX = event.touches[0].clientX; clickY = event.touches[0].clientY; event.preventDefault(); } else { clickX = event.clientX; clickY = event.clientY; }
@@ -1043,8 +1160,7 @@ function createHeartExplosion(event) {
     heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = clickX + 'px'; heart.style.top = clickY + 'px';
     const angle = Math.random() * Math.PI * 2; const velocity = 120 + Math.random() * 180; const tx = Math.cos(angle) * velocity; const ty = Math.sin(angle) * velocity;
-    const rotate1 = Math.random() * 360 + 'deg'; const rotate2 = Math.random() * 720 + 'deg'; const rotate3 = Math.random() * 1080 + 'deg';
-    heart.style.setProperty('--tx', tx + 'px'); heart.style.setProperty('--ty', ty + 'px'); heart.style.setProperty('--rotate', rotate1); heart.style.setProperty('--rotate2', rotate2); heart.style.setProperty('--rotate3', rotate3);
+    heart.style.setProperty('--tx', tx + 'px'); heart.style.setProperty('--ty', ty + 'px');
     heart.style.fontSize = (18 + Math.random() * 20) + 'px'; heart.style.animationDelay = (Math.random() * 0.2) + 's';
     document.body.appendChild(heart);
     setTimeout(() => { if (heart.parentNode) heart.remove(); }, 3000);
@@ -1052,9 +1168,8 @@ function createHeartExplosion(event) {
   const specialHeart = document.createElement('div'); specialHeart.className = 'heart-particle'; specialHeart.innerText = '🥰';
   specialHeart.style.left = clickX + 'px'; specialHeart.style.top = clickY + 'px'; specialHeart.style.fontSize = '35px'; specialHeart.style.zIndex = '1001';
   const angle = Math.random() * Math.PI * 2; const velocity = 60 + Math.random() * 80; const tx = Math.cos(angle) * velocity; const ty = Math.sin(angle) * velocity;
-  const rotate1 = Math.random() * 360 + 'deg'; const rotate2 = Math.random() * 720 + 'deg'; const rotate3 = Math.random() * 1080 + 'deg';
-  specialHeart.style.setProperty('--tx', tx + 'px'); specialHeart.style.setProperty('--ty', ty + 'px'); specialHeart.style.setProperty('--rotate', rotate1); specialHeart.style.setProperty('--rotate2', rotate2); specialHeart.style.setProperty('--rotate3', rotate3);
-  specialHeart.style.animation = 'pixelExplode 4s steps(8) forwards'; specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
+  specialHeart.style.setProperty('--tx', tx + 'px'); specialHeart.style.setProperty('--ty', ty + 'px');
+  specialHeart.style.animation = 'pixelExplode 4s steps(10) forwards'; specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
   document.body.appendChild(specialHeart);
   setTimeout(() => { if (specialHeart.parentNode) specialHeart.remove(); }, 4000);
 }
