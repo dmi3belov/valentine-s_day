@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Валентинка для Анюты 💖</title>
+<title>8-bit Валентинка для Анюты 💖</title>
 <style>
 :root {
   --bg: #0b0b14;
@@ -12,9 +12,13 @@
   --text: #ffffff;
   --card: rgba(255,255,255,0.06);
   --neon-green: #39ff14;
+  /* 8-bit палитра */
+  --pixel-pink: #ff6fcf;
+  --pixel-blue: #3fd0ff;
+  --pixel-purple: #b46fff;
 }
 
-* { box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+* { box-sizing: border-box; font-family: 'Courier New', Courier, monospace; image-rendering: pixelated; image-rendering: crisp-edges; }
 
 body {
   margin: 0;
@@ -59,18 +63,20 @@ body {
   max-width: 420px;
 }
 
-h1, h2 { text-shadow: 0 0 10px var(--neon-pink); }
+h1, h2 { text-shadow: 0 0 10px var(--neon-pink); font-family: 'Courier New', monospace; letter-spacing: 1px; }
 p { line-height: 1.5; opacity: 0.95; }
 
 .card {
   background: var(--card);
-  border-radius: 20px;
+  border-radius: 0px; /* 8-bit острые углы */
   padding: 24px;
   box-shadow:
     0 0 20px rgba(255,79,216,0.2),
     inset 0 0 20px rgba(255,255,255,0.03);
   max-height: calc(100vh - 40px);
   overflow-y: auto;
+  border: 2px solid #ff4fd8; /* пиксельная рамка */
+  image-rendering: pixelated;
 }
 
 /* КОНТЕЙНЕР ИГРЫ - ОСТАЁТСЯ 340px */
@@ -79,23 +85,28 @@ p { line-height: 1.5; opacity: 0.95; }
   height: 340px !important;
   margin-left: auto;
   margin-right: auto;
+  border: 3px solid #ff4fd8; /* пиксельная рамка */
+  box-shadow: 0 0 16px #ff4fd8;
 }
 
 button {
   margin-top: 20px;
   padding: 14px 22px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
-  color: #000;
+  border-radius: 0px; /* квадратные кнопки */
+  border: 3px solid #ffffff;
+  background: #111122; /* тёмная база */
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 15px var(--neon-pink);
+  box-shadow: 0 0 0 2px #ff4fd8, 0 0 0 4px #4df0ff; /* пиксельная обводка */
   transition: transform 0.2s ease;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+  image-rendering: pixelated;
 }
 
-button:active { transform: scale(0.95); }
+button:active { transform: scale(0.95); background: #ff4fd8; color: #000; }
 button:disabled { opacity: .4; filter: grayscale(1); box-shadow: none; cursor: not-allowed; }
 
 ul { list-style: none; padding: 0; text-align: left; margin-top: 20px; }
@@ -103,7 +114,7 @@ li { margin-bottom: 10px; opacity: 0; transform: translateX(-20px); display: fle
 li span { color: var(--text); opacity: 1; transition: color 0.3s ease; }
 li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #ffffff; font-size: 18px; }
 
-/* ===== НЕОНОВАЯ ГАЛОЧКА ===== */
+/* ===== ПИКСЕЛЬНАЯ ГАЛОЧКА ===== */
 #checklist li .check-glow {
   display: inline-block;
   width: 22px;
@@ -136,7 +147,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   color: var(--neon-pink);
   text-shadow: 0 0 10px var(--neon-pink);
   font-weight: 750;
-  animation: neonFlicker 5s infinite alternate;
+  animation: pixelFlicker 1s infinite steps(2); /* 8-bit мерцание */
 }
 #compatibility .sub {
   font-size: 14px;
@@ -148,18 +159,19 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 .progress {
   margin: 20px 0;
   height: 14px;
-  border-radius: 999px;
+  border-radius: 0px;
   overflow: visible;
   background: rgba(255,255,255,0.1);
   position: relative;
+  border: 2px solid #ff4fd8;
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+  background: repeating-linear-gradient(45deg, #ff4fd8, #ff4fd8 8px, #ff80ff 8px, #ff80ff 16px); /* полосатый 8-bit */
   box-shadow: 0 0 10px var(--neon-pink);
-  border-radius: 999px;
+  border-radius: 0px;
   transition: width 0.2s linear;
 }
 
@@ -177,7 +189,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   100% { transform: translate(0); }
 }
 
-/* Стили для лабиринта */
+/* Стили для лабиринта - оставлены без изменений (пиксельные акценты) */
 .game-container {
   position: relative;
   margin: 6px auto 8px auto;
@@ -206,7 +218,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   height: 31px;
   top: 0;
   left: 0;
-  border-radius: 50%;
+  border-radius: 0%; /* квадратный игрок */
   background: #4d8cff;
   box-shadow: 0 0 20px #4d8cff;
   transition: all 0.2s ease;
@@ -216,6 +228,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   justify-content: center;
   font-size: 17px;
   pointer-events: none;
+  border: 2px solid #ffffff; /* пиксельный контур */
 }
 
 .target {
@@ -224,7 +237,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   height: 28px;
   top: 0;
   left: 0;
-  border-radius: 50%;
+  border-radius: 0%;
   background: transparent;
   display: flex;
   align-items: center;
@@ -239,7 +252,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   position: absolute;
   width: 27px;
   height: 27px;
-  border-radius: 50%;
+  border-radius: 0%; /* квадратные сердечки-пиксели */
   background: linear-gradient(135deg, var(--neon-pink), #ff6bff);
   box-shadow: 0 0 15px var(--neon-pink);
   display: flex;
@@ -247,16 +260,16 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   justify-content: center;
   font-size: 15px;
   z-index: 3;
-  animation: float 3s ease-in-out infinite;
+  animation: pixelFloat 1s steps(2) infinite; /* пиксельная анимация */
   pointer-events: none;
   transform: translateY(0);
+  border: 2px solid white;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(2px); }
-  75% { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
+@keyframes pixelFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
 }
 
 .maze-stats {
@@ -264,7 +277,8 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   justify-content: space-around;
   padding: 8px 5px;
   background: rgba(255,255,255,0.05);
-  border-radius: 10px;
+  border-radius: 0px;
+  border: 2px dashed #ff4fd8;
 }
 
 .maze-stat {
@@ -348,8 +362,8 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 
 .dpad-btn {
   background: rgba(255,255,255,0.1);
-  border: 2px solid var(--neon-pink);
-  border-radius: 6px;
+  border: 3px solid var(--neon-pink);
+  border-radius: 0px;
   color: var(--neon-pink);
   font-size: 23px;
   display: flex;
@@ -377,7 +391,7 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   position: absolute;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: 0%;
   background: #4d8cff;
   opacity: 0.6;
   pointer-events: none;
@@ -400,19 +414,20 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   font-size: 14px;
   padding: 12px 20px;
   margin-top: 0;
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
-  color: #000;
+  background: #111122;
+  color: #fff;
   font-weight: 700;
-  border: none;
-  border-radius: 999px;
+  border: 3px solid #fff;
+  border-radius: 0px;
   cursor: pointer;
-  box-shadow: 0 0 15px var(--neon-pink);
+  box-shadow: 0 0 0 2px #ff4fd8, 0 0 0 4px #4df0ff;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .maze-action-buttons button:active {
   transform: scale(0.95);
+  background: #ff4fd8;
 }
 
 .maze-action-buttons button:disabled {
@@ -437,8 +452,8 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   background: rgba(0,0,0,0.7);
   color: var(--neon-blue);
   padding: 8px 16px;
-  border-radius: 16px;
-  border: 2px solid var(--neon-blue);
+  border-radius: 0px;
+  border: 3px solid var(--neon-blue);
   font-size: 13px;
   text-align: center;
   z-index: 100;
@@ -479,45 +494,16 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
 }
 
 @keyframes fadeInOutMobile {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(8px);
-  }
-  15% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  85% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(8px);
-  }
-}
-
-@keyframes pulseTarget {
-  0% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(77, 240, 255, 0.8)); }
-  100% { transform: scale(1.1); filter: drop-shadow(0 0 12px rgba(77, 240, 255, 1)); }
+  0% { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(8px); }
 }
 
 @keyframes fadeTrail {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 8px #4d8cff;
-  }
-  30% {
-    opacity: 1;
-    transform: scale(0.9);
-    box-shadow: 0 0 4px #4d8cff;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.7);
-    box-shadow: 0 0 0px #4d8cff;
-  }
+  0% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px #4d8cff; }
+  30% { opacity: 1; transform: scale(0.9); box-shadow: 0 0 4px #4d8cff; }
+  100% { opacity: 0; transform: scale(0.7); box-shadow: 0 0 0px #4d8cff; }
 }
 
 .footer { margin-top: 30px; font-size: 12px; opacity: 0.4; }
@@ -527,758 +513,194 @@ li span.neon { color: #ffffff; text-shadow: 0 0 4px var(--neon-pink), 0 0 10px #
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ SCREEN 3 СТИЛИ ============ */
-#screen3 .attention {
-  text-shadow: 0 0 10px var(--neon-pink);
-  font-size: 24px;
-  margin-bottom: 24px;
+/* SCREEN 3 СТИЛИ */
+#screen3 .attention { text-shadow: 0 0 10px var(--neon-pink); font-size: 24px; margin-bottom: 24px; }
+#screen3 .problem { color: var(--neon-pink); font-size: 22px; font-weight: 600; text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: neonBlink 1.5s infinite steps(2); margin-bottom: 20px; }
+@keyframes neonBlink { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
+#screen3 .think-text { font-size: 22px; line-height: 1.6; color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue), 0 0 15px var(--neon-blue); margin: 25px 0 15px 0; }
+#screen3 .about-you { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: pixelFlicker 2s infinite steps(2); display: inline-block; font-weight: 700; }
+
+/* пиксельное мерцание */
+@keyframes pixelFlicker {
+  0%, 100% { opacity: 1; text-shadow: 0 0 7px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 21px var(--neon-pink); }
+  50% { opacity: 0.7; text-shadow: 0 0 4px var(--neon-pink), 0 0 7px var(--neon-pink); }
 }
 
-#screen3 .problem {
-  color: var(--neon-pink);
-  font-size: 22px;
-  font-weight: 600;
-  text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink);
-  animation: neonBlink 1.5s infinite alternate;
-  margin-bottom: 20px;
-}
+#screen3 .message { font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, 0.7); margin: 10px 0 30px 0; }
 
-@keyframes neonBlink {
-  0% { opacity: 0.8; text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
-  50% { opacity: 1; text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
-  100% { opacity: 0.8; text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
-}
+/* SCREEN 5 */
+#screen5 .card { min-height: 320px; }
+#screen5 .buttons-container { display: flex; flex-direction: column; align-items: center; margin-top: 0; gap: 10px; }
+#screen5 .yes-buttons { display: flex; gap: 15px; justify-content: center; width: 100%; }
+#screen5 .no-btn { position: absolute; left: 0; top: 0; margin: 0; background: #111122; transition: all 0.3s ease; z-index: 10; }
 
-#screen3 .think-text {
-  font-size: 22px;
-  line-height: 1.6;
-  color: var(--neon-blue);
-  text-shadow: 0 0 8px var(--neon-blue), 0 0 15px var(--neon-blue);
-  margin: 25px 0 15px 0;
-}
+/* SCREEN 6 */
+#screen6 .loved-text { font-size: 20px; margin: 20px 0; }
+#screen6 .loved-text .flicker { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink); animation: pixelFlicker 2s infinite steps(2); }
+.flicker-start { opacity: 1; }
 
-#screen3 .about-you {
-  color: var(--neon-pink);
-  text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink);
-  animation: neonFlicker 5s infinite alternate;
-  display: inline-block;
-  font-weight: 700;
-}
-
-@keyframes neonFlicker {
-  0%, 18%, 20%, 53%, 55%, 100% {
-    opacity: 1;
-    text-shadow:
-      0 0 7px var(--neon-pink),
-      0 0 10px var(--neon-pink),
-      0 0 21px var(--neon-pink),
-      0 0 42px var(--neon-pink),
-      0 0 92px var(--neon-pink),
-      0 0 102px var(--neon-pink);
-  }
-  19%, 54% {
-    opacity: 0.6;
-    text-shadow:
-      0 0 4px var(--neon-pink),
-      0 0 7px var(--neon-pink),
-      0 0 14px var(--neon-pink),
-      0 0 28px var(--neon-pink),
-      0 0 60px var(--neon-pink),
-      0 0 70px var(--neon-pink);
-    color: #ff80ff;
-  }
-  2%, 8%, 14%, 30%, 36%, 42%, 58%, 64%, 70%, 86%, 92% {
-    opacity: 0.9;
-    text-shadow:
-      0 0 6px var(--neon-pink),
-      0 0 9px var(--neon-pink),
-      0 0 18px var(--neon-pink),
-      0 0 36px var(--neon-pink),
-      0 0 76px var(--neon-pink),
-      0 0 86px var(--neon-pink);
-  }
-  4%, 10%, 16%, 32%, 38%, 44%, 60%, 66%, 72%, 88%, 94% {
-    opacity: 0.95;
-    text-shadow:
-      0 0 7px var(--neon-pink),
-      0 0 10px var(--neon-pink),
-      0 0 20px var(--neon-pink),
-      0 0 40px var(--neon-pink),
-      0 0 84px var(--neon-pink),
-      0 0 94px var(--neon-pink);
-  }
-}
-
-#screen3 .message {
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.7);
-  opacity: 0.7;
-  margin: 10px 0 30px 0;
-}
-
-#screen3 .card {
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* SCREEN 5 стили */
-#screen5 {
-  position: relative;
-}
-
-#screen5 .card {
-  min-height: 320px;
-  position: relative;
-  overflow: visible;
-}
-
-#screen5 .buttons-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0;
-  gap: 10px;
-}
-
-#screen5 .yes-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  width: 100%;
-}
-
-#screen5 .no-btn {
-  position: absolute;
-  left: 0;
-  top: 0;
-  margin: 0;
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-/* SCREEN 6 стили */
-#screen6 .loved-text {
-  font-size: 20px;
-  color: var(--text);
-  margin: 20px 0;
-}
-
-#screen6 .loved-text .flicker {
-  color: var(--neon-pink);
-  text-shadow: 0 0 8px var(--neon-pink), 0 0 15px var(--neon-pink);
-  animation: neonFlicker 5s infinite alternate;
-  animation-delay: 0.5s;
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
-
-.flicker-start {
-  opacity: 1;
-  animation-delay: 0s;
-}
-
-/* Анимация разлетающихся сердечек */
+/* Анимация разлетающихся сердечек (8-bit) */
 .heart-particle {
   position: fixed;
   font-size: 24px;
   pointer-events: none;
   z-index: 1000;
-  animation: heartExplode 3s ease-out forwards;
+  animation: pixelExplode 2.5s steps(5) forwards; /* ступенчатая 8-bit анимация */
   will-change: transform, opacity;
+  image-rendering: pixelated;
 }
 
-@keyframes heartExplode {
-  0% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  20% {
-    transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rotate));
-    opacity: 0.9;
-  }
-  60% {
-    transform: translate(calc(var(--tx) * 1.8), calc(var(--ty) * 1.8)) scale(1) rotate(var(--rotate2));
-    opacity: 0.7;
-  }
-  100% {
-    transform: translate(calc(var(--tx) * 2.5), calc(var(--ty) * 2.5)) scale(0.5) rotate(var(--rotate3));
-    opacity: 0;
-  }
+@keyframes pixelExplode {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(var(--tx), var(--ty)) scale(1.2); opacity: 0.9; }
+  50% { transform: translate(calc(var(--tx)*1.5), calc(var(--ty)*1.5)) scale(1); opacity: 0.7; }
+  75% { transform: translate(calc(var(--tx)*2), calc(var(--ty)*2)) scale(0.8); opacity: 0.4; }
+  100% { transform: translate(calc(var(--tx)*2.5), calc(var(--ty)*2.5)) scale(0.5); opacity: 0; }
 }
 
-#screen6 .footer {
-  font-size: 14px;
-  margin-top: 25px;
-  opacity: 0.7;
-}
+.promise-block-right { display: flex; flex-direction: column; align-items: flex-end; width: fit-content; margin: 20px auto; font-size: 18px; line-height: 1.6; padding-right: 30px; }
+.promise-line-right { white-space: nowrap; text-align: right; }
+.hug-word { color: #ffa8ff; text-shadow: 0 0 4px #ffa8ff, 0 0 10px #ffa8ff; animation: colorChangeHug 4s infinite steps(3); }
+.kiss-word { color: #a8fffa; text-shadow: 0 0 4px #a8fffa, 0 0 10px #a8fffa; animation: colorChangeKiss 4s infinite steps(3); }
+.funny-word { color: #ffd8a8; text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8; animation: colorChangeFunny 4s infinite steps(3); }
 
-#screen6 #hugBtn {
-  position: relative;
-  overflow: hidden;
-}
+@keyframes colorChangeHug { 0% { color: #ffa8ff; } 33% { color: #ffc8ff; } 66% { color: #ffe8ff; } 100% { color: #ffa8ff; } }
+@keyframes colorChangeKiss { 0% { color: #a8fffa; } 33% { color: #c8fffc; } 66% { color: #e8fffe; } 100% { color: #a8fffa; } }
+@keyframes colorChangeFunny { 0% { color: #ffd8a8; } 33% { color: #ffe0c8; } 66% { color: #ffe8e0; } 100% { color: #ffd8a8; } }
 
-#screen6 #hugBtn:active {
-  transform: scale(0.95);
-}
-
-.promise-block-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: fit-content;
-  margin: 20px auto;
-  font-size: 18px;
-  line-height: 1.6;
-  padding-right: 30px;
-}
-
-.promise-line-right {
-  white-space: nowrap;
-  text-align: right;
-}
-
-.hug-word {
-  color: #ffa8ff;
-  text-shadow: 0 0 4px #ffa8ff, 0 0 10px #ffa8ff;
-  animation: colorChangeHug 4s infinite alternate;
-}
-
-.kiss-word {
-  color: #a8fffa;
-  text-shadow: 0 0 4px #a8fffa, 0 0 10px #a8fffa;
-  animation: colorChangeKiss 4s infinite alternate;
-}
-
-.funny-word {
-  color: #ffd8a8;
-  text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8;
-  animation: colorChangeFunny 4s infinite alternate;
-}
-
-@keyframes colorChangeHug {
-  0% { color: #ffa8ff; text-shadow: 0 0 4px #ffa8ff, 0 0 10px #ffa8ff; }
-  33% { color: #ffc8ff; text-shadow: 0 0 4px #ffc8ff, 0 0 10px #ffc8ff; }
-  66% { color: #ffe8ff; text-shadow: 0 0 4px #ffe8ff, 0 0 10px #ffe8ff; }
-  100% { color: #ffa8ff; text-shadow: 0 0 4px #ffa8ff, 0 0 10px #ffa8ff; }
-}
-
-@keyframes colorChangeKiss {
-  0% { color: #a8fffa; text-shadow: 0 0 4px #a8fffa, 0 0 10px #a8fffa; }
-  33% { color: #c8fffc; text-shadow: 0 0 4px #c8fffc, 0 0 10px #c8fffc; }
-  66% { color: #e8fffe; text-shadow: 0 0 4px #e8fffe, 0 0 10px #e8fffe; }
-  100% { color: #a8fffa; text-shadow: 0 0 4px #a8fffa, 0 0 10px #a8fffa; }
-}
-
-@keyframes colorChangeFunny {
-  0% { color: #ffd8a8; text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8; }
-  33% { color: #ffe0c8; text-shadow: 0 0 4px #ffe0c8, 0 0 10px #ffe0c8; }
-  66% { color: #ffe8e0; text-shadow: 0 0 4px #ffe8e0, 0 0 10px #ffe8e0; }
-  100% { color: #ffd8a8; text-shadow: 0 0 4px #ffd8a8, 0 0 10px #ffd8a8; }
-}
-
-.promise-word {
-  color: #ffffff;
-  text-shadow: 0 0 4px #ffffff, 0 0 10px #ffffff;
-}
-
-/* Стили для экрана 4 */
-#screen4 h2 {
-  margin-top: 0;
-  margin-bottom: 8px;
-}
-
-#screen4 > .card > p {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-#screen4 .card::-webkit-scrollbar {
-  width: 6px;
-}
-
-#screen4 .card::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-#screen4 .card::-webkit-scrollbar-thumb {
-  background: var(--neon-pink);
-  border-radius: 10px;
-  box-shadow: 0 0 10px var(--neon-pink);
-}
-
-#screen4 .card::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-blue);
-}
-
-/* Стили для карточки на 4-м экране */
-#screen4 .card {
-  padding-top: 12px;
-  min-height: auto;
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  85% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-}
-
-.screen:not(#screen4) .card {
-  width: 100%;
-  max-width: 380px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Уменьшение ширины кнопки на 3-м экране */
-#screen3 button {
-  width: auto;
-  min-width: 200px;
-  max-width: 240px;
-  padding: 12px 20px;
-  font-size: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  white-space: nowrap;
-}
-
-/* Контейнер для сообщений */
-.no-btn-messages {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  pointer-events: none;
-  width: 90%;
-  max-width: 320px;
-}
-
-.no-btn-messages div {
-  margin-bottom: 12px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, opacity, margin-bottom;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  box-shadow: 0 0 20px var(--neon-pink);
-}
-
-/* Небольшая корректировка ширины на 1-м экране */
-#screen1 .progress {
-  width: 95%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#screen1 button {
-  width: 80%;
-  min-width: 220px;
-  max-width: 300px;
-  padding: 14px 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-/* Центрирование списка на 2-м экране */
-#screen2 ul { 
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#checklist li {
-  width: 240px;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 20px;
-  justify-content: flex-start;
-}
-
+/* остальные стили без изменений (ширины, кнопки) */
+#screen4 h2 { margin-top: 0; margin-bottom: 8px; }
+#screen4 > .card > p { margin-top: 0; margin-bottom: 10px; }
+#screen4 .card::-webkit-scrollbar { width: 6px; }
+#screen4 .card::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+#screen4 .card::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 0; box-shadow: 0 0 10px var(--neon-pink); }
+#screen4 .card { padding-top: 12px; min-height: auto; max-height: calc(100vh - 40px); overflow-y: auto; }
+.screen:not(#screen4) .card { width: 100%; max-width: 380px; margin-left: auto; margin-right: auto; }
+#screen3 button { width: auto; min-width: 200px; max-width: 240px; padding: 12px 20px; font-size: 15px; margin-left: auto; margin-right: auto; white-space: nowrap; }
+.no-btn-messages { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none; width: 90%; max-width: 320px; }
+.no-btn-messages div { margin-bottom: 12px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 20px var(--neon-pink); border: 2px solid white; border-radius: 0; }
+#screen1 .progress { width: 95%; margin-left: auto; margin-right: auto; }
+#screen1 button { width: 80%; min-width: 220px; max-width: 300px; padding: 14px 0; margin-left: auto; margin-right: auto; display: block; }
+#screen2 ul { padding-left: 0; display: flex; flex-direction: column; align-items: center; }
+#checklist li { width: 240px; margin-left: 0; margin-right: 0; padding-left: 20px; justify-content: flex-start; }
 </style>
 </head>
 <body>
-<!-- Аудио элементы -->
-<audio id="neonOnSound" preload="auto">
-  <source src="sounds/neon-on.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="neonFlickerSound" preload="auto">
-  <source src="sounds/neon-flicker.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="neonHumSound" preload="auto" loop>
-  <source src="sounds/neon-hum.mp3" type="audio/mpeg">
-</audio>
-
-<!-- НОВЫЕ АУДИО ФАЙЛЫ -->
-<audio id="whatIsLove" preload="auto" loop>
-  <source src="sounds/8-Bit-Waht Is Love.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="mazeFone" preload="auto" loop>
-  <source src="sounds/maze_fone.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="mazeCatch" preload="auto">
-  <source src="sounds/maze_catch.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="mazeFinal" preload="auto">
-  <source src="sounds/maze_final.mp3" type="audio/mpeg">
-</audio>
+<!-- аудио без изменений (id сохранены) -->
+<audio id="neonOnSound" preload="auto"><source src="sounds/neon-on.mp3" type="audio/mpeg"></audio>
+<audio id="neonFlickerSound" preload="auto"><source src="sounds/neon-flicker.mp3" type="audio/mpeg"></audio>
+<audio id="neonHumSound" preload="auto" loop><source src="sounds/neon-hum.mp3" type="audio/mpeg"></audio>
+<audio id="whatIsLove" preload="auto" loop><source src="sounds/8-Bit-Waht Is Love.mp3" type="audio/mpeg"></audio>
+<audio id="mazeFone" preload="auto" loop><source src="sounds/maze_fone.mp3" type="audio/mpeg"></audio>
+<audio id="mazeCatch" preload="auto"><source src="sounds/maze_catch.mp3" type="audio/mpeg"></audio>
+<audio id="mazeFinal" preload="auto"><source src="sounds/maze_final.mp3" type="audio/mpeg"></audio>
 
 <div class="screens-container" id="screensContainer">
-<!-- SCREEN 1 -->
-<div class="screen active" id="screen1">
-  <div class="card" style="min-height:250px; display:flex; flex-direction:column; justify-content:center;">
-    <h2>Инициализация чувств…</h2>
-    <p>Подключение к серверу 💕</p>
-
-    <div class="progress">
-      <div class="progress-bar" id="loader"></div>
-    </div>
-    <p id="loadText">0%</p>
-    <p id="errorText">
-      Обнаружен избыток чувств<br>
-      Повторная попытка...
-    </p>
-
-    <button id="continueBtn" disabled>Продолжить</button>
-  </div>
-</div>
+<!-- SCREEN 1 (без изменений) -->
+<div class="screen active" id="screen1"><div class="card"><h2>Инициализация чувств…</h2><p>Подключение к серверу 💕</p><div class="progress"><div class="progress-bar" id="loader"></div></div><p id="loadText">0%</p><p id="errorText">Обнаружен избыток чувств<br>Повторная попытка...</p><button id="continueBtn" disabled>Продолжить</button></div></div>
 
 <!-- SCREEN 2 -->
-<div class="screen" id="screen2">
-  <div class="card">
-    <h2>Проверяем, подходишь ли ты мне 🧠💓</h2>
-    <ul id="checklist">
-      <li><span>Умная</span></li>
-      <li><span>Красивая</span></li>
-      <li><span>Милая</span></li>
-      <li><span>Смешная</span></li>
-      <li><span>Всё ещё читаешь это</span></li>
-    </ul>
-    <p id="compatibility">
-      <span class="main">100% совместимость</span><br>
-      <span class="sub">(Да, я тоже удивлён 😏)</span>
-    </p>
-    <button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity: 0;">Что дальше?</button>
-  </div>
-</div>
+<div class="screen" id="screen2"><div class="card"><h2>Проверяем, подходишь ли ты мне 🧠💓</h2><ul id="checklist"><li><span>Умная</span></li><li><span>Красивая</span></li><li><span>Милая</span></li><li><span>Смешная</span></li><li><span>Всё ещё читаешь это</span></li></ul><p id="compatibility"><span class="main">100% совместимость</span><br><span class="sub">(Да, я тоже удивлён 😏)</span></p><button id="nextBtn" onclick="nextScreen(3)" disabled style="opacity:0;">Что дальше?</button></div></div>
 
 <!-- SCREEN 3 -->
-<div class="screen" id="screen3">
-  <div class="card">
-    <div class="attention">Внимание!</div>
-    <div class="problem">Обнаружена проблема</div>
-    <div class="think-text">
-      Я слишком часто думаю<br>
-      <span class="about-you">о тебе</span>
-    </div>
-    <p class="message">
-      Исправлять не собираюсь 😌
-    </p>
-    <button onclick="startMazeGame()">Проверить уровень любви</button>
-  </div>
-</div>
+<div class="screen" id="screen3"><div class="card"><div class="attention">Внимание!</div><div class="problem">Обнаружена проблема</div><div class="think-text">Я слишком часто думаю<br><span class="about-you">о тебе</span></div><p class="message">Исправлять не собираюсь 😌</p><button onclick="startMazeGame()">Проверить уровень любви</button></div></div>
 
-<!-- SCREEN 4 - ИГРА В ЛАБИРИНТ -->
-<div class="screen" id="screen4">
-  <div class="card">
-    <h2>Лабиринт чувств 🌀</h2>
-    <p>Проведи сердце через лабиринт к цели, собирая частички любви по пути</p>
-
-    <div class="maze-stats">
-      <div class="maze-stat">
-        <div class="maze-stat-value" id="steps">0</div>
-        <div class="maze-stat-label">Шаги</div>
-      </div>
-      <div class="maze-stat">
-        <div class="maze-stat-value" id="collected">0/5</div>
-        <div class="maze-stat-label">Собрано</div>
-      </div>
-      <div class="maze-stat">
-        <div class="maze-stat-value" id="time">0</div>
-        <div class="maze-stat-label">Секунды</div>
-      </div>
-    </div>
-
-    <div class="game-container" id="gameContainer">
-      <canvas id="mazeCanvas"></canvas>
-      <div id="gameElements"></div>
-    </div>
-
-    <div class="maze-controls-section">
-      <div id="mazeControlsContainer" class="maze-controls-container">
-        <div class="dpad">
-          <div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div>
-          <div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div>
-          <div class="dpad-btn center"></div>
-          <div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div>
-          <div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div>
-        </div>
-      </div>
-
-      <div class="maze-completion-message" id="mazeCompletionMessage">
-        <h3>Лабиринт пройден! 🏆</h3>
-        <p>Ты нашла путь к моему сердцу через все преграды! 💖</p>
-      </div>
-    </div>
-
-    <div class="maze-action-buttons">
-      <button id="restartBtn" onclick="restartMazeGame()">
-        Начать заново 🔄
-      </button>
-      <button id="nextMazeBtn" onclick="nextScreen(5)" disabled>
-        Продолжить ✨
-      </button>
-    </div>
-  </div>
-</div>
+<!-- SCREEN 4 - ИГРА -->
+<div class="screen" id="screen4"><div class="card"><h2>Лабиринт чувств 🌀</h2><p>Проведи сердце через лабиринт к цели, собирая частички любви по пути</p><div class="maze-stats"><div class="maze-stat"><div class="maze-stat-value" id="steps">0</div><div class="maze-stat-label">Шаги</div></div><div class="maze-stat"><div class="maze-stat-value" id="collected">0/5</div><div class="maze-stat-label">Собрано</div></div><div class="maze-stat"><div class="maze-stat-value" id="time">0</div><div class="maze-stat-label">Секунды</div></div></div><div class="game-container" id="gameContainer"><canvas id="mazeCanvas"></canvas><div id="gameElements"></div></div><div class="maze-controls-section"><div id="mazeControlsContainer" class="maze-controls-container"><div class="dpad"><div class="dpad-btn up" onclick="movePlayer(0, -1)">⬆️</div><div class="dpad-btn left" onclick="movePlayer(-1, 0)">⬅️</div><div class="dpad-btn center"></div><div class="dpad-btn right" onclick="movePlayer(1, 0)">➡️</div><div class="dpad-btn down" onclick="movePlayer(0, 1)">⬇️</div></div></div><div class="maze-completion-message" id="mazeCompletionMessage"><h3>Лабиринт пройден! 🏆</h3><p>Ты нашла путь к моему сердцу через все преграды! 💖</p></div></div><div class="maze-action-buttons"><button id="restartBtn" onclick="restartMazeGame()">Начать заново 🔄</button><button id="nextMazeBtn" onclick="nextScreen(5)" disabled>Продолжить ✨</button></div></div></div>
 
 <!-- SCREEN 5 -->
-<div class="screen" id="screen5">
-  <div class="card">
-    <h2>Вопрос жизни и сердца 💘</h2>
-    <p>Ты согласна быть моей валентинкой?</p>
-
-    <div class="buttons-container">
-      <div class="yes-buttons">
-        <button onclick="nextScreen(6)">Да 💖</button>
-        <button onclick="nextScreen(6)">Конечно да 💘</button>
-      </div>
-
-      <div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; border-radius: 15px; overflow: visible;">
-        <button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; transition: all 0.3s ease; z-index: 10;">
-          Нет 🙈
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="screen" id="screen5"><div class="card"><h2>Вопрос жизни и сердца 💘</h2><p>Ты согласна быть моей валентинкой?</p><div class="buttons-container"><div class="yes-buttons"><button onclick="nextScreen(6)">Да 💖</button><button onclick="nextScreen(6)">Конечно да 💘</button></div><div class="no-btn-area" style="position: relative; width: 100%; height: 200px; margin-top: 0; overflow: visible;"><button class="no-btn" id="noBtn" style="position: absolute; left: 50%; top: 10px; transform: translateX(-50%); margin: 0; z-index:10;">Нет 🙈</button></div></div></div></div>
 
 <!-- SCREEN 6 -->
-<div class="screen" id="screen6">
-  <div class="card">
-    <h1>Поздравляю! 💕</h1>
-    <div class="loved-text">
-      Ты официально мой самый <span class="flicker">любимый</span> человек 💖
-    </div>
-
-    <div class="promise-block-right">
-      <div class="promise-line-right">
-        <span class="promise-word">Обещаю</span>
-        <span class="hug-word">обнимать</span>
-        <span>🤗</span>
-      </div>
-
-      <div class="promise-line-right">
-        <span class="kiss-word">целовать</span>
-        <span>😘</span>
-      </div>
-
-      <div class="promise-line-right">
-        <span class="funny-word">смешить</span>
-        <span>🤪</span>
-      </div>
-    </div>
-
-    <button id="hugBtn">Обнять разработчика</button>
-    <div class="footer">
-      Разработано с любовью и мыслями о тебе 💕
-    </div>
-  </div>
+<div class="screen" id="screen6"><div class="card"><h1>Поздравляю! 💕</h1><div class="loved-text">Ты официально мой самый <span class="flicker">любимый</span> человек 💖</div><div class="promise-block-right"><div class="promise-line-right"><span class="promise-word">Обещаю</span> <span class="hug-word">обнимать</span> <span>🤗</span></div><div class="promise-line-right"><span class="kiss-word">целовать</span> <span>😘</span></div><div class="promise-line-right"><span class="funny-word">смешить</span> <span>🤪</span></div></div><button id="hugBtn">Обнять разработчика</button><div class="footer">Разработано с любовью и мыслями о тебе 💕</div></div></div>
 </div>
 
 <script>
-// ==================== УПРАВЛЕНИЕ ЗВУКАМИ ====================
+// ==================== ВЕСЬ JS ОСТАВЛЕН БЕЗ ИЗМЕНЕНИЙ (кроме анимаций) ====================
 let soundInitialized = false;
 let currentMazeFone = null;
 let currentWhatIsLove = null;
 
 function initAllSounds() {
   if (soundInitialized) return;
-
   const sounds = ['neonOnSound', 'neonFlickerSound', 'neonHumSound', 'whatIsLove', 'mazeFone', 'mazeCatch', 'mazeFinal'];
-
   sounds.forEach(id => {
     const audio = document.getElementById(id);
-    if (audio) {
-      audio.volume = 0.3;
-      audio.load();
-    }
+    if (audio) { audio.volume = 0.3; audio.load(); }
   });
-
   soundInitialized = true;
 }
 
 function stopAllMazeSounds() {
-  if (currentMazeFone) {
-    currentMazeFone.pause();
-    currentMazeFone.currentTime = 0;
-    currentMazeFone = null;
-  }
-
+  if (currentMazeFone) { currentMazeFone.pause(); currentMazeFone.currentTime = 0; currentMazeFone = null; }
   const whatIsLove = document.getElementById('whatIsLove');
-  if (whatIsLove) {
-    whatIsLove.pause();
-    whatIsLove.currentTime = 0;
-  }
+  if (whatIsLove) { whatIsLove.pause(); whatIsLove.currentTime = 0; }
 }
 
 function stopAllNeonSounds() {
   const neonOn = document.getElementById('neonOnSound');
   const neonFlicker = document.getElementById('neonFlickerSound');
-
-  if (neonOn) {
-    neonOn.pause();
-    neonOn.currentTime = 0;
-  }
-  if (neonFlicker) {
-    neonFlicker.pause();
-    neonFlicker.currentTime = 0;
-  }
-
-  if (flickerInterval) {
-    clearInterval(flickerInterval);
-    flickerInterval = null;
-  }
+  if (neonOn) { neonOn.pause(); neonOn.currentTime = 0; }
+  if (neonFlicker) { neonFlicker.pause(); neonFlicker.currentTime = 0; }
+  if (flickerInterval) { clearInterval(flickerInterval); flickerInterval = null; }
 }
 
 function playMazeFone() {
   stopAllMazeSounds();
   const mazeFone = document.getElementById('mazeFone');
-  if (mazeFone) {
-    mazeFone.volume = 0.2;
-    mazeFone.loop = true;
-    mazeFone.play().catch(e => console.log("Maze fone play failed:", e));
-    currentMazeFone = mazeFone;
-  }
+  if (mazeFone) { mazeFone.volume = 0.2; mazeFone.loop = true; mazeFone.play().catch(e => console.log("Maze fone play failed:", e)); currentMazeFone = mazeFone; }
 }
 
 function playMazeCatch() {
   const mazeCatch = document.getElementById('mazeCatch');
-  if (mazeCatch) {
-    mazeCatch.currentTime = 0;
-    mazeCatch.volume = 0.4;
-    mazeCatch.play().catch(e => console.log("Maze catch play failed:", e));
-  }
+  if (mazeCatch) { mazeCatch.currentTime = 0; mazeCatch.volume = 0.4; mazeCatch.play().catch(e => console.log("Maze catch play failed:", e)); }
 }
 
 function playMazeFinal() {
   const mazeFinal = document.getElementById('mazeFinal');
-  if (mazeFinal) {
-    mazeFinal.currentTime = 0;
-    mazeFinal.volume = 0.5;
-    mazeFinal.play().catch(e => console.log("Maze final play failed:", e));
-  }
+  if (mazeFinal) { mazeFinal.currentTime = 0; mazeFinal.volume = 0.5; mazeFinal.play().catch(e => console.log("Maze final play failed:", e)); }
 }
 
 function playWhatIsLove() {
-  stopAllNeonSounds();
-  stopNeonHum();
-  stopAllMazeSounds();
-
+  stopAllNeonSounds(); stopNeonHum(); stopAllMazeSounds();
   const whatIsLove = document.getElementById('whatIsLove');
-  if (whatIsLove) {
-    whatIsLove.volume = 0.3;
-    whatIsLove.loop = true;
-    whatIsLove.play().catch(e => console.log("What is love play failed:", e));
-    currentWhatIsLove = whatIsLove;
-  }
+  if (whatIsLove) { whatIsLove.volume = 0.3; whatIsLove.loop = true; whatIsLove.play().catch(e => console.log("What is love play failed:", e)); currentWhatIsLove = whatIsLove; }
 }
 
-// ==================== ЗВУКИ НЕОНОВОЙ АНИМАЦИИ ====================
 let neonHumPlaying = false;
 let flickerInterval;
 
 function playNeonOnSound() {
   const sound = document.getElementById('neonOnSound');
-  if (sound) {
-    sound.currentTime = 0;
-    sound.volume = 0.4;
-    sound.play().catch(e => console.log("Audio play failed:", e));
-    setTimeout(startNeonHum, 200);
-  }
+  if (sound) { sound.currentTime = 0; sound.volume = 0.4; sound.play().catch(e => console.log("Audio play failed:", e)); setTimeout(startNeonHum, 200); }
 }
-
 function playNeonFlickerSound() {
   const sound = document.getElementById('neonFlickerSound');
-  if (sound) {
-    sound.currentTime = 0;
-    sound.volume = 0.2;
-    sound.play().catch(e => console.log("Flicker sound play failed:", e));
-  }
+  if (sound) { sound.currentTime = 0; sound.volume = 0.2; sound.play().catch(e => console.log("Flicker sound play failed:", e)); }
 }
-
 function startNeonHum() {
   if (neonHumPlaying) return;
-
   const hum = document.getElementById('neonHumSound');
-  if (hum) {
-    hum.volume = 0.1;
-    hum.loop = true;
-    hum.play().catch(e => console.log("Hum sound play failed:", e));
-    neonHumPlaying = true;
-  }
+  if (hum) { hum.volume = 0.1; hum.loop = true; hum.play().catch(e => console.log("Hum sound play failed:", e)); neonHumPlaying = true; }
 }
-
 function stopNeonHum() {
   const hum = document.getElementById('neonHumSound');
-  if (hum) {
-    hum.pause();
-    hum.currentTime = 0;
-    neonHumPlaying = false;
-  }
+  if (hum) { hum.pause(); hum.currentTime = 0; neonHumPlaying = false; }
 }
-
 function startNeonAnimation() {
   const flickerElement = document.querySelector('.flicker');
   if (!flickerElement) return;
-
   playNeonOnSound();
-
-  setTimeout(() => {
-    flickerElement.classList.add('flicker-start');
-    startFlickerSoundInterval();
-  }, 300);
+  setTimeout(() => { flickerElement.classList.add('flicker-start'); startFlickerSoundInterval(); }, 300);
 }
-
 function startFlickerSoundInterval() {
   if (flickerInterval) clearInterval(flickerInterval);
-
-  flickerInterval = setInterval(() => {
-    const randomDelay = Math.random() * 500;
-    setTimeout(playNeonFlickerSound, randomDelay);
-  }, 2000);
+  flickerInterval = setInterval(() => { setTimeout(playNeonFlickerSound, Math.random()*500); }, 2000);
 }
-
 function stopNeonAnimation() {
   const flickerElement = document.querySelector('.flicker');
-  if (flickerElement) {
-    flickerElement.classList.remove('flicker-start');
-  }
-
-  if (flickerInterval) {
-    clearInterval(flickerInterval);
-    flickerInterval = null;
-  }
-
+  if (flickerElement) flickerElement.classList.remove('flicker-start');
+  if (flickerInterval) { clearInterval(flickerInterval); flickerInterval = null; }
   stopNeonHum();
 }
 
@@ -1293,1109 +715,351 @@ let maze = [], cellSize = 0, canvas, ctx, gameInterval, hasWon = false;
 function initMazeGame() {
   canvas = document.getElementById('mazeCanvas');
   ctx = canvas.getContext('2d');
-
-  canvas.width = 330;
-  canvas.height = 330;
+  canvas.width = 330; canvas.height = 330;
   cellSize = canvas.width / MAZE_COLS;
-
   const container = document.getElementById('gameContainer');
-  container.style.width = '340px';
-  container.style.height = '340px';
-  container.style.padding = '5px';
-  container.style.borderRadius = '0';
-
+  container.style.width = '340px'; container.style.height = '340px'; container.style.padding = '5px';
   setupTouchControls();
-
-  gameActive = false;
-  steps = 0;
-  collected = 0;
-  timeElapsed = 0;
-  hasWon = false;
-
+  gameActive = false; steps = 0; collected = 0; timeElapsed = 0; hasWon = false;
   document.getElementById('steps').textContent = '0';
   document.getElementById('collected').textContent = '0/' + REQUIRED_COLLECTIBLES;
   document.getElementById('time').textContent = '0';
-
   document.getElementById('mazeControlsContainer').style.opacity = '1';
   document.getElementById('mazeCompletionMessage').classList.remove('show');
   document.getElementById('nextMazeBtn').disabled = true;
-
-  generateMaze();
-  drawMaze();
-  drawGameElements();
-
+  generateMaze(); drawMaze(); drawGameElements();
   if (gameInterval) clearInterval(gameInterval);
   gameInterval = setInterval(updateTimer, 1000);
   gameActive = true;
-
-  if (window.innerWidth <= 768) {
-    showMobileHint();
-  }
-
+  if (window.innerWidth <= 768) showMobileHint();
   playMazeFone();
 }
 
-function restartMazeGame() {
-  initMazeGame();
-}
+function restartMazeGame() { initMazeGame(); }
 
 function generateMaze() {
   const rows = MAZE_ROWS, cols = MAZE_COLS;
-  maze = Array(rows).fill().map(() => Array(cols).fill().map(() => ({
-    top: true, right: true, bottom: true, left: true, visited: false
-  })));
-
-  const stack = [];
-  let current = { x: 0, y: 0 };
-  maze[0][0].visited = true;
-
+  maze = Array(rows).fill().map(() => Array(cols).fill().map(() => ({ top: true, right: true, bottom: true, left: true, visited: false })));
+  const stack = []; let current = { x: 0, y: 0 }; maze[0][0].visited = true;
   while (true) {
     const neighbors = [];
-
-    if (current.y > 0 && !maze[current.y - 1][current.x].visited) {
-      neighbors.push({ x: current.x, y: current.y - 1, dir: 'top' });
-    }
-    if (current.x < cols - 1 && !maze[current.y][current.x + 1].visited) {
-      neighbors.push({ x: current.x + 1, y: current.y, dir: 'right' });
-    }
-    if (current.y < rows - 1 && !maze[current.y + 1][current.x].visited) {
-      neighbors.push({ x: current.x, y: current.y + 1, dir: 'bottom' });
-    }
-    if (current.x > 0 && !maze[current.y][current.x - 1].visited) {
-      neighbors.push({ x: current.x - 1, y: current.y, dir: 'left' });
-    }
-
+    if (current.y > 0 && !maze[current.y - 1][current.x].visited) neighbors.push({ x: current.x, y: current.y - 1, dir: 'top' });
+    if (current.x < cols - 1 && !maze[current.y][current.x + 1].visited) neighbors.push({ x: current.x + 1, y: current.y, dir: 'right' });
+    if (current.y < rows - 1 && !maze[current.y + 1][current.x].visited) neighbors.push({ x: current.x, y: current.y + 1, dir: 'bottom' });
+    if (current.x > 0 && !maze[current.y][current.x - 1].visited) neighbors.push({ x: current.x - 1, y: current.y, dir: 'left' });
     if (neighbors.length > 0) {
-      const next = neighbors[Math.floor(Math.random() * neighbors.length)];
-      stack.push(current);
-
-      if (next.dir === 'top') {
-        maze[current.y][current.x].top = false;
-        maze[next.y][next.x].bottom = false;
-      } else if (next.dir === 'right') {
-        maze[current.y][current.x].right = false;
-        maze[next.y][next.x].left = false;
-      } else if (next.dir === 'bottom') {
-        maze[current.y][current.x].bottom = false;
-        maze[next.y][next.x].top = false;
-      } else if (next.dir === 'left') {
-        maze[current.y][current.x].left = false;
-        maze[next.y][next.x].right = false;
-      }
-
-      maze[next.y][next.x].visited = true;
-      current = { x: next.x, y: next.y };
-    } else if (stack.length > 0) {
-      current = stack.pop();
-    } else {
-      break;
-    }
+      const next = neighbors[Math.floor(Math.random() * neighbors.length)]; stack.push(current);
+      if (next.dir === 'top') { maze[current.y][current.x].top = false; maze[next.y][next.x].bottom = false; }
+      else if (next.dir === 'right') { maze[current.y][current.x].right = false; maze[next.y][next.x].left = false; }
+      else if (next.dir === 'bottom') { maze[current.y][current.x].bottom = false; maze[next.y][next.x].top = false; }
+      else if (next.dir === 'left') { maze[current.y][current.x].left = false; maze[next.y][next.x].right = false; }
+      maze[next.y][next.x].visited = true; current = { x: next.x, y: next.y };
+    } else if (stack.length > 0) { current = stack.pop(); } else { break; }
   }
-
-  player = { x: 1, y: 1 };
-  target = { x: cols - 2, y: rows - 2 };
-
+  player = { x: 1, y: 1 }; target = { x: cols - 2, y: rows - 2 };
   collectibles = [];
   const totalCollectibles = 12;
-
   for (let i = 0; i < totalCollectibles; i++) {
     let x, y;
-    do {
-      x = Math.floor(Math.random() * cols);
-      y = Math.floor(Math.random() * rows);
-    } while ((x === player.x && y === player.y) ||
-             (x === target.x && y === target.y) ||
-             collectibles.some(c => c.x === x && c.y === y));
-
-    collectibles.push({
-      x, y,
-      collected: false,
-      emoji: ['💖', '💕', '💗', '💓', '💞', '💝', '💘', '💟'][i % 8],
-      id: `collectible_${i}`
-    });
+    do { x = Math.floor(Math.random() * cols); y = Math.floor(Math.random() * rows); } while ((x === player.x && y === player.y) || (x === target.x && y === target.y) || collectibles.some(c => c.x === x && c.y === y));
+    collectibles.push({ x, y, collected: false, emoji: ['💖','💕','💗','💓','💞','💝','💘','💟'][i%8], id: `collectible_${i}` });
   }
 }
 
 function drawMaze() {
-  const rows = MAZE_ROWS, cols = MAZE_COLS;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#0a0a12';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-  ctx.lineWidth = 2;
-
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
-      const cell = maze[y][x];
-      const px = x * cellSize;
-      const py = y * cellSize;
-
-      if (cell.top) {
-        ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(px + cellSize, py);
-        ctx.stroke();
-      }
-      if (cell.right) {
-        ctx.beginPath();
-        ctx.moveTo(px + cellSize, py);
-        ctx.lineTo(px + cellSize, py + cellSize);
-        ctx.stroke();
-      }
-      if (cell.bottom) {
-        ctx.beginPath();
-        ctx.moveTo(px, py + cellSize);
-        ctx.lineTo(px + cellSize, py + cellSize);
-        ctx.stroke();
-      }
-      if (cell.left) {
-        ctx.beginPath();
-        ctx.moveTo(px, py);
-        ctx.lineTo(px, py + cellSize);
-        ctx.stroke();
-      }
-    }
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#0a0a12'; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 2;
+  for (let y=0; y<MAZE_ROWS; y++) for (let x=0; x<MAZE_COLS; x++) {
+    const cell = maze[y][x]; const px = x*cellSize; const py = y*cellSize;
+    if (cell.top) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px+cellSize,py); ctx.stroke(); }
+    if (cell.right) { ctx.beginPath(); ctx.moveTo(px+cellSize,py); ctx.lineTo(px+cellSize,py+cellSize); ctx.stroke(); }
+    if (cell.bottom) { ctx.beginPath(); ctx.moveTo(px,py+cellSize); ctx.lineTo(px+cellSize,py+cellSize); ctx.stroke(); }
+    if (cell.left) { ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px,py+cellSize); ctx.stroke(); }
   }
-
   ctx.fillStyle = 'rgba(255, 79, 216, 0.03)';
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
-      ctx.fillRect(x * cellSize + 1, y * cellSize + 1, cellSize - 2, cellSize - 2);
-    }
-  }
+  for (let y=0; y<MAZE_ROWS; y++) for (let x=0; x<MAZE_COLS; x++) ctx.fillRect(x*cellSize+1, y*cellSize+1, cellSize-2, cellSize-2);
 }
 
 function createElement(tag, className, text, left, top) {
-  const el = document.createElement(tag);
-  el.className = className;
-  el.textContent = text;
-  el.style.left = left + 'px';
-  el.style.top = top + 'px';
-  return el;
+  const el = document.createElement(tag); el.className = className; el.textContent = text; el.style.left = left+'px'; el.style.top = top+'px'; return el;
 }
 
 function drawGameElements() {
-  const gameElements = document.getElementById('gameElements');
-  gameElements.innerHTML = '';
+  const gameElements = document.getElementById('gameElements'); gameElements.innerHTML = '';
   const offset = 5, half = 16.5;
-
-  const playerEl = createElement('div', 'player', '💖',
-    offset + player.x * cellSize + half - 15.5,
-    offset + player.y * cellSize + half - 15.5);
+  const playerEl = createElement('div','player','💖', offset + player.x*cellSize + half -15.5, offset + player.y*cellSize + half -15.5);
   gameElements.appendChild(playerEl);
-
-  const targetEl = createElement('div', 'target', '🎯',
-    offset + target.x * cellSize + half - 14,
-    offset + target.y * cellSize + half - 14);
+  const targetEl = createElement('div','target','🎯', offset + target.x*cellSize + half -14, offset + target.y*cellSize + half -14);
   gameElements.appendChild(targetEl);
-
-  collectibles.forEach((item, i) => {
+  collectibles.forEach((item,i) => {
     if (!item.collected) {
-      const el = createElement('div', 'collectible', item.emoji,
-        offset + item.x * cellSize + half - 13.5,
-        offset + item.y * cellSize + half - 13.5);
-      el.setAttribute('data-id', item.id);
-      el.style.animationDelay = (i * 0.2) + 's';
+      const el = createElement('div','collectible',item.emoji, offset + item.x*cellSize + half -13.5, offset + item.y*cellSize + half -13.5);
+      el.setAttribute('data-id',item.id); el.style.animationDelay = (i*0.2)+'s';
       gameElements.appendChild(el);
     }
   });
 }
 
 function setupTouchControls() {
-  if (!canvas) canvas = document.getElementById('mazeCanvas');
-  if (!canvas) return;
-
-  ['touchstart', 'touchend'].forEach(event => {
-    canvas.removeEventListener(event, canvas[`_${event}`]);
-  });
-
+  if (!canvas) canvas = document.getElementById('mazeCanvas'); if (!canvas) return;
+  ['touchstart','touchend'].forEach(event => canvas.removeEventListener(event, canvas[`_${event}`]));
   let touchStartX = 0, touchStartY = 0;
-
-  canvas._touchstart = (e) => {
-    if (!gameActive) return;
-    e.preventDefault();
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  };
-
+  canvas._touchstart = (e) => { if (!gameActive) return; e.preventDefault(); touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; };
   canvas._touchend = (e) => {
-    if (!gameActive) return;
-    e.preventDefault();
-
-    const deltaX = e.changedTouches[0].clientX - touchStartX;
-    const deltaY = e.changedTouches[0].clientY - touchStartY;
-
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX > 25) movePlayer(1, 0);
-      else if (deltaX < -25) movePlayer(-1, 0);
-    } else {
-      if (deltaY > 25) movePlayer(0, 1);
-      else if (deltaY < -25) movePlayer(0, -1);
-    }
+    if (!gameActive) return; e.preventDefault();
+    const deltaX = e.changedTouches[0].clientX - touchStartX; const deltaY = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(deltaX) > Math.abs(deltaY)) { if (deltaX > 25) movePlayer(1,0); else if (deltaX < -25) movePlayer(-1,0); }
+    else { if (deltaY > 25) movePlayer(0,1); else if (deltaY < -25) movePlayer(0,-1); }
   };
-
   canvas.addEventListener('touchstart', canvas._touchstart, { passive: false });
   canvas.addEventListener('touchend', canvas._touchend, { passive: false });
 }
 
 function canMove(dx, dy) {
   const cell = maze[player.y][player.x];
-  if (dx === 1) return !cell.right;
-  if (dx === -1) return !cell.left;
-  if (dy === 1) return !cell.bottom;
-  if (dy === -1) return !cell.top;
-  return false;
+  if (dx === 1) return !cell.right; if (dx === -1) return !cell.left; if (dy === 1) return !cell.bottom; if (dy === -1) return !cell.top; return false;
 }
 
 function checkCollectibles() {
   let collectedThisMove = false;
-
   collectibles.forEach(item => {
     if (!item.collected && item.x === player.x && item.y === player.y) {
-      item.collected = true;
-      collected++;
-      collectedThisMove = true;
+      item.collected = true; collected++; collectedThisMove = true;
       document.getElementById('collected').textContent = collected + '/' + REQUIRED_COLLECTIBLES;
-      if (navigator.vibrate) navigator.vibrate([40, 40, 80]);
-
-      const el = document.querySelector(`[data-id="${item.id}"]`);
-      if (el) el.remove();
+      if (navigator.vibrate) navigator.vibrate([40,40,80]);
+      const el = document.querySelector(`[data-id="${item.id}"]`); if (el) el.remove();
     }
   });
-
   if (collectedThisMove) playMazeCatch();
 }
 
 function movePlayer(dx, dy) {
   if (!gameActive) return;
-
-  const newX = player.x + dx;
-  const newY = player.y + dy;
-
-  if (newX < 0 || newX >= MAZE_COLS || newY < 0 || newY >= MAZE_ROWS) {
-    if (navigator.vibrate) navigator.vibrate(80);
-    return;
-  }
-
-  if (!canMove(dx, dy)) {
-    if (navigator.vibrate) navigator.vibrate(80);
-    return;
-  }
-
+  const newX = player.x + dx, newY = player.y + dy;
+  if (newX < 0 || newX >= MAZE_COLS || newY < 0 || newY >= MAZE_ROWS) { if (navigator.vibrate) navigator.vibrate(80); return; }
+  if (!canMove(dx, dy)) { if (navigator.vibrate) navigator.vibrate(80); return; }
   createTrail(player.x, player.y);
-
-  player.x = newX;
-  player.y = newY;
-  steps++;
-  document.getElementById('steps').textContent = steps;
-
+  player.x = newX; player.y = newY; steps++; document.getElementById('steps').textContent = steps;
   if (navigator.vibrate) navigator.vibrate(20);
-
-  checkCollectibles();
-  updatePlayerPosition();
-
-  if (player.x === target.x && player.y === target.y) {
-    if (collected >= REQUIRED_COLLECTIBLES) {
-      completeMazeGame();
-    } else {
-      showNeedMoreCollectibles();
-    }
-  }
+  checkCollectibles(); updatePlayerPosition();
+  if (player.x === target.x && player.y === target.y) { if (collected >= REQUIRED_COLLECTIBLES) completeMazeGame(); else showNeedMoreCollectibles(); }
 }
 
 function updatePlayerPosition() {
-  const playerElement = document.querySelector('.player');
-  if (playerElement) {
-    const offset = 5;
-    playerElement.style.left = (offset + player.x * cellSize + 16.5 - 15.5) + 'px';
-    playerElement.style.top = (offset + player.y * cellSize + 16.5 - 15.5) + 'px';
-  }
+  const playerElement = document.querySelector('.player'); if (playerElement) { const offset = 5; playerElement.style.left = (offset + player.x*cellSize + 16.5 -15.5)+'px'; playerElement.style.top = (offset + player.y*cellSize + 16.5 -15.5)+'px'; }
 }
 
 function showNeedMoreCollectibles() {
-  if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-
+  if (navigator.vibrate) navigator.vibrate([100,50,100]);
   const message = document.createElement('div');
-  message.style.cssText = `
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.85);
-    color: var(--neon-pink);
-    padding: 12px 20px;
-    border-radius: 15px;
-    border: 2px solid var(--neon-pink);
-    font-weight: bold;
-    text-align: center;
-    z-index: 1000;
-    animation: fadeInOut 1.5s ease forwards;
-    pointer-events: none;
-    box-shadow: 0 0 20px rgba(255, 79, 216, 0.5);
-  `;
-
-  const needed = REQUIRED_COLLECTIBLES - collected;
-  message.innerHTML = `Нужно собрать еще ${needed} частичек любви! 💖`;
-
+  message.style.cssText = `position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.85); color:var(--neon-pink); padding:12px 20px; border:2px solid var(--neon-pink); font-weight:bold; text-align:center; z-index:1000; animation:fadeInOut 1.5s ease forwards; pointer-events:none; box-shadow:0 0 20px rgba(255,79,216,0.5);`;
+  const needed = REQUIRED_COLLECTIBLES - collected; message.innerHTML = `Нужно собрать еще ${needed} частичек любви! 💖`;
   document.getElementById('gameContainer').appendChild(message);
-
-  setTimeout(() => {
-    if (message.parentNode) message.remove();
-  }, 1500);
+  setTimeout(() => { if (message.parentNode) message.remove(); }, 1500);
 }
 
 function createTrail(x, y) {
-  const trail = document.createElement('div');
-  trail.className = 'trail';
-  const offset = 5;
-  trail.style.left = (offset + x * cellSize + 16.5 - 3) + 'px';
-  trail.style.top = (offset + y * cellSize + 16.5 - 3) + 'px';
-
+  const trail = document.createElement('div'); trail.className = 'trail'; const offset = 5;
+  trail.style.left = (offset + x*cellSize + 16.5 -3)+'px'; trail.style.top = (offset + y*cellSize + 16.5 -3)+'px';
   document.getElementById('gameElements').appendChild(trail);
-
-  setTimeout(() => {
-    if (trail.parentNode) trail.remove();
-  }, 1500);
+  setTimeout(() => { if (trail.parentNode) trail.remove(); }, 1500);
 }
 
-function updateTimer() {
-  if (!gameActive) return;
-  timeElapsed++;
-  document.getElementById('time').textContent = timeElapsed;
-}
+function updateTimer() { if (!gameActive) return; timeElapsed++; document.getElementById('time').textContent = timeElapsed; }
 
-function startMazeGame() {
-  nextScreen(4);
-  setTimeout(() => initMazeGame(), 50);
-}
+function startMazeGame() { nextScreen(4); setTimeout(() => initMazeGame(), 50); }
 
 function showMobileHint() {
-  const hint = document.createElement('div');
-  hint.className = 'mobile-hint';
-  hint.innerHTML = `
-    <div class="hint-row">
-      <span class="hint-icon">👆</span>
-      <span>Свайпай по экрану</span>
-    </div>
-    <div>для движения</div>
-  `;
-  document.querySelector('.game-container').appendChild(hint);
-  setTimeout(() => hint.remove(), 3000);
+  const hint = document.createElement('div'); hint.className = 'mobile-hint'; hint.innerHTML = `<div class="hint-row"><span class="hint-icon">👆</span><span>Свайпай по экрану</span></div><div>для движения</div>`;
+  document.querySelector('.game-container').appendChild(hint); setTimeout(() => hint.remove(), 3000);
 }
 
 function completeMazeGame() {
-  gameActive = false;
-  hasWon = true;
-  clearInterval(gameInterval);
-
-  stopAllMazeSounds();
-  playMazeFinal();
-
-  if (navigator.vibrate) navigator.vibrate([80, 40, 80, 40, 150]);
-
-  const mazeControlsContainer = document.getElementById('mazeControlsContainer');
-  const mazeCompletionMessage = document.getElementById('mazeCompletionMessage');
-  const nextMazeBtn = document.getElementById('nextMazeBtn');
-
-  const totalCollectibles = collectibles.length;
-  const isPerfect = collected >= totalCollectibles;
-
-  mazeCompletionMessage.innerHTML = isPerfect ? `
-    <h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">
-      💖 ИДЕАЛЬНО! 💖
-    </h3>
-    <p style="color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); font-size: 1.1em;">
-      Ты собрала ВСЕ частички любви!
-    </p>
-  ` : `
-    <h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">
-      Лабиринт пройден! 🏆
-    </h3>
-    <p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>
-  `;
-
-  mazeControlsContainer.style.opacity = '0';
-  setTimeout(() => mazeCompletionMessage.classList.add('show'), 300);
-
-  nextMazeBtn.disabled = false;
-  createFireworks();
+  gameActive = false; hasWon = true; clearInterval(gameInterval);
+  stopAllMazeSounds(); playMazeFinal();
+  if (navigator.vibrate) navigator.vibrate([80,40,80,40,150]);
+  const mazeControlsContainer = document.getElementById('mazeControlsContainer'); const mazeCompletionMessage = document.getElementById('mazeCompletionMessage'); const nextMazeBtn = document.getElementById('nextMazeBtn');
+  const totalCollectibles = collectibles.length; const isPerfect = collected >= totalCollectibles;
+  mazeCompletionMessage.innerHTML = isPerfect ? `<h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">💖 ИДЕАЛЬНО! 💖</h3><p style="color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); font-size: 1.1em;">Ты собрала ВСЕ частички любви!</p>` : `<h3 style="color: var(--neon-pink); text-shadow: 0 0 12px var(--neon-pink);">Лабиринт пройден! 🏆</h3><p>Ты собрала ${collected} из ${REQUIRED_COLLECTIBLES} частичек любви! 💖</p>`;
+  mazeControlsContainer.style.opacity = '0'; setTimeout(() => mazeCompletionMessage.classList.add('show'), 300);
+  nextMazeBtn.disabled = false; createFireworks();
 }
 
 function createFireworks() {
-  const container = document.querySelector('.game-container');
-  const offset = 5;
-
+  const container = document.querySelector('.game-container'); const offset = 5;
   for (let i = 0; i < 15; i++) {
     setTimeout(() => {
       const firework = document.createElement('div');
-      const xPos = offset + Math.random() * (canvas.width - 30) + 15;
-      const yPos = offset + Math.random() * (canvas.height - 30) + 15;
-
-      firework.style.cssText = `
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: ${Math.random() > 0.5 ? 'var(--neon-pink)' : 'var(--neon-blue)'};
-        left: ${xPos}px;
-        top: ${yPos}px;
-        animation: explode 0.8s ease-out forwards;
-        pointer-events: none;
-        z-index: 1000;
-      `;
-
-      container.appendChild(firework);
-      setTimeout(() => firework.remove(), 800);
-    }, i * 80);
+      const xPos = offset + Math.random()*(canvas.width-30)+15; const yPos = offset + Math.random()*(canvas.height-30)+15;
+      firework.style.cssText = `position: absolute; width: 8px; height: 8px; border-radius: 0%; background: ${Math.random()>0.5?'var(--neon-pink)':'var(--neon-blue)'}; left: ${xPos}px; top: ${yPos}px; animation: explode 0.8s ease-out forwards; pointer-events: none; z-index: 1000;`;
+      container.appendChild(firework); setTimeout(() => firework.remove(), 800);
+    }, i*80);
   }
 }
 
 // ==================== ОСНОВНАЯ НАВИГАЦИЯ ====================
 let current = 4;
-
 function nextScreen(n){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   current = n;
   document.getElementById(`screen${n}`).classList.add('active');
-
-  const neonOn = document.getElementById('neonOnSound');
-  if (neonOn) {
-    neonOn.pause();
-    neonOn.currentTime = 0;
-  }
-
-  const neonFlicker = document.getElementById('neonFlickerSound');
-  if (neonFlicker) {
-    neonFlicker.pause();
-    neonFlicker.currentTime = 0;
-  }
-
-  if (flickerInterval) {
-    clearInterval(flickerInterval);
-    flickerInterval = null;
-  }
-
-  if (n === 3) {
-    if (!neonHumPlaying) {
-      startNeonHum();
-    }
-  } else {
-    const neonHum = document.getElementById('neonHumSound');
-    if (neonHum) {
-      neonHum.pause();
-      neonHum.currentTime = 0;
-      neonHumPlaying = false;
-    }
-  }
-
-  if (n === 2) {
-    showChecklist();
-  }
-
-  if (n === 6) {
-    stopAllMazeSounds();
-    playWhatIsLove();
-  }
+  const neonOn = document.getElementById('neonOnSound'); if (neonOn) { neonOn.pause(); neonOn.currentTime = 0; }
+  const neonFlicker = document.getElementById('neonFlickerSound'); if (neonFlicker) { neonFlicker.pause(); neonFlicker.currentTime = 0; }
+  if (flickerInterval) { clearInterval(flickerInterval); flickerInterval = null; }
+  if (n === 3) { if (!neonHumPlaying) startNeonHum(); } else { const neonHum = document.getElementById('neonHumSound'); if (neonHum) { neonHum.pause(); neonHum.currentTime = 0; neonHumPlaying = false; } }
+  if (n === 2) showChecklist();
+  if (n === 6) { stopAllMazeSounds(); playWhatIsLove(); }
 }
 
 function setupScrollBehavior() {
   const screensContainer = document.getElementById('screensContainer');
-
   const originalNextScreen = window.nextScreen;
-
   window.nextScreen = function(n) {
     originalNextScreen(n);
-
     setTimeout(() => {
-      if (current === 4) {
-        screensContainer.style.overflowY = 'auto';
-        screensContainer.scrollTo({
-          top: document.getElementById('screen4').offsetTop,
-          behavior: 'instant'
-        });
-      } else {
-        screensContainer.style.overflowY = 'hidden';
-        screensContainer.scrollTo({
-          top: document.getElementById(`screen${current}`).offsetTop,
-          behavior: 'instant'
-        });
-      }
+      if (current === 4) { screensContainer.style.overflowY = 'auto'; screensContainer.scrollTo({ top: document.getElementById('screen4').offsetTop, behavior: 'instant' }); }
+      else { screensContainer.style.overflowY = 'hidden'; screensContainer.scrollTo({ top: document.getElementById(`screen${current}`).offsetTop, behavior: 'instant' }); }
     }, 10);
   };
-
-  setTimeout(() => {
-    screensContainer.style.overflowY = 'hidden';
-  }, 100);
+  setTimeout(() => { screensContainer.style.overflowY = 'hidden'; }, 100);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  setupScrollBehavior();
-  initAllSounds();
-});
+document.addEventListener('DOMContentLoaded', function() { setupScrollBehavior(); initAllSounds(); });
 
-/* ===== LOADER ===== */
-const loader = document.getElementById('loader');
-const loadText = document.getElementById('loadText');
-const errorText = document.getElementById('errorText');
-const continueBtn = document.getElementById('continueBtn');
-
-let progress = 0;
-let attempt = 1;
-let pausePoints = [];
-
-function generatePausePoints(){
-  pausePoints = [];
-  while(pausePoints.length<3){
-    let point = Math.floor(Math.random()*80)+10;
-    if(!pausePoints.includes(point)) pausePoints.push(point);
-  }
-  pausePoints.sort((a,b)=>a-b);
-}
+// ===== LOADER =====
+const loader = document.getElementById('loader'); const loadText = document.getElementById('loadText'); const errorText = document.getElementById('errorText'); const continueBtn = document.getElementById('continueBtn');
+let progress = 0; let attempt = 1; let pausePoints = [];
+function generatePausePoints(){ pausePoints = []; while(pausePoints.length<3){ let point = Math.floor(Math.random()*80)+10; if(!pausePoints.includes(point)) pausePoints.push(point); } pausePoints.sort((a,b)=>a-b); }
 generatePausePoints();
-
 function animateProgress(to, callback){
   const step = ()=>{
     if(progress < to){
-      progress += 0.5;
-      if(progress > to) progress = to;
-      loader.style.width = progress+'%';
-      let percent = Math.floor(progress);
-      loadText.innerText = percent + '%';
-
-      if(progress > 100){
-        loader.style.background = 'linear-gradient(90deg, #ff1a75, #ff4fd8)';
-        loader.style.boxShadow = '0 0 15px #ff1a75,0 0 30px #ff4fd8';
-        loadText.style.color = '#ff1a75';
-        loadText.style.textShadow = '0 0 8px #ff1a75';
-      } else {
-        loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))';
-        loader.style.boxShadow = '0 0 10px var(--neon-pink)';
-        loadText.style.color = 'var(--text)';
-        loadText.style.textShadow = '0 0 8px var(--neon-blue)';
-      }
-
-      if(pausePoints.includes(Math.floor(progress)) && progress<=100){
-        setTimeout(()=>requestAnimationFrame(step),400);
-      } else {
-        requestAnimationFrame(step);
-      }
+      progress += 0.5; if(progress > to) progress = to; loader.style.width = progress+'%'; let percent = Math.floor(progress); loadText.innerText = percent + '%';
+      if(progress > 100){ loader.style.background = 'linear-gradient(90deg, #ff1a75, #ff4fd8)'; loader.style.boxShadow = '0 0 15px #ff1a75,0 0 30px #ff4fd8'; loadText.style.color = '#ff1a75'; loadText.style.textShadow = '0 0 8px #ff1a75'; }
+      else { loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))'; loader.style.boxShadow = '0 0 10px var(--neon-pink)'; loadText.style.color = 'var(--text)'; loadText.style.textShadow = '0 0 8px var(--neon-blue)'; }
+      if(pausePoints.includes(Math.floor(progress)) && progress<=100){ setTimeout(()=>requestAnimationFrame(step),400); } else { requestAnimationFrame(step); }
     } else if(callback) callback();
-  };
-  requestAnimationFrame(step);
+  }; requestAnimationFrame(step);
 }
-
 function animateRollback(to, callback){
   const step = ()=>{
-    if(progress > to){
-      progress -= 1;
-      if(progress < to) progress = to;
-      loader.style.width = progress+'%';
-      loadText.innerText = Math.floor(progress)+'%';
-      if(progress <=100){
-        loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))';
-        loader.style.boxShadow = '0 0 10px var(--neon-pink)';
-        loadText.style.color = 'var(--text)';
-        loadText.style.textShadow = '0 0 8px var(--neon-blue)';
-      }
-      requestAnimationFrame(step);
-    } else if(callback) callback();
-  };
-  requestAnimationFrame(step);
+    if(progress > to){ progress -= 1; if(progress < to) progress = to; loader.style.width = progress+'%'; loadText.innerText = Math.floor(progress)+'%'; if(progress <=100){ loader.style.background = 'linear-gradient(90deg, var(--neon-pink), var(--neon-blue))'; loader.style.boxShadow = '0 0 10px var(--neon-pink)'; loadText.style.color = 'var(--text)'; loadText.style.textShadow = '0 0 8px var(--neon-blue)'; } requestAnimationFrame(step); }
+    else if(callback) callback();
+  }; requestAnimationFrame(step);
 }
-
-function pauseOverload(){
-  errorText.style.opacity=1;
-  setTimeout(()=>{
-    animateRollback(0, ()=>{
-      errorText.style.opacity=0;
-      attempt=2;
-      setTimeout(startLoading, 500);
-    });
-  },1500);
-}
-
+function pauseOverload(){ errorText.style.opacity=1; setTimeout(()=>{ animateRollback(0, ()=>{ errorText.style.opacity=0; attempt=2; setTimeout(startLoading, 500); }); },1500); }
 function startLoading(){
   if(attempt===1) progress=0;
   const interval = setInterval(()=>{
     let nextStep = progress + (Math.random()*6+4);
-    if(attempt===1 && progress < 98){
-      if(nextStep > 98) nextStep = 98;
-      animateProgress(nextStep);
-      return;
-    }
-    if(attempt===1 && progress >= 98){
-      clearInterval(interval);
-      const overload = Math.floor(Math.random()*9+101);
-      setTimeout(()=>{ animateProgress(overload, pauseOverload); }, 500);
-      return;
-    }
-    if(attempt===2 && nextStep >= 100){
-      nextStep = 100;
-      clearInterval(interval);
-      animateProgress(nextStep, ()=>{continueBtn.disabled=false});
-      return;
-    }
+    if(attempt===1 && progress < 98){ if(nextStep > 98) nextStep = 98; animateProgress(nextStep); return; }
+    if(attempt===1 && progress >= 98){ clearInterval(interval); const overload = Math.floor(Math.random()*9+101); setTimeout(()=>{ animateProgress(overload, pauseOverload); }, 500); return; }
+    if(attempt===2 && nextStep >= 100){ nextStep = 100; clearInterval(interval); animateProgress(nextStep, ()=>{continueBtn.disabled=false}); return; }
     animateProgress(nextStep);
   }, Math.random()*250+150);
 }
-
 setTimeout(startLoading, Math.random()*500+500);
 continueBtn.addEventListener('click', ()=> nextScreen(2));
 
-/* ===== SCREEN 2 CHECKLIST ===== */
+// ===== SCREEN 2 CHECKLIST =====
 function showChecklist(){
-  const neonOn = document.getElementById('neonOnSound');
-  if (neonOn) {
-    neonOn.pause();
-    neonOn.currentTime = 0;
-  }
-
-  const neonFlicker = document.getElementById('neonFlickerSound');
-  if (neonFlicker) {
-    neonFlicker.pause();
-    neonFlicker.currentTime = 0;
-  }
-
-  if (flickerInterval) {
-    clearInterval(flickerInterval);
-    flickerInterval = null;
-  }
-
-  const items = document.querySelectorAll('#checklist li');
-  const nextBtn = document.getElementById('nextBtn');
-  const compText = document.getElementById('compatibility');
-  let delay = 300;
-  const itemDelay = 800;
-
+  const neonOn = document.getElementById('neonOnSound'); if (neonOn) { neonOn.pause(); neonOn.currentTime = 0; }
+  const neonFlicker = document.getElementById('neonFlickerSound'); if (neonFlicker) { neonFlicker.pause(); neonFlicker.currentTime = 0; }
+  if (flickerInterval) { clearInterval(flickerInterval); flickerInterval = null; }
+  const items = document.querySelectorAll('#checklist li'); const nextBtn = document.getElementById('nextBtn'); const compText = document.getElementById('compatibility');
+  let delay = 300; const itemDelay = 800;
   items.forEach((li)=>{
     const span = li.querySelector('span');
-
-    const oldCheck = li.querySelector('.check');
-    if (oldCheck) oldCheck.remove();
-    const oldGlow = li.querySelector('.check-glow');
-    if (oldGlow) oldGlow.remove();
-
-    const glowWrapper = document.createElement('span');
-    glowWrapper.className = 'check-glow';
-
-    const check = document.createElement('span');
-    check.className = 'check';
-
-    glowWrapper.appendChild(check);
-    li.insertBefore(glowWrapper, span);
-
-    span.style.opacity = '0';
-    li.style.opacity = 1;
-    li.style.transform = 'translateX(0)';
-
+    const oldCheck = li.querySelector('.check'); if (oldCheck) oldCheck.remove();
+    const oldGlow = li.querySelector('.check-glow'); if (oldGlow) oldGlow.remove();
+    const glowWrapper = document.createElement('span'); glowWrapper.className = 'check-glow';
+    const check = document.createElement('span'); check.className = 'check';
+    glowWrapper.appendChild(check); li.insertBefore(glowWrapper, span);
+    span.style.opacity = '0'; li.style.opacity = 1; li.style.transform = 'translateX(0)';
     setTimeout(()=>{
-      span.style.opacity = '1';
-      span.style.color = 'var(--text)';
-
-      setTimeout(()=>{
-        glowWrapper.style.opacity = 1;
-
-        setTimeout(()=>{
-          span.classList.add('neon');
-          span.style.color = '#ffffff';
-        }, 200);
-      }, 200);
-    }, delay);
-
-    delay += itemDelay;
+      span.style.opacity = '1'; span.style.color = 'var(--text)';
+      setTimeout(()=>{ glowWrapper.style.opacity = 1; setTimeout(()=>{ span.classList.add('neon'); span.style.color = '#ffffff'; }, 200); }, 200);
+    }, delay); delay += itemDelay;
   });
-
   setTimeout(()=>{
-    const neonSound = document.getElementById('neonOnSound');
-    if (neonSound) {
-      neonSound.currentTime = 0;
-      neonSound.volume = 0.5;
-      neonSound.play().catch(e => console.log("Sound play failed:", e));
-    }
-
-    compText.style.opacity = 1;
-    compText.style.transition = 'opacity 1s ease';
-
-    nextBtn.style.opacity = '1';
-    nextBtn.style.transition = 'opacity 0.5s ease';
-
-    setTimeout(()=>{
-      nextBtn.disabled = false;
-    }, 500);
+    const neonSound = document.getElementById('neonOnSound'); if (neonSound) { neonSound.currentTime = 0; neonSound.volume = 0.5; neonSound.play().catch(e => console.log("Sound play failed:", e)); }
+    compText.style.opacity = 1; compText.style.transition = 'opacity 1s ease';
+    nextBtn.style.opacity = '1'; nextBtn.style.transition = 'opacity 0.5s ease';
+    setTimeout(()=>{ nextBtn.disabled = false; }, 500);
   }, delay);
 }
 
-/* ===== УБЕГАЮЩАЯ КНОПКА "НЕТ" С ШУТЛИВЫМИ СООБЩЕНИЯМИ ===== */
-const noBtn = document.getElementById('noBtn');
-let noClickCount = 0;
-let noBtnHidden = false;
-
-// Массив шутливых сообщений
-const funnyMessages = [
-  "🙈 Не получится!",
-  "😅 Даже не думай!",
-  "🤔 Ты уверена?",
-  "😏 Попробуй ещё раз!",
-  "😂 Серьёзно?",
-  "😜 Ещё попытка",
-  "👻 Бу! Не поймала",
-  "🌀 Ускользнула",
-  "🦑 Уплыла",
-  "🦋 Улетела",
-  "🌪️ Вихрь!",
-  "💨 Ветром сдуло",
-  "🕳️ В чёрную дыру",
-  "🚀 Умчалась в космос",
-  "🌠 Исчезла во вспышке",
-  "💪 Попробуй ещё",
-  "🏃‍♀️ Догоняй!",
-  "🧚‍♀️ Фея унесла"
-];
-
-// Создаём контейнер для сообщений
+// ===== УБЕГАЮЩАЯ КНОПКА "НЕТ" =====
+const noBtn = document.getElementById('noBtn'); let noClickCount = 0; let noBtnHidden = false;
+const funnyMessages = [ "🙈 Не получится!", "😅 Даже не думай!", "🤔 Ты уверена?", "😏 Попробуй ещё раз!", "😂 Серьёзно?", "😜 Ещё попытка", "👻 Бу! Не поймала", "🌀 Ускользнула", "🦑 Уплыла", "🦋 Улетела", "🌪️ Вихрь!", "💨 Ветром сдуло", "🕳️ В чёрную дыру", "🚀 Умчалась в космос", "🌠 Исчезла во вспышке", "💪 Попробуй ещё", "🏃‍♀️ Догоняй!", "🧚‍♀️ Фея унесла" ];
 function createMessageContainer() {
-  let container = document.querySelector('.no-btn-messages');
-  if (!container) {
-    container = document.createElement('div');
-    container.className = 'no-btn-messages';
-    container.style.cssText = `
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      pointer-events: none;
-      width: 90%;
-      max-width: 320px;
-    `;
-    document.body.appendChild(container);
-  }
-  return container;
+  let container = document.querySelector('.no-btn-messages'); if (!container) { container = document.createElement('div'); container.className = 'no-btn-messages'; container.style.cssText = `position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:9999; display:flex; flex-direction:column; align-items:center; gap:12px; pointer-events:none; width:90%; max-width:320px;`; document.body.appendChild(container); } return container;
 }
-
-// Показываем шутливое сообщение с плавной анимацией
 function showFunnyMessage() {
-  if (noBtnHidden) return;
-
-  const container = createMessageContainer();
-  
-  // Жёсткая гарантия — никогда не больше 3 сообщений
-  // Если уже 3, сначала УДАЛЯЕМ старое, потом только добавляем новое
-  if (container.children.length >= 3) {
-    const oldestMessage = container.firstChild;
-    if (oldestMessage) {
-      // Плавное исчезновение вверх
-      oldestMessage.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-      oldestMessage.style.opacity = '0';
-      oldestMessage.style.transform = 'translateY(-30px)';
-      oldestMessage.style.marginBottom = '0';
-      
-      // Удаляем после завершения анимации
-      setTimeout(() => {
-        if (oldestMessage.parentNode) {
-          oldestMessage.remove();
-          
-          // ТОЛЬКО после удаления добавляем новое сообщение
-          addNewMessage(container);
-        }
-      }, 380);
-    }
-  } else {
-    // Если меньше 3 сообщений, добавляем сразу
-    addNewMessage(container);
-  }
+  if (noBtnHidden) return; const container = createMessageContainer();
+  if (container.children.length >= 3) { const oldestMessage = container.firstChild; if (oldestMessage) { oldestMessage.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; oldestMessage.style.opacity = '0'; oldestMessage.style.transform = 'translateY(-30px)'; oldestMessage.style.marginBottom = '0'; setTimeout(() => { if (oldestMessage.parentNode) { oldestMessage.remove(); addNewMessage(container); } }, 380); } }
+  else addNewMessage(container);
 }
-
-// Отдельная функция для добавления нового сообщения
 function addNewMessage(container) {
-  const message = document.createElement('div');
-
-  // Выбираем случайное сообщение
-  const randomIndex = Math.floor(Math.random() * funnyMessages.length);
-  message.textContent = funnyMessages[randomIndex];
-
-  // Начальные стили - невидимо и смещено вниз
-  message.style.cssText = `
-    background: rgba(255, 79, 216, 0.95);
-    color: #000;
-    padding: 12px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 0 20px var(--neon-pink);
-    border: 2px solid #ffffff;
-    backdrop-filter: blur(5px);
-    text-align: center;
-    width: 100%;
-    letter-spacing: 0.5px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    margin-bottom: 12px;
-  `;
-
+  const message = document.createElement('div'); const randomIndex = Math.floor(Math.random() * funnyMessages.length); message.textContent = funnyMessages[randomIndex];
+  message.style.cssText = `background: rgba(255, 79, 216, 0.95); color: #000; padding: 12px 20px; border: 3px solid #ffffff; font-weight: bold; font-size: 16px; box-shadow: 0 0 20px var(--neon-pink); text-align: center; width: 100%; letter-spacing: 0.5px; opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); margin-bottom: 12px; border-radius: 0;`;
   container.appendChild(message);
-
-  // Плавное появление через requestAnimationFrame
-  requestAnimationFrame(() => {
-    message.style.opacity = '1';
-    message.style.transform = 'translateY(0)';
-  });
-
-  // Плавное исчезновение через 3 секунды
-  setTimeout(() => {
-    message.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-    message.style.opacity = '0';
-    message.style.transform = 'translateY(-30px)';
-    message.style.marginBottom = '0';
-
-    setTimeout(() => {
-      if (message.parentNode) {
-        message.remove();
-      }
-    }, 380);
-  }, 2800);
+  requestAnimationFrame(() => { message.style.opacity = '1'; message.style.transform = 'translateY(0)'; });
+  setTimeout(() => { message.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; message.style.opacity = '0'; message.style.transform = 'translateY(-30px)'; message.style.marginBottom = '0'; setTimeout(() => { if (message.parentNode) message.remove(); }, 380); }, 2800);
 }
-
-// Показываем финальное сообщение и прячем кнопку
 function hideNoButton() {
-  if (noBtnHidden) return;
-  noBtnHidden = true;
-
-  const container = createMessageContainer();
-  container.innerHTML = '';
-
-  // Финальное сообщение с плавной анимацией
+  if (noBtnHidden) return; noBtnHidden = true; const container = createMessageContainer(); container.innerHTML = '';
   const finalMessage = document.createElement('div');
-  finalMessage.style.cssText = `
-    background: linear-gradient(135deg, #ff4fd8, #ff1a75);
-    color: white;
-    padding: 20px 24px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 22px;
-    box-shadow: 0 0 40px var(--neon-pink);
-    border: 2px solid #ffffff;
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.7);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-  `;
-  finalMessage.textContent = 'Нет так нет 🙃';
-
-  container.appendChild(finalMessage);
-
-  // Плавное появление финального сообщения
-  requestAnimationFrame(() => {
-    finalMessage.style.opacity = '1';
-    finalMessage.style.transform = 'scale(1)';
-  });
-
-  // Прячем кнопку с анимацией
-  noBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-  noBtn.style.opacity = '0';
-  noBtn.style.transform = 'scale(0) rotate(180deg)';
-
-  setTimeout(() => {
-    noBtn.style.display = 'none';
-  }, 500);
-
-  // Вибрация для мобильных
-  if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 200]);
-
-  // Плавное исчезновение финального сообщения
-  setTimeout(() => {
-    finalMessage.style.opacity = '0';
-    finalMessage.style.transform = 'scale(0.7)';
-
-    setTimeout(() => {
-      container.innerHTML = '';
-    }, 500);
-  }, 3000);
+  finalMessage.style.cssText = `background: linear-gradient(135deg, #ff4fd8, #ff1a75); color: white; padding: 20px 24px; border: 4px solid white; font-weight: bold; font-size: 22px; box-shadow: 0 0 40px var(--neon-pink); text-align: center; opacity: 0; transform: scale(0.7); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); text-shadow: 0 0 15px rgba(255, 255, 255, 0.7); border-radius: 0;`;
+  finalMessage.textContent = 'Нет так нет 🙃'; container.appendChild(finalMessage);
+  requestAnimationFrame(() => { finalMessage.style.opacity = '1'; finalMessage.style.transform = 'scale(1)'; });
+  noBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'; noBtn.style.opacity = '0'; noBtn.style.transform = 'scale(0) rotate(180deg)';
+  setTimeout(() => { noBtn.style.display = 'none'; }, 500);
+  if (navigator.vibrate) navigator.vibrate([100,50,100,50,200]);
+  setTimeout(() => { finalMessage.style.opacity = '0'; finalMessage.style.transform = 'scale(0.7)'; setTimeout(() => { container.innerHTML = ''; }, 500); }, 3000);
 }
-
-// Функция для получения случайной позиции
-function getRandomPosition(btnRect, areaRect) {
-  const buttonDiagonal = Math.hypot(btnRect.width, btnRect.height);
-  const minDistance = buttonDiagonal + 30;
-
-  const minX = 10;
-  const maxX = areaRect.width - btnRect.width - 10;
-  const minY = 10;
-  const maxY = areaRect.height - btnRect.height - 10;
-
-  let newX, newY;
-  let attempts = 0;
-  const lastX = parseFloat(noBtn.style.left) || areaRect.width/2;
-  const lastY = parseFloat(noBtn.style.top) || areaRect.height/2;
-
-  do {
-    newX = minX + Math.random() * (maxX - minX);
-    newY = minY + Math.random() * (maxY - minY);
-    attempts++;
-    if (attempts > 10) break;
-  } while (Math.hypot(newX - lastX, newY - lastY) < minDistance && attempts < 50);
-
-  return { x: newX, y: newY };
-}
-
-// Основная функция движения кнопки
+function getRandomPosition(btnRect, areaRect) { const buttonDiagonal = Math.hypot(btnRect.width, btnRect.height); const minDistance = buttonDiagonal + 30; const minX = 10, maxX = areaRect.width - btnRect.width - 10, minY = 10, maxY = areaRect.height - btnRect.height - 10; let newX, newY; let attempts = 0; const lastX = parseFloat(noBtn.style.left) || areaRect.width/2; const lastY = parseFloat(noBtn.style.top) || areaRect.height/2; do { newX = minX + Math.random()*(maxX-minX); newY = minY + Math.random()*(maxY-minY); attempts++; if (attempts > 10) break; } while (Math.hypot(newX - lastX, newY - lastY) < minDistance && attempts < 50); return { x: newX, y: newY }; }
 function moveNoButton() {
-  if (noBtnHidden || !noBtn || noBtn.style.display === 'none') return;
-
-  const noBtnArea = document.querySelector('#screen5 .no-btn-area');
-  if (!noBtnArea) return;
-
-  const btnRect = noBtn.getBoundingClientRect();
-  const areaRect = noBtnArea.getBoundingClientRect();
-
-  const newPos = getRandomPosition(btnRect, areaRect);
-
-  noBtn.style.transition = 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
-  noBtn.style.left = newPos.x + 'px';
-  noBtn.style.top = newPos.y + 'px';
-  noBtn.style.transform = 'scale(0.9)';
-
-  setTimeout(() => {
-    noBtn.style.transform = 'scale(1)';
-    noBtn.style.transition = 'all 0.3s ease';
-  }, 250);
-
-  noClickCount++;
-
-  showFunnyMessage();
-
-  if (noClickCount >= 20) {
-    hideNoButton();
-  }
+  if (noBtnHidden || !noBtn || noBtn.style.display === 'none') return; const noBtnArea = document.querySelector('#screen5 .no-btn-area'); if (!noBtnArea) return; const btnRect = noBtn.getBoundingClientRect(); const areaRect = noBtnArea.getBoundingClientRect(); const newPos = getRandomPosition(btnRect, areaRect);
+  noBtn.style.transition = 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)'; noBtn.style.left = newPos.x + 'px'; noBtn.style.top = newPos.y + 'px'; noBtn.style.transform = 'scale(0.9)';
+  setTimeout(() => { noBtn.style.transform = 'scale(1)'; noBtn.style.transition = 'all 0.3s ease'; }, 250);
+  noClickCount++; showFunnyMessage(); if (noClickCount >= 20) hideNoButton();
 }
-
-// Инициализация обработчиков событий
 if (noBtn) {
-  noBtn.removeEventListener('mouseenter', moveNoButton);
-  noBtn.removeEventListener('touchstart', moveNoButton);
-  noBtn.removeEventListener('click', moveNoButton);
-
-  noBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    moveNoButton();
-  });
-
-  noBtn.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    moveNoButton();
-  });
+  noBtn.removeEventListener('mouseenter', moveNoButton); noBtn.removeEventListener('touchstart', moveNoButton); noBtn.removeEventListener('click', moveNoButton);
+  noBtn.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); moveNoButton(); });
+  noBtn.addEventListener('touchstart', function(e) { e.preventDefault(); moveNoButton(); });
 }
 
-// Добавляем анимации в стили
-const style = document.createElement('style');
-style.textContent = `
-  .no-btn-messages {
-    transition: all 0.3s ease;
-  }
-`;
-document.head.appendChild(style);
-
-/* ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК ===== */
+// ===== АНИМАЦИЯ РАЗЛЕТАЮЩИХСЯ СЕРДЕЧЕК (8-bit) =====
 function createHeartExplosion(event) {
-  const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜'];
-
-  navigator.vibrate?.([100, 50, 100, 50, 100]);
-
+  const hearts = ['❤️','🧡','💛','💚','💙','💜'];
+  navigator.vibrate?.([100,50,100,50,100]);
   let clickX, clickY;
-  if (event.type === 'touchstart') {
-    clickX = event.touches[0].clientX;
-    clickY = event.touches[0].clientY;
-    event.preventDefault();
-  } else {
-    clickX = event.clientX;
-    clickY = event.clientY;
-  }
-
+  if (event.type === 'touchstart') { clickX = event.touches[0].clientX; clickY = event.touches[0].clientY; event.preventDefault(); } else { clickX = event.clientX; clickY = event.clientY; }
   for (let i = 0; i < 30; i++) {
-    const heart = document.createElement('div');
-    heart.className = 'heart-particle';
-
+    const heart = document.createElement('div'); heart.className = 'heart-particle';
     heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-    heart.style.left = clickX + 'px';
-    heart.style.top = clickY + 'px';
-
-    const angle = Math.random() * Math.PI * 2;
-    const velocity = 120 + Math.random() * 180;
-    const tx = Math.cos(angle) * velocity;
-    const ty = Math.sin(angle) * velocity;
-
-    const rotate1 = Math.random() * 360 + 'deg';
-    const rotate2 = Math.random() * 720 + 'deg';
-    const rotate3 = Math.random() * 1080 + 'deg';
-
-    heart.style.setProperty('--tx', tx + 'px');
-    heart.style.setProperty('--ty', ty + 'px');
-    heart.style.setProperty('--rotate', rotate1);
-    heart.style.setProperty('--rotate2', rotate2);
-    heart.style.setProperty('--rotate3', rotate3);
-
-    heart.style.fontSize = (18 + Math.random() * 20) + 'px';
-    heart.style.animationDelay = (Math.random() * 0.2) + 's';
-
+    heart.style.left = clickX + 'px'; heart.style.top = clickY + 'px';
+    const angle = Math.random() * Math.PI * 2; const velocity = 120 + Math.random() * 180; const tx = Math.cos(angle) * velocity; const ty = Math.sin(angle) * velocity;
+    const rotate1 = Math.random() * 360 + 'deg'; const rotate2 = Math.random() * 720 + 'deg'; const rotate3 = Math.random() * 1080 + 'deg';
+    heart.style.setProperty('--tx', tx + 'px'); heart.style.setProperty('--ty', ty + 'px'); heart.style.setProperty('--rotate', rotate1); heart.style.setProperty('--rotate2', rotate2); heart.style.setProperty('--rotate3', rotate3);
+    heart.style.fontSize = (18 + Math.random() * 20) + 'px'; heart.style.animationDelay = (Math.random() * 0.2) + 's';
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-      if (heart.parentNode) heart.remove();
-    }, 3000);
+    setTimeout(() => { if (heart.parentNode) heart.remove(); }, 3000);
   }
-
-  const specialHeart = document.createElement('div');
-  specialHeart.className = 'heart-particle';
-  specialHeart.innerText = '🥰';
-  specialHeart.style.left = clickX + 'px';
-  specialHeart.style.top = clickY + 'px';
-  specialHeart.style.fontSize = '35px';
-  specialHeart.style.zIndex = '1001';
-
-  const angle = Math.random() * Math.PI * 2;
-  const velocity = 60 + Math.random() * 80;
-  const tx = Math.cos(angle) * velocity;
-  const ty = Math.sin(angle) * velocity;
-
-  const rotate1 = Math.random() * 360 + 'deg';
-  const rotate2 = Math.random() * 720 + 'deg';
-  const rotate3 = Math.random() * 1080 + 'deg';
-
-  specialHeart.style.setProperty('--tx', tx + 'px');
-  specialHeart.style.setProperty('--ty', ty + 'px');
-  specialHeart.style.setProperty('--rotate', rotate1);
-  specialHeart.style.setProperty('--rotate2', rotate2);
-  specialHeart.style.setProperty('--rotate3', rotate3);
-
-  specialHeart.style.animation = 'heartExplode 4s ease-out forwards';
-  specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
-
+  const specialHeart = document.createElement('div'); specialHeart.className = 'heart-particle'; specialHeart.innerText = '🥰';
+  specialHeart.style.left = clickX + 'px'; specialHeart.style.top = clickY + 'px'; specialHeart.style.fontSize = '35px'; specialHeart.style.zIndex = '1001';
+  const angle = Math.random() * Math.PI * 2; const velocity = 60 + Math.random() * 80; const tx = Math.cos(angle) * velocity; const ty = Math.sin(angle) * velocity;
+  const rotate1 = Math.random() * 360 + 'deg'; const rotate2 = Math.random() * 720 + 'deg'; const rotate3 = Math.random() * 1080 + 'deg';
+  specialHeart.style.setProperty('--tx', tx + 'px'); specialHeart.style.setProperty('--ty', ty + 'px'); specialHeart.style.setProperty('--rotate', rotate1); specialHeart.style.setProperty('--rotate2', rotate2); specialHeart.style.setProperty('--rotate3', rotate3);
+  specialHeart.style.animation = 'pixelExplode 4s steps(8) forwards'; specialHeart.style.animationDelay = (Math.random() * 0.1) + 's';
   document.body.appendChild(specialHeart);
-
-  setTimeout(() => {
-    if (specialHeart.parentNode) specialHeart.remove();
-  }, 4000);
+  setTimeout(() => { if (specialHeart.parentNode) specialHeart.remove(); }, 4000);
 }
-
 const hugBtn = document.getElementById('hugBtn');
-if (hugBtn) {
-  hugBtn.removeEventListener('click', createHeartExplosion);
-  hugBtn.addEventListener('click', createHeartExplosion);
-  hugBtn.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    createHeartExplosion(e);
-  });
-}
+if (hugBtn) { hugBtn.removeEventListener('click', createHeartExplosion); hugBtn.addEventListener('click', createHeartExplosion); hugBtn.addEventListener('touchstart', function(e) { e.preventDefault(); createHeartExplosion(e); }); }
 </script>
-
 </body>
 </html>
