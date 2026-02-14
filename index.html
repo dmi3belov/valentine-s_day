@@ -257,10 +257,10 @@
 
         #errorText {
             margin-top: 6px;
-            color: #ff3d77; /*#ffb0ff;*/
+            color: #ff3fb0;/*#ff3d77; /*#ffb0ff;*/
             font-size: 15px;
             opacity: 0;
-            text-shadow: 2px 2px 0 #ce5a83; /*#b86aff;*/
+            text-shadow: 2px 2px 0 #94001e;/*#ce5a83; /*#b86aff;*/
             min-height: 38px;
             transition: opacity 0.2s steps(3);
         }
@@ -973,7 +973,9 @@
             margin-left: auto;
             margin-right: auto;
         }
-
+        .screen:not(#screen4) .card {
+            margin-top: -100px !important;
+        }
         #screen3 button {
             width: auto;
             min-width: 200px;
@@ -1268,7 +1270,7 @@
                 <li><span>Красивая</span></li>
                 <li><span>Милая</span></li>
                 <li><span>Смешная</span></li>
-                <li><span>Всё ещё читаешь это</span></li>
+                <li><span>Всё ещё читаешь<br>это</span></li>
             </ul>
             <p id="compatibility"><span class="main">100% симпатия</span><br><span
                     class="sub">(Да, я тоже удивлён 😏)</span>
@@ -1742,20 +1744,12 @@
 
     const MAZE_COLORS = {
         BACKGROUND: '#0f0f23',        // фон лабиринта
-        WALL_TOP: '#b86aff',        // верхняя стена (фиолетовый)
-        WALL_RIGHT: '#3fc0ff',        // правая стена (голубой)
-        WALL_BOTTOM: '#fcee4a',        // нижняя стена (жёлтый)
-        WALL_LEFT: '#ff3fb0',        // левая стена (розовый)
+        WALL_TOP: '#b86aff',        // верхняя стена (фиолетовый) '#b86aff'
+        WALL_RIGHT: '#3fc0ff',        // правая стена (голубой) '#3fc0ff'
+        WALL_BOTTOM: '#fcee4a',        // нижняя стена (жёлтый) '#fcee4a'
+        WALL_LEFT: '#ff3fb0',        // левая стена (розовый) '#ff3fb0'
     };
 
-    // Альтернативная приглушённая палитра (ретро, комфортная для глаз) — раскомментируйте, если нужно
-    // const MAZE_COLORS = {
-    //     BACKGROUND: '#2b231c',   // тёплый тёмный фон
-    //     WALL_TOP:    '#9f7e9e',   // серо-сиреневый
-    //     WALL_RIGHT:  '#5a9e9e',   // мягкий бирюзово-зеленоватый
-    //     WALL_BOTTOM: '#d4b48c',   // песочный
-    //     WALL_LEFT:   '#c45d5d',   // приглушённый терракотово-розовый
-    // };
 
     function drawMaze() {
         const rows = MAZE_ROWS, cols = MAZE_COLS;
@@ -1808,65 +1802,65 @@
             }
         }
 
-        // ===== ТОЛСТАЯ ВНЕШНЯЯ РАМКА =====
-        ctx.save();
+        // // ===== ТОЛСТАЯ ВНЕШНЯЯ РАМКА =====
+        // ctx.save();
+        //
+        // const borderWidth = 12;
+        // ctx.lineWidth = borderWidth;
+        // const offset = borderWidth / 2;
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(-offset, -offset);
+        // ctx.lineTo(canvas.width + offset, -offset);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_TOP;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(canvas.width + offset, -offset);
+        // ctx.lineTo(canvas.width + offset, canvas.height + offset);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_RIGHT;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(canvas.width + offset, canvas.height + offset);
+        // ctx.lineTo(-offset, canvas.height + offset);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_BOTTOM;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(-offset, canvas.height + offset);
+        // ctx.lineTo(-offset, -offset);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_LEFT;
+        // ctx.stroke();
+        //
+        // // ===== ДОПОЛНИТЕЛЬНАЯ ВНУТРЕННЯЯ РАМКА =====
+        // ctx.lineWidth = 2;
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(0, 0);
+        // ctx.lineTo(canvas.width, 0);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_TOP;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(canvas.width, 0);
+        // ctx.lineTo(canvas.width, canvas.height);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_RIGHT;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(canvas.width, canvas.height);
+        // ctx.lineTo(0, canvas.height);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_BOTTOM;
+        // ctx.stroke();
+        //
+        // ctx.beginPath();
+        // ctx.moveTo(0, canvas.height);
+        // ctx.lineTo(0, 0);
+        // ctx.strokeStyle = MAZE_COLORS.WALL_LEFT;
+        // ctx.stroke();
 
-        const borderWidth = 12;
-        ctx.lineWidth = borderWidth;
-        const offset = borderWidth / 2;
-
-        ctx.beginPath();
-        ctx.moveTo(-offset, -offset);
-        ctx.lineTo(canvas.width + offset, -offset);
-        ctx.strokeStyle = MAZE_COLORS.WALL_TOP;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(canvas.width + offset, -offset);
-        ctx.lineTo(canvas.width + offset, canvas.height + offset);
-        ctx.strokeStyle = MAZE_COLORS.WALL_RIGHT;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(canvas.width + offset, canvas.height + offset);
-        ctx.lineTo(-offset, canvas.height + offset);
-        ctx.strokeStyle = MAZE_COLORS.WALL_BOTTOM;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(-offset, canvas.height + offset);
-        ctx.lineTo(-offset, -offset);
-        ctx.strokeStyle = MAZE_COLORS.WALL_LEFT;
-        ctx.stroke();
-
-        // ===== ДОПОЛНИТЕЛЬНАЯ ВНУТРЕННЯЯ РАМКА =====
-        ctx.lineWidth = 2;
-
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(canvas.width, 0);
-        ctx.strokeStyle = MAZE_COLORS.WALL_TOP;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(canvas.width, 0);
-        ctx.lineTo(canvas.width, canvas.height);
-        ctx.strokeStyle = MAZE_COLORS.WALL_RIGHT;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(canvas.width, canvas.height);
-        ctx.lineTo(0, canvas.height);
-        ctx.strokeStyle = MAZE_COLORS.WALL_BOTTOM;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height);
-        ctx.lineTo(0, 0);
-        ctx.strokeStyle = MAZE_COLORS.WALL_LEFT;
-        ctx.stroke();
-
-        ctx.restore();
+        // ctx.restore();
     }
 
     function createElement(tag, className, text, left, top) {
@@ -1883,7 +1877,7 @@
         gameElements.innerHTML = '';
         const offset = 0, half = 16.5;
 
-        const playerEl = createElement('div', 'player', '💖',
+        const playerEl = createElement('div', 'player', '👧🏻', /*👩🏻💖*/
             offset + player.x * cellSize + half - 15.5,
             offset + player.y * cellSize + half - 15.5);
         gameElements.appendChild(playerEl);
@@ -2577,7 +2571,7 @@
 
         // Жёсткая гарантия — никогда не больше 3 сообщений
         // Если уже 3, сначала УДАЛЯЕМ старое, потом только добавляем новое
-        if (container.children.length >= 3) {
+        if (container.children.length >= 2) {
             const oldestMessage = container.firstChild;
             if (oldestMessage) {
                 // Плавное исчезновение вверх
@@ -2662,19 +2656,19 @@
         // Финальное сообщение с плавной анимацией
         const finalMessage = document.createElement('div');
         finalMessage.style.cssText = `
-    background: linear-gradient(135deg, #ff3fb0, #b86aff);
-    color: white;
-    padding: 20px 24px;
-    border: 6px solid #ffffaa;
-    font-weight: bold;
-    font-size: 22px;
-    box-shadow: 8px 8px 0 #3fc0ff;
-    text-align: center;
-    opacity: 0;
-    transform: scale(0.7);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    text-shadow: 3px 3px 0 #000;
-  `;
+        background: linear-gradient(135deg, #ff3fb0, #b86aff);
+        color: white;
+        padding: 20px 24px;
+        border: 6px solid #ffffaa;
+        font-weight: bold;
+        font-size: 22px;
+        box-shadow: 8px 8px 0 #3fc0ff;
+        text-align: center;
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-shadow: 3px 3px 0 #000;
+        `;
         finalMessage.textContent = 'Нет так нет 🙃';
 
         container.appendChild(finalMessage);
@@ -2759,7 +2753,7 @@
 
         showFunnyMessage();
 
-        if (noClickCount >= 20) {
+        if (noClickCount >= 13) {
             hideNoButton();
         }
     }
